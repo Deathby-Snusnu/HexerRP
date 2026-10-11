@@ -1,0 +1,43 @@
+local _, addon = ...
+
+addon.localeData.enUS.ambient = {
+    MURMUR = {
+        "No... that was not the agreement.",
+        "Quiet. I heard you.",
+        "Not here. Not in front of them.",
+        "Later. We will speak later.",
+        "That was not my voice.",
+        "I closed the circle. I know I did.",
+        "Three names. I remember three. Why four?",
+        "Not every thought in here is mine. That is... fine.",
+        "*murmurs several syllables from no recognizable language.*",
+        "*draws a tiny rune in the air and wipes it away at once.*",
+        "*tilts their head and listens to the silence.*",
+        "*smiles suddenly at something no one else seems to have heard.*",
+        "*whispers something to %p and waits seriously for an answer.*",
+        "%p, stop staring. Yes, you.",
+        "No, %p. We are not eating that.",
+    },
+    DISTURBED = {
+        "I heard you.",
+        "Who said that?",
+        "No. Stay there.",
+        "The shadows are moving wrong.",
+        "*looks sharply over one shoulder although nothing is there.*",
+        "*flinches as if someone whispered directly into one ear.*",
+        "*presses two fingers to the temple and mutters under the breath.*",
+        "*stares suspiciously into an empty corner.*",
+        "*checks whether an invisible circle around their feet is still intact.*",
+        "*casts %p a questioning look, as if the demon noticed it too.*",
+    },
+    OUTBURST = {
+        "NO!",
+        "Stop!",
+        "Not again!",
+        "Back!",
+        "GET OUT OF MY HEAD!",
+        "*jerks violently and lets out a short startled cry.*",
+        "*snatches one hand back as though something unseen reached for it.*",
+        "*spins around with both hands raised defensively.*",
+    },
+}

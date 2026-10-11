@@ -1,0 +1,23 @@
+## Interface: 16001
+## Title: Hexer RP
+## Notes: Rollenspieltexte und seltenes Ambient-RP fuer Hexenmeister
+## Author: Hannes; HexerRP adaptation
+## Version: 0.1.0
+## SavedVariablesPerCharacter: HexerRP_CharacterDB
+
+config\Settings.lua
+locales\Init.lua
+locales\deDE\Texts.lua
+locales\deDE\Ambient.lua
+locales\enUS\Texts.lua
+locales\enUS\Ambient.lua
+locales\frFR\Texts.lua
+locales\frFR\Ambient.lua
+locales\Finalize.lua
+core\Database.lua
+core\Text.lua
+core\Chat.lua
+core\Cooldown.lua
+core\Ambient.lua
+core\Commands.lua
+HexerRP.lua

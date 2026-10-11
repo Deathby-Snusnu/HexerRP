@@ -1,0 +1,3 @@
+local _, addon = ...
+addon.texts = addon.localeData.deDE.texts or {}
+addon.ambientTexts = addon.localeData.deDE.ambient or {}

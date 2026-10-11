@@ -1,0 +1,43 @@
+local _, addon = ...
+
+addon.localeData.frFR.ambient = {
+    MURMUR = {
+        "Non... ce n’etait pas l’accord.",
+        "Silence. Je vous ai entendu.",
+        "Pas ici. Pas devant eux.",
+        "Plus tard. Nous parlerons plus tard.",
+        "Ce n’etait pas ma voix.",
+        "J’ai ferme le cercle. J’en suis certain.",
+        "Trois noms. J’en retiens trois. Pourquoi quatre?",
+        "Toutes les pensees ici ne sont pas les miennes. C’est... normal.",
+        "*murmure quelques syllabes qui ne ressemblent a aucune langue connue.*",
+        "*trace une minuscule rune dans l’air puis l’efface aussitot.*",
+        "*penche la tete et ecoute le silence.*",
+        "*sourit soudain a quelque chose que personne d’autre ne semble avoir entendu.*",
+        "*murmure quelque chose a %p et attend serieusement une reponse.*",
+        "%p, cesse de fixer. Oui, toi.",
+        "Non, %p. On ne mange pas ca.",
+    },
+    DISTURBED = {
+        "Je vous ai entendu.",
+        "Qui a dit ca?",
+        "Non. Restez la-bas.",
+        "Les ombres bougent mal.",
+        "*regarde brusquement par-dessus son epaule alors qu’il n’y a rien.*",
+        "*tressaille comme si quelqu’un venait de murmurer a son oreille.*",
+        "*pose deux doigts sur sa tempe et marmonne a voix basse.*",
+        "*fixe avec mefiance un coin parfaitement vide.*",
+        "*verifie nerveusement qu’un cercle invisible autour de ses pieds est toujours ferme.*",
+        "*lance a %p un regard interrogateur, comme si le demon avait remarque la meme chose.*",
+    },
+    OUTBURST = {
+        "NON!",
+        "Arretez!",
+        "Pas encore!",
+        "Reculez!",
+        "SORTEZ DE MA TETE!",
+        "*sursaute violemment et laisse echapper un cri bref.*",
+        "*retire brusquement sa main comme si quelque chose d’invisible l’avait saisie.*",
+        "*se retourne d’un coup, les deux mains levees pour se defendre.*",
+    },
+}
