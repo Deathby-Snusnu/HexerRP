@@ -17,6 +17,12 @@ addon.localeData.enUS.texts = {
             "Fel fire suits you, %s.",
             "*traces a sharp sigil and sets %s alight with fel flame.*",
         },
+        gruppe = {
+            "Burning is simply another form of revelation.",
+            "Fel fire always finds something willing to burn.",
+            "*traces a sharp sigil as green flame flares into being.*",
+            "*lets a spark of fel fire dance between two fingers.*",
+        },
     },
     CORRUPTION = {
         name = "Corruption",
@@ -25,13 +31,61 @@ addon.localeData.enUS.texts = {
             "It gets worse gradually, %s.",
             "*murmurs a compact curse over %s.*",
         },
+        gruppe = {
+            "Corruption does not need a face. Only a victim.",
+            "Darkness does its finest work slowly.",
+            "*murmurs a compact curse as shadow gathers around one hand.*",
+            "*draws a dark rune in the air and watches it fade.*",
+        },
+    },
+    CURSE_WEAKNESS = {
+        name = "Curse of Weakness",
+        ziel = {
+            "Your strength is leaving you, %s.",
+            "That should make you somewhat less impressive, %s.",
+            "Feel that, %s? Your strength is already draining away.",
+            "Keep fighting, %s. Just with less force behind it.",
+            "A small curse for a large problem, %s.",
+            "*draws a dull rune in the air; dark energy settles over %s.*",
+            "*slowly closes one hand as strength seems to drain from %s.*",
+            "*murmurs a short curse and points two fingers at %s.*",
+        },
+        gruppe = {
+            "Strength is surprisingly negotiable.",
+            "A little less power on the other side never hurts.",
+            "*draws a dull rune in the air and lets it crumble into dark smoke.*",
+            "*murmurs a strength-sapping curse and slowly closes one hand.*",
+        },
+    },
+    OMEN_AGONY = {
+        name = "Omen of Agony",
+        ziel = {
+            "The pain begins quietly, %s. It will grow.",
+            "You still have time to get used to the pain, %s. Not much.",
+            "Agony is taking its time with you, %s.",
+            "Every moment will be a little worse, %s.",
+            "I promise you nothing except increasing certainty, %s.",
+            "*draws a dark spiral toward %s with two fingers.*",
+            "*speaks a quiet omen; a dark veil settles around %s.*",
+            "*watches %s with calm curiosity as the torment slowly gathers strength.*",
+        },
+        gruppe = {
+            "The agony begins. It is in no hurry.",
+            "An omen needs time to reveal its full meaning.",
+            "*lets a dark rune slowly fade in the air.*",
+        },
     },
     CURSE_AGONY = {
         name = "Curse of Agony",
-        ziel = {
-            "Pain is a patient teacher, %s.",
-            "You will remember me, %s.",
-            "*closes one hand slowly as the curse settles over %s.*",
+        gruppe = {
+            "Agony for everyone. I am feeling generous today.",
+            "Let them learn together how patient pain can be.",
+            "One curse, many screams. Efficient.",
+            "The darkness does not have to choose a single victim today.",
+            "*spreads both hands; dark energy rolls through the enemy ranks in waves.*",
+            "*murmurs a curse as shadows spread through the area like cold smoke.*",
+            "*traces a wide circle in the air; dark runes flare all around.*",
+            "*smiles faintly as several enemies recoil in pain at once.*",
         },
     },
     FEAR = {

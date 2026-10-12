@@ -7,6 +7,11 @@ function addon.TryText(key)
     if not addon.ready then addon.Notify("Noch nicht geladen."); return false end
     if not addon.isWarlock then addon.Notify("RP-Texte sind nur fuer Hexenmeister verfuegbar."); return false end
     if type(key)~="string" or key=="" then return false end
+
+    -- A due ambient line gets the next real player-triggered RP action.
+    -- This avoids protected chat calls from timers while keeping ambient random.
+    if addon.FlushPendingAmbient and addon.FlushPendingAmbient() then return true end
+
     key=key:upper()
     local text=addon.BuildText(key)
     if not text then addon.Notify("Kein nutzbarer Text fuer "..key.." vorhanden."); return false end

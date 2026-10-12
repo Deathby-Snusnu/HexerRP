@@ -50,7 +50,10 @@ function addon.BuildText(key)
     local targetName = ResolveTargetName(key)
     local demonName = addon.GetDemonName()
     local personal = addon.db.personalTexts[key]
-    if personal then return addon.ChooseText(personal, targetName, demonName) end
+    if personal then
+        local personalText = addon.ChooseText(personal, targetName, demonName)
+        if personalText then return personalText end
+    end
     local lang = addon.GetOutputLanguage()
     local pool = addon.GetLocalePoolExact(lang, "texts", key)
         or addon.GetLocalePoolExact("deDE", "texts", key)

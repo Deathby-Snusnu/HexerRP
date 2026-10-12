@@ -1,5 +1,20 @@
 local _, addon = ...
 
+local function ShowHelp()
+    addon.Notify("HexerRP Befehle:")
+    addon.Notify("/wrp help | /wrp list | /wrp status")
+    addon.Notify("/wrp <schluessel>")
+    addon.Notify("/wrp language deDE|enUS|frFR")
+    addon.Notify("/wrp channel AUTO|SAY|YELL|EMOTE|PARTY|RAID|INSTANCE_CHAT")
+    addon.Notify("/wrp chance 0-100 | /wrp cooldown 0-3600")
+    addon.Notify("/wrp ambient on|off")
+    addon.Notify("/wrp ambient test murmur|disturbed|outburst")
+    addon.Notify("/wrp ambient chance 0-100")
+    addon.Notify("/wrp ambient interval MIN MAX")
+    addon.Notify("/wrp ambient combat on|off")
+    addon.Notify("Ambient-Timer merkt Texte vor; Ausgabe bei der naechsten /wrp Aktion.")
+end
+
 local function SetLanguage(arg)
     local aliases={de="deDE",dede="deDE",en="enUS",enus="enUS",fr="frFR",frfr="frFR"}
     local lang=aliases[(arg or ""):lower()] or arg
@@ -26,7 +41,7 @@ local function AmbientCommand(arg)
         local v=b:lower(); if v=="on" then addon.db.ambientInCombat=true elseif v=="off" then addon.db.ambientInCombat=false else addon.Notify("/wrp ambient combat on|off"); return end
         addon.Notify("Ambient im Kampf: "..(addon.db.ambientInCombat and "an" or "aus"))
     else
-        addon.Notify(string.format("Ambient: %s | Chance %d%% | Intervall %d-%ds | Kampf %s", addon.db.ambientEnabled and "an" or "aus", addon.db.ambientChance, addon.db.ambientMinInterval, addon.db.ambientMaxInterval, addon.db.ambientInCombat and "an" or "aus"))
+        addon.Notify(string.format("Ambient: %s | Chance %d%% | Intervall %d-%ds | Kampf %s | Vorgemerkt %s", addon.db.ambientEnabled and "an" or "aus", addon.db.ambientChance, addon.db.ambientMinInterval, addon.db.ambientMaxInterval, addon.db.ambientInCombat and "an" or "aus", (addon.HasPendingAmbient and addon.HasPendingAmbient()) and "ja" or "nein"))
     end
 end
 
@@ -36,11 +51,8 @@ SlashCmdList.HEXERRP=function(message)
     if not addon.ready then addon.Notify("Noch nicht geladen."); return end
     local command,arg=(message or ""):match("^%s*(%S+)%s*(.-)%s*$")
     command=command and command:lower() or "help"; arg=arg or ""
-    if command=="help" then
-        addon.Notify("/wrp list | /wrp <schluessel> | /wrp status")
-        addon.Notify("/wrp language deDE|enUS|frFR | /wrp channel <kanal>")
-        addon.Notify("/wrp chance 0-100 | /wrp cooldown 0-3600")
-        addon.Notify("/wrp ambient [on|off|test <typ>|chance N|interval MIN MAX|combat on|off]")
+    if command=="help" or command=="?" then
+        ShowHelp()
     elseif command=="list" then
         local keys={}; for key in pairs(addon.texts) do keys[#keys+1]=key end; table.sort(keys)
         for _,key in ipairs(keys) do addon.Notify(key.." - "..tostring(addon.texts[key].name or key)) end
@@ -54,6 +66,10 @@ SlashCmdList.HEXERRP=function(message)
         if addon.ValidNumber(v,max,0) then addon.db[command=="chance" and "textChance" or "cooldown"]=v; addon.Notify(command..": "..v) end
     elseif command=="channel" then
         local c=arg:upper(); if addon.channels[c] then addon.db.chatChannel=c; addon.Notify("Chatkanal: "..c) else addon.Notify("Kanaele: AUTO, SAY, YELL, EMOTE, PARTY, RAID, INSTANCE_CHAT") end
-    elseif arg~="" then addon.Notify("Unbekannter Befehl. /wrp help")
-    else addon.TryText(command) end
+    elseif arg~="" then
+        addon.Notify("Unbekannter Befehl: "..tostring(command))
+        ShowHelp()
+    else
+        addon.TryText(command)
+    end
 end
