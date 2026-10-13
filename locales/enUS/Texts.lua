@@ -1,3 +1,10 @@
+-- SPDX-License-Identifier: CC-BY-SA-4.0
+-- Copyright (c) 2026 Hannes Weichselbaum
+--
+-- Role-playing dialogue, emote, ambient, and translation text in this
+-- file is licensed under the Creative Commons Attribution-ShareAlike
+-- 4.0 International License.
+
 local _, addon = ...
 
 addon.localeData.enUS.texts = {
@@ -6,8 +13,20 @@ addon.localeData.enUS.texts = {
         ziel = {
             "The shadows find you, %s.",
             "Run if you like, %s. Darkness is faster.",
+            "A little darkness for you, %s.",
+            "You should not have stood in the light so long, %s.",
+            "The Nether sends its regards, %s.",
+            "Try not to blink, %s. You may miss the unpleasant part.",
             "*gathers darkness between both hands and hurls it at %s.*",
             "*points at %s as a bolt of shadow snaps across the air.*",
+            "*draws a knot of darkness into one hand and sends it tearing toward %s.*",
+        },
+        gruppe = {
+            "The shadows answer.",
+            "Darkness travels remarkably well.",
+            "One bolt of shadow, freshly delivered.",
+            "*forms a flickering sphere of darkness between both hands.*",
+            "*pulls shadow into one palm until it crackles with cold energy.*",
         },
     },
     IMMOLATE = {
@@ -93,7 +112,19 @@ addon.localeData.enUS.texts = {
         ziel = {
             "Run, %s. Your instincts are finally correct.",
             "Do not look too closely, %s.",
+            "There are things behind you, %s. Probably.",
+            "Your courage was always temporary, %s.",
+            "Go on, %s. Panic suits you.",
             "*opens a hand toward %s as a crawling shadow spreads across the ground.*",
+            "*leans toward %s and whispers a word that turns the air suddenly cold.*",
+            "*fixes %s with an unsettling stare as the shadows seem to move on their own.*",
+        },
+        gruppe = {
+            "Fear is such an efficient form of crowd control.",
+            "Courage is fragile. Let us test it.",
+            "Some lessons are best learned while running away.",
+            "*lets a thin wave of shadow creep outward across the ground.*",
+            "*smiles faintly as the surrounding air turns cold and oppressive.*",
         },
     },
     LIFE_TAP = {
@@ -117,7 +148,19 @@ addon.localeData.enUS.texts = {
         ziel = {
             "Stay a moment, %s. I am not finished.",
             "Your soul has an interesting resonance, %s.",
+            "Only a fragment, %s. You will hardly miss it.",
+            "Do not struggle, %s. It only makes the extraction untidy.",
+            "There is something in you I would like to keep, %s.",
             "*pulls a thin unnatural glow away from %s.*",
+            "*hooks two fingers toward %s as a pale thread of essence begins to stretch free.*",
+            "*murmurs intently while something unseen is drawn out of %s.*",
+        },
+        gruppe = {
+            "Souls leave such interesting traces.",
+            "Waste not, want not. Especially where souls are concerned.",
+            "There is always something left to collect.",
+            "*closes one hand around a faint, unnatural glimmer.*",
+            "*draws a pale thread of essence through the air and lets it coil around the fingers.*",
         },
     },
     SOUL_FIRE = {

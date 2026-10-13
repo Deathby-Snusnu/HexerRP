@@ -1,3 +1,10 @@
+-- SPDX-License-Identifier: CC-BY-SA-4.0
+-- Copyright (c) 2026 Hannes Weichselbaum
+--
+-- Role-playing dialogue, emote, ambient, and translation text in this
+-- file is licensed under the Creative Commons Attribution-ShareAlike
+-- 4.0 International License.
+
 local _, addon = ...
 
 addon.localeData.deDE.texts = {
@@ -7,13 +14,18 @@ addon.localeData.deDE.texts = {
             "Die Schatten finden Euch, %s.",
             "Lauft ruhig weiter, %s. Dunkelheit ist schneller.",
             "Ein wenig Finsternis fuer Euch, %s.",
+            "Ihr standet eindeutig zu lange im Licht, %s.",
+            "Der Nether laesst gruessen, %s.",
             "*zieht die Finger zusammen, waehrend sich zwischen den Haenden dunkle Energie verdichtet.*",
             "*schleudert einen kompakten Schattenblitz auf %s.*",
             "*laesst die Dunkelheit um den Arm kreisen und weist auf %s.*",
         },
         gruppe = {
             "Die Schatten antworten.",
+            "Dunkelheit reist erstaunlich gut.",
+            "Ein Schattenblitz, frisch zugestellt.",
             "*formt zwischen beiden Haenden eine Kugel aus flackernder Finsternis.*",
+            "*zieht Schatten in eine Hand, bis kalte Energie darin knistert.*",
         },
     },
     IMMOLATE = {
@@ -101,11 +113,21 @@ addon.localeData.deDE.texts = {
     FEAR = {
         name = "Furcht",
         ziel = {
-            "Lauft, %s. Eure Instinkte haben ausnahmsweise recht.",
-            "Seht genau hin, %s. Oder besser nicht.",
-            "Was Ihr gleich seht, ist nicht fuer sterbliche Augen gedacht, %s.",
-            "*oeffnet die Hand zu %s hin; ein kaum sichtbarer Schatten kriecht ueber den Boden.*",
-            "*fluesterte ein einziges Wort, das %s sichtbar erschauern laesst.*",
+            "Lauft, %s. Euer Instinkt funktioniert endlich.",
+            "Schaut besser nicht zu genau hin, %s.",
+            "Da ist etwas hinter Euch, %s. Vermutlich.",
+            "Euer Mut war ohnehin nur geliehen, %s.",
+            "Nur zu, %s. Panik steht Euch.",
+            "*oeffnet die Hand in Richtung von %s, waehrend ein kriechender Schatten ueber den Boden zieht.*",
+            "*beugt sich leicht zu %s und fluestert ein Wort, das die Luft ploetzlich kalt werden laesst.*",
+            "*fixiert %s mit einem beunruhigend ruhigen Blick, waehrend die Schatten unruhig werden.*",
+        },
+        gruppe = {
+            "Furcht ist erstaunlich effiziente Kontrolle.",
+            "Mut ist zerbrechlich. Testen wir ihn.",
+            "Manche Lektionen lernt man am besten im Davonlaufen.",
+            "*laesst eine duenne Welle aus Schatten ueber den Boden kriechen.*",
+            "*laechelt schwach, waehrend die Luft ringsum kalt und bedrueckend wird.*",
         },
     },
     LIFE_TAP = {
@@ -135,8 +157,18 @@ addon.localeData.deDE.texts = {
             "Bleibt noch einen Augenblick, %s. Etwas fehlt mir noch.",
             "Eure Seele hat einen interessanten Klang, %s.",
             "Nur ein Splitter, %s. Ihr werdet ihn kaum vermissen.",
+            "Wehrt Euch nicht, %s. Das macht die Entnahme nur unordentlich.",
+            "Da ist etwas in Euch, das ich gern behalten wuerde, %s.",
             "*haelt die Hand ueber %s und zieht einen duennen, unnatuerlichen Schein an sich.*",
+            "*krallt zwei Finger in Richtung von %s, waehrend sich ein blasser Faden aus Essenz loest.*",
             "*murmelt angespannt, waehrend sich etwas Unsichtbares von %s loest.*",
+        },
+        gruppe = {
+            "Seelen hinterlassen interessante Spuren.",
+            "Nichts verschwenden. Schon gar keine Seelen.",
+            "Es bleibt immer etwas uebrig, das man einsammeln kann.",
+            "*schliesst die Hand um einen schwachen, unnatuerlichen Schimmer.*",
+            "*zieht einen blassen Faden aus Essenz durch die Luft und wickelt ihn um die Finger.*",
         },
     },
     SOUL_FIRE = {

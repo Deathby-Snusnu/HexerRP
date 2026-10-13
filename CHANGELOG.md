@@ -1,29 +1,70 @@
-# Changelog
+## 0.1.5
 
-## 0.1.4 - 2026-10-12
-- Omen der Pein und Fluch der Pein getrennt.
-- Neuer Key `OMEN_AGONY` fuer den Einzelziel-DoT.
-- `CURSE_AGONY` ist nun als zielunabhaengiger Flaechenfluch ausgelegt.
-- Texte in deDE, enUS und frFR ergaenzt.
-
-# 0.1.3
-
-- Fluch der Schwäche / Curse of Weakness / Malédiction de faiblesse als `CURSE_WEAKNESS` ergänzt.
-- Ziel- und zielunabhängige RP-Texte inklusive `/me`-Aktionen in DE/EN/FR ergänzt.
+- Expanded SHADOW_BOLT and FEAR text pools, especially in English.
+- Added target-independent fallback texts for SHADOW_BOLT, FEAR and DRAIN_SOUL in deDE/enUS/frFR.
+- Clarified that Seelendieb uses the internal key DRAIN_SOUL.
 
 # Changelog
 
-## 0.1.3
-- IMMOLATE und CORRUPTION besitzen jetzt zusaetzliche zielunabhaengige RP-Texte in DE/EN/FR.
-- Unbrauchbare persoenliche Textpools fallen jetzt auf die normalen Locale-Texte zurueck.
+Aenderungen an HexerRP werden hier dokumentiert. Fuer undatierte Eintraege
+wird kein Datum ergaenzt.
 
-# 0.1.2
+## [0.1.5] - 2026-10-13
 
-- Ambient-Timer sendet keine geschuetzten Chatnachrichten mehr selbststaendig.
-- Faellige Ambient-Texte werden vorgemerkt und bei der naechsten spielerausgeloesten /wrp-Aktion ausgegeben.
-- Verhindert "Interface-Aktion auf Grund eines Addons fehlgeschlagen" durch automatisches SendChatMessage.
+### Hinzugefuegt
 
-# Changelog
+- Daemonische Ambient-Sprachfragmente in drei Lautstaerken:
+  `DEMONIC_WHISPER`, `DEMONIC_SAY` und `DEMONIC_YELL`.
+- Gefluesterte Fragmente werden als `/me`-Aktion ausgegeben und benoetigen
+  deshalb kein Whisper-Ziel.
+- `/say`- und `/yell`-Fragmente erzwingen fuer diese Ambient-Kategorie den
+  passenden Kanal unabhaengig vom normalen HexerRP-Kanal.
+- `/wrp ambient test demonic` waehlt zufaellig eine daemonische Variante;
+  die drei Unterkategorien koennen ebenfalls direkt getestet werden.
 
-## 0.1.0
-- Erstfassung mit DE/EN/FR, Zauber-RP, Daemonenplatzhalter und Ambient-System.
+### Geaendert
+
+- Die Ambient-Gewichtung enthaelt nun seltene daemonische Sprache; laute
+  Ausbrueche per `/yell` bleiben absichtlich sehr selten.
+- `SendText` kann optional einen Kanal fuer besondere RP-Ausgaben erzwingen,
+  ohne bestehende Zaubertexte zu veraendern.
+
+## [0.1.4] - 2026-10-12
+
+### Geaendert
+
+- Omen der Pein und Fluch der Pein sind getrennte Textschluessel.
+- `OMEN_AGONY` beschreibt den Einzelziel-Schaden-ueber-Zeit-Effekt.
+- `CURSE_AGONY` ist als zielunabhaengiger Flaechenfluch ausgelegt.
+- Deutsche, englische und franzoesische Texte ergaenzt.
+
+## [0.1.3]
+
+### Hinzugefuegt
+
+- Fluch der Schwaeche (`CURSE_WEAKNESS`) mit deutschen, englischen und
+  franzoesischen Texten, sowohl zielbezogen als auch zielunabhaengig.
+- Zusaetzliche zielunabhaengige Texte fuer `IMMOLATE` und `CORRUPTION` in
+  allen drei Sprachen.
+
+### Geaendert
+
+- Unbrauchbare persoenliche Textpools fallen auf die normalen Locale-Texte
+  zurueck.
+
+## [0.1.2]
+
+### Geaendert
+
+- Der Ambient-Timer sendet keine geschuetzten Chatnachrichten selbststaendig.
+- Faellige Ambient-Texte werden vorgemerkt und bei einem
+  spielerausgeloesten `/wrp`-Textaufruf ausgegeben.
+- Verhindert den Clientfehler durch automatisches `SendChatMessage` aus
+  einem Addon-Timer.
+
+## [0.1.0]
+
+### Hinzugefuegt
+
+- Erste Fassung mit deutschen, englischen und franzoesischen Texten,
+  Zauber-RP, Daemonenplatzhaltern und Ambient-System.

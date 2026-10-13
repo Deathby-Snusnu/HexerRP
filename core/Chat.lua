@@ -1,3 +1,10 @@
+-- SPDX-License-Identifier: MPL-2.0
+-- Copyright (c) 2026 Hannes Weichselbaum
+--
+-- This Source Code Form is subject to the terms of the Mozilla Public
+-- License, v. 2.0. If a copy of the MPL was not distributed with this
+-- file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 local _, addon = ...
 
 addon.channels = { AUTO=true, SAY=true, YELL=true, EMOTE=true, PARTY=true, RAID=true, INSTANCE_CHAT=true }
@@ -25,7 +32,7 @@ local function PrepareText(text)
     return text,false
 end
 
-function addon.SendText(text)
+function addon.SendText(text, forcedChannel)
     if type(text) ~= "string" or text == "" then return false end
     local message,isEmote=PrepareText(text)
     if not message then return false end
@@ -33,7 +40,7 @@ function addon.SendText(text)
         addon.Notify("Text nicht gesendet: ungueltiges Chatformat.")
         return false
     end
-    local channel=isEmote and "EMOTE" or addon.GetChatChannel()
+    local channel=isEmote and "EMOTE" or forcedChannel or addon.GetChatChannel()
     if not channel then return false end
     if not C_ChatInfo or type(C_ChatInfo.SendChatMessage)~="function" then
         addon.Notify("Dieser Client stellt keine unterstuetzte Chat-API bereit.")

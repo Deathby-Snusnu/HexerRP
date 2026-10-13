@@ -1,3 +1,10 @@
+-- SPDX-License-Identifier: MPL-2.0
+-- Copyright (c) 2026 Hannes Weichselbaum
+--
+-- This Source Code Form is subject to the terms of the Mozilla Public
+-- License, v. 2.0. If a copy of the MPL was not distributed with this
+-- file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 local _, addon = ...
 
 local function ShowHelp()
@@ -8,7 +15,7 @@ local function ShowHelp()
     addon.Notify("/wrp channel AUTO|SAY|YELL|EMOTE|PARTY|RAID|INSTANCE_CHAT")
     addon.Notify("/wrp chance 0-100 | /wrp cooldown 0-3600")
     addon.Notify("/wrp ambient on|off")
-    addon.Notify("/wrp ambient test murmur|disturbed|outburst")
+    addon.Notify("/wrp ambient test murmur|disturbed|outburst|demonic")
     addon.Notify("/wrp ambient chance 0-100")
     addon.Notify("/wrp ambient interval MIN MAX")
     addon.Notify("/wrp ambient combat on|off")
@@ -30,7 +37,11 @@ local function AmbientCommand(arg)
     elseif a=="off" then addon.db.ambientEnabled=false; addon.Notify("Ambient-RP: aus")
     elseif a=="test" then
         local cat=(b~="" and b:upper()) or nil
-        if cat and cat~="MURMUR" and cat~="DISTURBED" and cat~="OUTBURST" then addon.Notify("Test: murmur, disturbed, outburst"); return end
+        if cat and cat~="MURMUR" and cat~="DISTURBED" and cat~="OUTBURST"
+            and cat~="DEMONIC" and cat~="DEMONIC_SAY" and cat~="DEMONIC_YELL" and cat~="DEMONIC_WHISPER" then
+            addon.Notify("Test: murmur, disturbed, outburst, demonic, demonic_say, demonic_yell, demonic_whisper")
+            return
+        end
         addon.TryAmbient(cat,true)
     elseif a=="chance" then
         local v=tonumber(b); if addon.ValidNumber(v,100,0) then addon.db.ambientChance=v; addon.Notify("Ambient-Chance: "..v.."%") end

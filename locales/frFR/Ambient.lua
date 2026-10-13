@@ -1,3 +1,10 @@
+-- SPDX-License-Identifier: CC-BY-SA-4.0
+-- Copyright (c) 2026 Hannes Weichselbaum
+--
+-- Role-playing dialogue, emote, ambient, and translation text in this
+-- file is licensed under the Creative Commons Attribution-ShareAlike
+-- 4.0 International License.
+
 local _, addon = ...
 
 addon.localeData.frFR.ambient = {
@@ -39,5 +46,35 @@ addon.localeData.frFR.ambient = {
         "*sursaute violemment et laisse echapper un cri bref.*",
         "*retire brusquement sa main comme si quelque chose d’invisible l’avait saisie.*",
         "*se retourne d’un coup, les deux mains levees pour se defendre.*",
+    },    DEMONIC_SAY = {
+        "Zha'korr vel'nath... sha reth.",
+        "Akrazh tor'vel. Neth ka'rai.",
+        "Vhar'zul... vekh nar ash.",
+        "Khar azreth, mor'kath vel.",
+        "Sha'kar en varr... thul akresh.",
+        "Neth'ra khol. Vesh tal'mor.",
+        "Arkh zhal vekh... nar'keth.",
+        "Reth akh mor'zul... vel shan.",
+        "Karesh thul na'var. Zhek.",
+        "Vaal kor'eth... nahr zhul.",
     },
+    DEMONIC_YELL = {
+        "ZHA'KORR VEL SHAN'ETH!",
+        "AKRAZH! NAR VEKH'TOR!",
+        "RETH'KAL MOR'ZHUL!",
+        "KHAR'VETH! SHA NAR AKH!",
+        "VEL'NATH KORR AZH'RA!",
+        "THUL'KAR NETH VARR!",
+    },
+    DEMONIC_WHISPER = {
+        "*chuchote doucement : \"Akrzzt ra ffhg... zha vel neth...\"*",
+        "*chuchote d’une voix rauque : \"Reth kal... mor zhul... vekh.\"*",
+        "*baisse la voix jusqu’a un murmure presque inaudible : \"Sha nar... vel kath...\"*",
+        "*murmure des sons etrangers : \"Khar azh... neth varr...\"*",
+        "*chuchote des syllabes gutturales qui ne ressemblent a aucune langue d’Azeroth : \"Zhek... thul... arai...\"*",
+        "*bouge a peine les levres et murmure : \"Vel shan... kor eth...\"*",
+        "*chuchote precipitamment : \"Na var... na var... reth akh.\"*",
+        "*souffle dans le silence : \"Mor zul... vekh nar...\"*",
+    },
+
 }

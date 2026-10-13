@@ -1,12 +1,31 @@
+-- SPDX-License-Identifier: CC-BY-SA-4.0
+-- Copyright (c) 2026 Hannes Weichselbaum
+--
+-- Role-playing dialogue, emote, ambient, and translation text in this
+-- file is licensed under the Creative Commons Attribution-ShareAlike
+-- 4.0 International License.
+
 local _, addon = ...
 
 addon.localeData.frFR.texts = {
     SHADOW_BOLT = {
-        name = "Trait de l’ombre",
+        name = "Trait de l'ombre",
         ziel = {
-            "Les ombres vous trouveront, %s.",
+            "Les ombres vous trouvent, %s.",
             "Courez si vous voulez, %s. Les tenebres sont plus rapides.",
+            "Un peu d'obscurite pour vous, %s.",
+            "Vous etes reste trop longtemps dans la lumiere, %s.",
+            "Le Neant distordu vous salue, %s.",
             "*rassemble les tenebres entre ses mains et les projette sur %s.*",
+            "*pointe %s du doigt tandis qu'un trait d'ombre fend l'air.*",
+            "*condense une masse d'ombre dans une main avant de l'envoyer vers %s.*",
+        },
+        gruppe = {
+            "Les ombres repondent.",
+            "Les tenebres voyagent remarquablement bien.",
+            "Un trait d'ombre, fraichement livre.",
+            "*forme une sphere d'obscurite vacillante entre ses mains.*",
+            "*attire l'ombre dans une paume jusqu'a ce qu'une energie froide y crepite.*",
         },
     },
     IMMOLATE = {
@@ -90,9 +109,21 @@ addon.localeData.frFR.texts = {
     FEAR = {
         name = "Peur",
         ziel = {
-            "Courez, %s. Votre instinct a enfin raison.",
-            "Ne regardez pas trop attentivement, %s.",
-            "*ouvre la main vers %s tandis qu’une ombre rampante gagne le sol.*",
+            "Courez, %s. Votre instinct fonctionne enfin.",
+            "Ne regardez pas de trop pres, %s.",
+            "Il y a quelque chose derriere vous, %s. Probablement.",
+            "Votre courage n'etait que provisoire, %s.",
+            "Allez, %s. La panique vous va bien.",
+            "*ouvre une main vers %s tandis qu'une ombre rampante se repand sur le sol.*",
+            "*se penche vers %s et murmure un mot qui refroidit soudain l'air.*",
+            "*fixe %s d'un regard inquietant tandis que les ombres semblent bouger seules.*",
+        },
+        gruppe = {
+            "La peur est une forme de controle remarquablement efficace.",
+            "Le courage est fragile. Verifions cela.",
+            "Certaines lecons s'apprennent mieux en courant.",
+            "*laisse une fine vague d'ombre ramper sur le sol.*",
+            "*sourit faiblement tandis que l'air devient froid et oppressant.*",
         },
     },
     LIFE_TAP = {
@@ -112,11 +143,23 @@ addon.localeData.frFR.texts = {
         },
     },
     DRAIN_SOUL = {
-        name = "Drain d’ame",
+        name = "Drain d'ame",
         ziel = {
-            "Restez encore un instant, %s. Je n’ai pas fini.",
+            "Restez encore un instant, %s. Je n'ai pas termine.",
             "Votre ame a une resonance interessante, %s.",
-            "*attire loin de %s une lueur mince et contre nature.*",
+            "Juste un fragment, %s. Vous le remarquerez a peine.",
+            "Ne resistez pas, %s. Cela rend l'extraction desordonnee.",
+            "Il y a quelque chose en vous que j'aimerais garder, %s.",
+            "*attire une faible lueur surnaturelle hors de %s.*",
+            "*crochète deux doigts vers %s tandis qu'un fil pale d'essence commence a se liberer.*",
+            "*murmure avec concentration tandis que quelque chose d'invisible est arrache a %s.*",
+        },
+        gruppe = {
+            "Les ames laissent des traces fascinantes.",
+            "Rien ne se perd. Surtout pas les ames.",
+            "Il reste toujours quelque chose a recolter.",
+            "*referme une main sur une faible lueur surnaturelle.*",
+            "*attire un fil pale d'essence dans l'air et l'enroule autour de ses doigts.*",
         },
     },
     SOUL_FIRE = {

@@ -1,3 +1,10 @@
+-- SPDX-License-Identifier: MPL-2.0
+-- Copyright (c) 2026 Hannes Weichselbaum
+--
+-- This Source Code Form is subject to the terms of the Mozilla Public
+-- License, v. 2.0. If a copy of the MPL was not distributed with this
+-- file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 local _, addon = ...
 
 local nextAmbientAt
@@ -12,11 +19,30 @@ local function ScheduleNext()
     nextAmbientAt = GetTime() + math.random(lo, hi)
 end
 
+-- Normales Ambient bleibt der Hauptanteil. Daemonische Sprachfragmente
+-- sind bewusst seltener; lautes YELL ist dabei am seltensten.
 local function WeightedCategory()
     local roll = math.random(100)
-    if roll <= 62 then return "MURMUR" end
-    if roll <= 92 then return "DISTURBED" end
-    return "OUTBURST"
+    if roll <= 50 then return "MURMUR" end
+    if roll <= 74 then return "DISTURBED" end
+    if roll <= 82 then return "OUTBURST" end
+    if roll <= 91 then return "DEMONIC_WHISPER" end
+    if roll <= 98 then return "DEMONIC_SAY" end
+    return "DEMONIC_YELL"
+end
+
+local function RandomDemonicCategory()
+    local roll = math.random(100)
+    if roll <= 50 then return "DEMONIC_WHISPER" end
+    if roll <= 88 then return "DEMONIC_SAY" end
+    return "DEMONIC_YELL"
+end
+
+local function ForcedChannel(category)
+    if category == "DEMONIC_SAY" then return "SAY" end
+    if category == "DEMONIC_YELL" then return "YELL" end
+    -- DEMONIC_WHISPER is stored as *...* and therefore becomes /me.
+    return nil
 end
 
 function addon.BuildAmbient(category)
@@ -26,10 +52,14 @@ function addon.BuildAmbient(category)
     return addon.ChooseText(pool, nil, addon.GetDemonName())
 end
 
--- IMPORTANT:
--- Public chat output is a protected action on this client and must originate
--- from a real player action. The timer therefore only queues an ambient line.
--- It never calls SendChatMessage by itself.
+local function SendAmbient(category)
+    local text = addon.BuildAmbient(category)
+    if not text then return false end
+    return addon.SendText(text, ForcedChannel(category))
+end
+
+-- Public chat output is protected on this client and must originate from a
+-- real player action. The timer therefore only queues an ambient line.
 function addon.QueueAmbient(category)
     if not addon.ready or not addon.isWarlock or not addon.db or not addon.db.ambientEnabled then
         return false
@@ -55,27 +85,24 @@ function addon.FlushPendingAmbient()
         return false
     end
     local category = pendingAmbientCategory
-    local text = addon.BuildAmbient(category)
-    if not text then
-        pendingAmbientCategory = nil
-        return false
-    end
-    if addon.SendText(text) then
+    if SendAmbient(category) then
         pendingAmbientCategory = nil
         addon.StartCooldown()
         return true
     end
+    pendingAmbientCategory = nil
     return false
 end
 
 -- Explicit tests are typed/clicked by the player, so immediate output is safe.
 function addon.TryAmbient(category, force)
     if not addon.ready or not addon.isWarlock then return false end
+    if category == "DEMONIC" then
+        category = RandomDemonicCategory()
+    end
     if force then
         category = category or WeightedCategory()
-        local text = addon.BuildAmbient(category)
-        if not text then return false end
-        if addon.SendText(text) then
+        if SendAmbient(category) then
             addon.StartCooldown()
             return true
         end
