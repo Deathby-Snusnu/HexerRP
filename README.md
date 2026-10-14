@@ -132,7 +132,7 @@ serverseitige Zustellung kann das Addon nicht bestaetigen.
 
 ## Kompatibilitaet
 
-Die TOC deklariert Interface `16001` und Version `0.1.4`; dies ist keine
+Die TOC deklariert Interface `16001` und Version `0.1.5`; dies ist keine
 Zusicherung fuer andere WoW-Clientversionen. Fuer Chat-Ausgaben wird
 `C_ChatInfo.SendChatMessage` vorausgesetzt. Ein Client ohne diese API wird
 mit einer Meldung abgewiesen.
@@ -141,8 +141,11 @@ Die Kompatibilitaet mit anderen Clientversionen ist nicht festgelegt.
 
 ## Tests
 
-Im Addon liegt derzeit keine AddOn-spezifische Regressionstestsuite. Ein
-Ingame-Test im WoW-Client ist erforderlich.
+Die AddOn-Regressionstests liegen im Quellprojekt unter
+`tests/test_addon.lua`. Zusammen mit den
+Integrationstests koennen sie aus dem AddOns-Verzeichnis mit
+`.\Test-AddOns.ps1` und einem lokalen Lua-Interpreter ausgefuehrt werden.
+Ein Ingame-Test im WoW-Client bleibt erforderlich.
 
 ## Lizenz
 
