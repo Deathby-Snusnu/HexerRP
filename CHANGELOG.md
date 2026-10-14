@@ -1,5 +1,9 @@
 ## 0.1.5
 
+## 0.2.0 - 2026-10-14
+- Einheitliche Textauswahl und Fallback-Logik fuer Ziel, Gruppe und Daemon.
+- Erweiterter DE/EN/FR-Zauber- und Ambient-Textvorrat.
+
 - Expanded SHADOW_BOLT and FEAR text pools, especially in English.
 - Added target-independent fallback texts for SHADOW_BOLT, FEAR and DRAIN_SOUL in deDE/enUS/frFR.
 - Clarified that Seelendieb uses the internal key DRAIN_SOUL.

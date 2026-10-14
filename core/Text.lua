@@ -22,28 +22,22 @@ local function ResolveTargetName(key)
         return UnitName("player")
     end
     if UnitExists("target") then return UnitName("target") end
-    return nil
 end
 
 function addon.GetDemonName()
-    if UnitExists("pet") then return UnitName("pet") end
-    return nil
+    return UnitExists("pet") and UnitName("pet") or nil
 end
 
-function addon.ChooseText(pool, targetName, demonName)
-    if type(pool) ~= "table" then return nil end
-    local choices = pool
-    if #pool == 0 then
-        choices = targetName and pool.ziel or pool.gruppe
-        if type(choices) ~= "table" or #choices == 0 then choices = pool.gruppe end
-    end
-    if type(choices) ~= "table" or #choices == 0 then return nil end
+local function ChooseArray(pool, targetName, demonName)
+    if type(pool) ~= "table" or #pool == 0 then return nil end
     local usable = {}
-    for _, text in ipairs(choices) do
+    for _, text in ipairs(pool) do
         if type(text) == "string" and text ~= "" then
             local needsTarget = text:find("%s",1,true) ~= nil
             local needsPet = text:find("%p",1,true) ~= nil
-            if (not needsTarget or targetName) and (not needsPet or demonName) then usable[#usable+1]=text end
+            if (not needsTarget or targetName) and (not needsPet or demonName) then
+                usable[#usable+1] = text
+            end
         end
     end
     if #usable == 0 then return nil end
@@ -53,13 +47,25 @@ function addon.ChooseText(pool, targetName, demonName)
     return text
 end
 
+function addon.ChooseText(pool, targetName, demonName)
+    if type(pool) ~= "table" then return nil end
+    if #pool > 0 then return ChooseArray(pool, targetName, demonName) end
+    if targetName then
+        local text = ChooseArray(pool.ziel, targetName, demonName)
+        if text then return text end
+    end
+    local text = ChooseArray(pool.gruppe, targetName, demonName)
+    if text then return text end
+    return ChooseArray(pool.ziel, targetName, demonName)
+end
+
 function addon.BuildText(key)
     local targetName = ResolveTargetName(key)
     local demonName = addon.GetDemonName()
     local personal = addon.db.personalTexts[key]
     if personal then
-        local personalText = addon.ChooseText(personal, targetName, demonName)
-        if personalText then return personalText end
+        local text = addon.ChooseText(personal, targetName, demonName)
+        if text then return text end
     end
     local lang = addon.GetOutputLanguage()
     local pool = addon.GetLocalePoolExact(lang, "texts", key)
