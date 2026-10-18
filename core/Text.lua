@@ -14,9 +14,10 @@ local SELF_ONLY = {
     SUMMON_FELHUNTER=true, SUMMON_INFERNAL=true, RITUAL_SUMMONING=true,
 }
 local FRIENDLY_OR_SELF = { HEALTHSTONE=true, SOULSTONE=true }
+local DEMON_ONLY = { LIFE_FUNNEL=true }
 
 local function ResolveTargetName(key)
-    if SELF_ONLY[key] then return nil end
+    if SELF_ONLY[key] or DEMON_ONLY[key] then return nil end
     if FRIENDLY_OR_SELF[key] then
         if UnitExists("target") and UnitCanAssist("player", "target") then return UnitName("target") end
         return UnitName("player")
@@ -62,6 +63,7 @@ end
 function addon.BuildText(key)
     local targetName = ResolveTargetName(key)
     local demonName = addon.GetDemonName()
+    if DEMON_ONLY[key] and not demonName then return nil end
     local personal = addon.db.personalTexts[key]
     if personal then
         local text = addon.ChooseText(personal, targetName, demonName)

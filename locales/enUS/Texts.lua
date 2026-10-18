@@ -76,6 +76,26 @@ addon.localeData.enUS.texts = {
             "*murmurs a strength-sapping curse and slowly closes one hand.*",
         },
     },
+    CURSE_RECKLESSNESS = {
+        name = "Curse of Recklessness",
+        ziel = {
+            "Go on, %s. Forget all caution.",
+            "Courage is charming, %s. Recklessness is more useful.",
+            "Charge straight into ruin, %s. I insist.",
+            "Caution is overrated, %s. At least for you.",
+            "You wanted to be brave, %s. I am merely helping.",
+            "Armor, judgment, self-preservation... all surprisingly negotiable, %s.",
+            "*draws a dark sign toward %s with two fingers.*",
+            "*smiles thinly as unnatural bravado takes hold of %s.*",
+            "*utters a clipped curse and gestures invitingly toward %s.*",
+        },
+        gruppe = {
+            "A little less good judgment should help.",
+            "Courage is useful. Recklessness is easier to predict.",
+            "Some curses weaken the body. This one works on judgment.",
+            "*traces a small dark rune in the air and slowly closes one hand.*",
+        },
+    },
     OMEN_AGONY = {
         name = "Omen of Agony",
         ziel = {
@@ -142,6 +162,13 @@ addon.localeData.enUS.texts = {
             "Hold still, %s. It helps the transfer.",
             "*draws a dark stream of life from %s.*",
         },
+        gruppe = {
+            "A little borrowed vitality will do nicely.",
+            "What fades over there becomes remarkably useful over here.",
+            "Life force is just another resource with a pulse.",
+            "*extends one hand and draws a dark stream of vitality inward.*",
+            "*breathes in slowly as stolen life energy flows into the body.*",
+        },
     },
     DRAIN_SOUL = {
         name = "Drain Soul",
@@ -161,6 +188,21 @@ addon.localeData.enUS.texts = {
             "There is always something left to collect.",
             "*closes one hand around a faint, unnatural glimmer.*",
             "*draws a pale thread of essence through the air and lets it coil around the fingers.*",
+        },
+    },
+    LIFE_FUNNEL = {
+        name = "Health Funnel",
+        gruppe = {
+            "Take it, %p. Do not waste a drop.",
+            "My strength is keeping you upright, %p. Do not get used to it.",
+            "Hold still, %p. I am repairing you with my own life.",
+            "You owe me after this, %p. Considerably.",
+            "Blood for obedience, %p. A remarkably simple contract.",
+            "If you fall over now, %p, I will take it personally.",
+            "*reaches toward %p as dark life energy begins to flow between them.*",
+            "*grimaces briefly as some of their own vitality passes into %p.*",
+            "*grits their teeth and feeds %p with a thin stream of dark vitality.*",
+            "*presses two fingers to their pulse and redirects part of that life force into %p.*",
         },
     },
     SOUL_FIRE = {

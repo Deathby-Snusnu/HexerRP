@@ -132,7 +132,7 @@ serverseitige Zustellung kann das Addon nicht bestaetigen.
 
 ## Kompatibilitaet
 
-Die TOC deklariert Interface `16001` und Version `0.1.5`; dies ist keine
+Die TOC deklariert Interface `16001` und Version `0.2.2`; dies ist keine
 Zusicherung fuer andere WoW-Clientversionen. Fuer Chat-Ausgaben wird
 `C_ChatInfo.SendChatMessage` vorausgesetzt. Ein Client ohne diese API wird
 mit einer Meldung abgewiesen.
@@ -162,4 +162,6 @@ Weitere Hinweise und der Markenhinweis stehen in [NOTICE](./NOTICE).
 
 - `SHADOW_BOLT` - Schattenblitz / Shadow Bolt
 - `FEAR` - Furcht / Fear
+- `CURSE_RECKLESSNESS` - Fluch der Tollkuehnheit / Curse of Recklessness
 - `DRAIN_SOUL` - Seelendieb / Drain Soul
+- `LIFE_FUNNEL` - Lebenslinie / Health Funnel

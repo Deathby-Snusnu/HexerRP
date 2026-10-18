@@ -2,7 +2,7 @@
 ## Title: Hexer RP
 ## Notes: Rollenspieltexte und seltenes Ambient-RP fuer Hexenmeister
 ## Author: Hannes; HexerRP adaptation
-## Version: 0.2.0
+## Version: 0.2.3
 ## SavedVariablesPerCharacter: HexerRP_CharacterDB
 
 config\Settings.lua

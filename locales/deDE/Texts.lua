@@ -79,6 +79,26 @@ addon.localeData.deDE.texts = {
             "*murmelt einen krafterstickenden Fluch und schliesst langsam die Hand.*",
         },
     },
+    CURSE_RECKLESSNESS = {
+        name = "Fluch der Tollkuehnheit",
+        ziel = {
+            "Nur zu, %s. Vergesst jede Vorsicht.",
+            "Mut ist reizend, %s. Tollkuehnheit ist nuetzlicher.",
+            "Stuerzt Euch ruhig ins Verderben, %s.",
+            "Vorsicht ist ueberbewertet, %s. Zumindest fuer Euch.",
+            "Ihr wolltet mutig sein, %s. Ich helfe nur ein wenig nach.",
+            "Ruestung, Vernunft, Selbsterhaltung... alles erstaunlich verhandelbar, %s.",
+            "*zieht mit zwei Fingern ein dunkles Zeichen in Richtung von %s.*",
+            "*laechelt schmal, waehrend sich unnatuerlicher Wagemut in %s regt.*",
+            "*spricht einen knappen Fluch und deutet auffordernd auf %s.*",
+        },
+        gruppe = {
+            "Ein wenig weniger Vernunft sollte helfen.",
+            "Mut ist gut. Tollkuehnheit ist berechenbarer.",
+            "Manche Flueche schwaechen den Koerper. Dieser kuemmert sich um das Urteilsvermoegen.",
+            "*zeichnet eine kleine dunkle Rune in die Luft und schliesst langsam die Hand.*",
+        },
+    },
     OMEN_AGONY = {
         name = "Omen der Pein",
         ziel = {
@@ -150,6 +170,13 @@ addon.localeData.deDE.texts = {
             "*zieht mit ausgestreckter Hand einen dunklen Strom aus %s heraus.*",
             "*krallt die Finger in die Luft und entreisst %s sichtbar Lebenskraft.*",
         },
+        gruppe = {
+            "Ein wenig fremde Lebenskraft kommt gerade recht.",
+            "Was dort verloren geht, wird hier erstaunlich nuetzlich.",
+            "Lebenskraft ist auch nur eine Ressource mit Puls.",
+            "*streckt eine Hand aus und zieht einen dunklen Strom von Lebenskraft an sich.*",
+            "*atmet langsam ein, waehrend fremde Lebensenergie in den eigenen Koerper fliesst.*",
+        },
     },
     DRAIN_SOUL = {
         name = "Seelendieb",
@@ -169,6 +196,21 @@ addon.localeData.deDE.texts = {
             "Es bleibt immer etwas uebrig, das man einsammeln kann.",
             "*schliesst die Hand um einen schwachen, unnatuerlichen Schimmer.*",
             "*zieht einen blassen Faden aus Essenz durch die Luft und wickelt ihn um die Finger.*",
+        },
+    },
+    LIFE_FUNNEL = {
+        name = "Lebenslinie",
+        gruppe = {
+            "Nimm, %p. Aber verschwende keinen Tropfen.",
+            "Meine Kraft haelt dich auf den Beinen, %p. Gewoehn dich nicht daran.",
+            "Bleib stehen, %p. Ich repariere dich gerade mit meinem eigenen Leben.",
+            "Du schuldest mir danach etwas, %p. Etwas Grosses.",
+            "Blut gegen Gehorsam, %p. Ein bemerkenswert einfacher Vertrag.",
+            "Wenn du jetzt umfaellst, %p, nehme ich das persoenlich.",
+            "*streckt eine Hand nach %p aus, waehrend dunkle Lebensenergie zwischen beiden zu fliessen beginnt.*",
+            "*verzieht kurz das Gesicht, als eigene Lebenskraft in %p uebergeht.*",
+            "*presst die Zaehne zusammen und speist %p mit einem duennen Strom dunkler Lebenskraft.*",
+            "*legt zwei Finger an den eigenen Puls und lenkt einen Teil der Lebenskraft zu %p.*",
         },
     },
     SOUL_FIRE = {

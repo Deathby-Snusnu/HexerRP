@@ -1,3 +1,19 @@
+# Changelog
+
+## 0.2.3 - 2026-10-17
+- Added `CURSE_RECKLESSNESS` for Fluch der Tollkuehnheit / Curse of Recklessness in deDE, enUS and frFR.
+- Includes target-aware dialogue, `/me` actions and target-independent fallback texts.
+
+
+## 0.2.2
+- `DRAIN_LIFE` now has target-independent fallback text pools in deDE, enUS and frFR.
+- Prevents “Kein nutzbarer Text fuer DRAIN_LIFE” when no target name can be resolved.
+
+## 0.2.1 - 2026-10-16
+- Added `LIFE_FUNNEL` for Lebenslinie / Health Funnel in deDE, enUS and frFR.
+- Lebenslinie resolves exclusively against the active demon via `%p`; hostile targets are ignored.
+- No RP line is produced for `LIFE_FUNNEL` when no demon is present.
+
 ## 0.1.5
 
 ## 0.2.0 - 2026-10-14

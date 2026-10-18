@@ -75,6 +75,26 @@ addon.localeData.frFR.texts = {
             "*murmure une malédiction qui étouffe la force et referme lentement la main.*",
         },
     },
+    CURSE_RECKLESSNESS = {
+        name = "Malediction de temerite",
+        ziel = {
+            "Allez-y, %s. Oubliez toute prudence.",
+            "Le courage est charmant, %s. La temerite est plus utile.",
+            "Jetez-vous donc dans le desastre, %s.",
+            "La prudence est surestimee, %s. Du moins pour vous.",
+            "Vous vouliez etre brave, %s. Je ne fais que vous aider.",
+            "Armure, jugement, instinct de survie... tout cela se negocie etonnamment bien, %s.",
+            "*trace de deux doigts un signe sombre en direction de %s.*",
+            "*esquisse un sourire tandis qu'une audace surnaturelle gagne %s.*",
+            "*prononce une breve malediction et fait un geste provocateur vers %s.*",
+        },
+        gruppe = {
+            "Un peu moins de bon sens devrait aider.",
+            "Le courage est utile. La temerite est plus previsible.",
+            "Certaines maledictions affaiblissent le corps. Celle-ci s'occupe du jugement.",
+            "*trace une petite rune sombre dans l'air puis referme lentement la main.*",
+        },
+    },
     OMEN_AGONY = {
         name = "Presage d'agonie",
         ziel = {
@@ -141,6 +161,13 @@ addon.localeData.frFR.texts = {
             "Restez tranquille, %s. Cela facilite le transfert.",
             "*arrache a %s un courant sombre de vitalite.*",
         },
+        gruppe = {
+            "Un peu de vitalite empruntee fera parfaitement l'affaire.",
+            "Ce qui s'eteint la-bas devient fort utile ici.",
+            "La force vitale n'est qu'une ressource avec un pouls.",
+            "*tend une main et attire vers soi un courant sombre de vitalite.*",
+            "*inspire lentement tandis qu'une energie vitale volee afflue dans son corps.*",
+        },
     },
     DRAIN_SOUL = {
         name = "Drain d'ame",
@@ -160,6 +187,21 @@ addon.localeData.frFR.texts = {
             "Il reste toujours quelque chose a recolter.",
             "*referme une main sur une faible lueur surnaturelle.*",
             "*attire un fil pale d'essence dans l'air et l'enroule autour de ses doigts.*",
+        },
+    },
+    LIFE_FUNNEL = {
+        name = "Captation de vie",
+        gruppe = {
+            "Prends-la, %p. Et ne gaspille pas une goutte.",
+            "Ma force te maintient debout, %p. Ne t'y habitue pas.",
+            "Ne bouge pas, %p. Je te repare avec ma propre vie.",
+            "Tu me devras quelque chose apres ca, %p. Beaucoup.",
+            "Du sang contre de l'obeissance, %p. Un contrat remarquablement simple.",
+            "Si tu t'effondres maintenant, %p, je le prendrai personnellement.",
+            "*tend une main vers %p tandis qu'une sombre energie vitale commence a circuler entre eux.*",
+            "*grimace un instant tandis qu'une part de sa propre vitalite passe dans %p.*",
+            "*serre les dents et alimente %p d'un mince courant de vitalite obscure.*",
+            "*pose deux doigts sur son propre pouls et redirige une part de cette force vitale vers %p.*",
         },
     },
     SOUL_FIRE = {

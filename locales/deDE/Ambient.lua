@@ -34,7 +34,7 @@ addon.localeData.deDE.ambient = {
         "Ich habe Euch gehoert.",
         "Wer hat das gesagt?",
         "Nein. Ihr bleibt dort.",
-        "Das warnaeher als beim letzten Mal.",
+        "Das war naeher als beim letzten Mal.",
         "Einen Moment... da ist etwas.",
         "Die Schatten bewegen sich falsch.",
         "*blickt ploetzlich ueber die Schulter, obwohl dort nichts zu sehen ist.*",
