@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0 - 2026-10-19
+
+- Neue rassenspezifische Zaubertextpools fuer Gnom, Mensch, Ork, Untote,
+  Blutelfen und Trolle in DE, EN und FR.
+- Fallback auf allgemeine Hexertexte, falls ein Rassenpool fehlt oder unbrauchbar ist.
+- Bestehende Makros, persoenliche Texte und Ambient-Ausgaben unveraendert.
+
 ## 0.2.3 - 2026-10-17
 - Added `CURSE_RECKLESSNESS` for Fluch der Tollkuehnheit / Curse of Recklessness in deDE, enUS and frFR.
 - Includes target-aware dialogue, `/me` actions and target-independent fallback texts.

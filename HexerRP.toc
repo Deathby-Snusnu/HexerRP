@@ -2,18 +2,21 @@
 ## Title: Hexer RP
 ## Notes: Rollenspieltexte und seltenes Ambient-RP fuer Hexenmeister
 ## Author: Hannes; HexerRP adaptation
-## Version: 0.2.3
+## Version: 0.3.0
 ## SavedVariablesPerCharacter: HexerRP_CharacterDB
 
 config\Settings.lua
 locales\Init.lua
 locales\deDE\Texts.lua
+locales\deDE\Racial.lua
 locales\deDE\Ambient.lua
 locales\deDE\Expansion.lua
 locales\enUS\Texts.lua
+locales\enUS\Racial.lua
 locales\enUS\Ambient.lua
 locales\enUS\Expansion.lua
 locales\frFR\Texts.lua
+locales\frFR\Racial.lua
 locales\frFR\Ambient.lua
 locales\frFR\Expansion.lua
 locales\Finalize.lua

@@ -69,8 +69,25 @@ function addon.BuildText(key)
         local text = addon.ChooseText(personal, targetName, demonName)
         if text then return text end
     end
+    local race = addon.GetPlayerRaceToken and addon.GetPlayerRaceToken() or select(2, UnitRace("player"))
+    -- UnitRace returns Scourge for Forsaken/Undead on classic clients.
+    -- Racial texts override only their defined spells; every missing or
+    -- currently unusable pool falls back to the general warlock texts.
     local lang = addon.GetOutputLanguage()
-    local pool = addon.GetLocalePoolExact(lang, "texts", key)
-        or addon.GetLocalePoolExact("deDE", "texts", key)
-    return addon.ChooseText(pool, targetName, demonName)
+    for _, selection in ipairs({
+        {lang, "racial", race},
+        {lang, "texts", nil},
+        {"deDE", "racial", race},
+        {"deDE", "texts", nil},
+    }) do
+        local pool
+        if selection[2] == "racial" then
+            pool = addon.GetLocalePoolExact(selection[1], selection[2], selection[3], key)
+        else
+            pool = addon.GetLocalePoolExact(selection[1], selection[2], key)
+        end
+        local text = addon.ChooseText(pool, targetName, demonName)
+        if text then return text end
+    end
+    return nil
 end

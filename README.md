@@ -59,6 +59,22 @@ verarbeitet. `/wrp status` zeigt die gespeicherten Kanal- und
 Spracheinstellungen an. Die Werte muessen innerhalb der oben genannten
 Bereiche liegen.
 
+## Rassenspezifische Hexertexte (ab 0.3.0)
+
+HexerRP erkennt den Rassentoken des eigenen Charakters ueber `UnitRace`.
+In `locales/{deDE,enUS,frFR}/Racial.lua` stehen eigene Stimmen fuer
+`Gnome`, `Human`, `Orc`, `Scourge` (Untote), `BloodElf` und `Troll`.
+Weitere Rassen und nicht ueberschriebene Zauber verwenden unveraendert
+allgemeine Hexertexte. Die Rassenschicht ist absichtlich erweiterbar.
+
+Prioritaet: persoenliche Texte -> Rassentexte in der Ausgabesprache ->
+allgemeine Texte in der Ausgabesprache -> deutsche Rassentexte ->
+deutsche allgemeine Texte. Wenn ein Pool aktuell nicht nutzbar ist,
+wird die naechste Stufe versucht. Rassenspezifisch gestaltete Texte
+stehen fuer die oben angegebenen Zauber bereit; fuer den Rest greift
+der bisherige allgemeine Vorrat. `/wrp language` wechselt auch die
+Sprache der Rassentexte, nicht die im Spiel gesprochene Volkssprache.
+
 ## Texte und Platzhalter
 
 Die RP-Ausgabesprache kann pro Charakter auf `deDE`, `enUS` oder `frFR`
@@ -132,7 +148,7 @@ serverseitige Zustellung kann das Addon nicht bestaetigen.
 
 ## Kompatibilitaet
 
-Die TOC deklariert Interface `16001` und Version `0.2.2`; dies ist keine
+Die TOC deklariert Interface `16001` und Version `0.3.0`; dies ist keine
 Zusicherung fuer andere WoW-Clientversionen. Fuer Chat-Ausgaben wird
 `C_ChatInfo.SendChatMessage` vorausgesetzt. Ein Client ohne diese API wird
 mit einer Meldung abgewiesen.
