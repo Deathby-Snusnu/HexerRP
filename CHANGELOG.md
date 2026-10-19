@@ -1,40 +1,64 @@
 # Changelog
 
-## 0.3.0 - 2026-10-19
+Aenderungen an HexerRP. Fuer undatierte Eintraege wird kein Datum ergaenzt;
+eine unklare Versionszuordnung bleibt ausdruecklich offen.
+
+## [Unreleased]
+
+### Dokumentation
+
+- Rassen-/Sprach-Fallback, Daemonenanforderung fuer LIFE_FUNNEL, Makros,
+  Moduluebersicht und gemeinsame Anleitungen praezisiert.
+- Historie sprachlich und strukturell vereinheitlicht, ohne Releases zu erfinden.
+
+## [0.3.0] - 2026-10-19
+
+### Hinzugefuegt
 
 - Neue rassenspezifische Zaubertextpools fuer Gnom, Mensch, Ork, Untote,
   Blutelfen und Trolle in DE, EN und FR.
 - Fallback auf allgemeine Hexertexte, falls ein Rassenpool fehlt oder unbrauchbar ist.
 - Bestehende Makros, persoenliche Texte und Ambient-Ausgaben unveraendert.
 
-## 0.2.3 - 2026-10-17
-- Added `CURSE_RECKLESSNESS` for Fluch der Tollkuehnheit / Curse of Recklessness in deDE, enUS and frFR.
-- Includes target-aware dialogue, `/me` actions and target-independent fallback texts.
+## [0.2.3] - 2026-10-17
 
+### Hinzugefuegt
 
-## 0.2.2
-- `DRAIN_LIFE` now has target-independent fallback text pools in deDE, enUS and frFR.
-- Prevents “Kein nutzbarer Text fuer DRAIN_LIFE” when no target name can be resolved.
+- `CURSE_RECKLESSNESS` fuer Fluch der Tollkuehnheit in deDE, enUS und frFR.
+- Zielbezogene Dialoge, `/me`-Handlungen und zielunabhaengige Ausweichtexte.
 
-## 0.2.1 - 2026-10-16
-- Added `LIFE_FUNNEL` for Lebenslinie / Health Funnel in deDE, enUS and frFR.
-- Lebenslinie resolves exclusively against the active demon via `%p`; hostile targets are ignored.
-- No RP line is produced for `LIFE_FUNNEL` when no demon is present.
+## [0.2.2]
 
-## 0.1.5
+### Behoben
 
-## 0.2.0 - 2026-10-14
+- `DRAIN_LIFE` hat zielunabhaengige Ausweichtexte in deDE, enUS und frFR.
+- Verhindert fehlende nutzbare Texte, wenn kein Zielname aufgeloest werden kann.
+
+## [0.2.1] - 2026-10-16
+
+### Hinzugefuegt
+
+- `LIFE_FUNNEL` fuer Lebenslinie in deDE, enUS und frFR.
+- Lebenslinie verwendet ausschliesslich den aktiven Daemonen ueber `%p`;
+  feindliche Ziele werden ignoriert. Ohne Daemon wird kein RP-Text erzeugt.
+
+## [0.2.0] - 2026-10-14
+
+### Geaendert
+
 - Einheitliche Textauswahl und Fallback-Logik fuer Ziel, Gruppe und Daemon.
 - Erweiterter DE/EN/FR-Zauber- und Ambient-Textvorrat.
 
-- Expanded SHADOW_BOLT and FEAR text pools, especially in English.
-- Added target-independent fallback texts for SHADOW_BOLT, FEAR and DRAIN_SOUL in deDE/enUS/frFR.
-- Clarified that Seelendieb uses the internal key DRAIN_SOUL.
+## Nicht eindeutig zugeordnete Bestandseintraege
 
-# Changelog
+Der bisherige Abschnitt enthielt eine zusaetzliche leere Ueberschrift
+`0.1.5` vor `0.2.0`. Die folgenden Punkte werden ohne gesicherte
+Release-Zuordnung erhalten:
 
-Aenderungen an HexerRP werden hier dokumentiert. Fuer undatierte Eintraege
-wird kein Datum ergaenzt.
+- SHADOW_BOLT- und FEAR-Pools erweitert, besonders auf Englisch.
+- Zielunabhaengige Ausweichtexte fuer SHADOW_BOLT, FEAR und DRAIN_SOUL in
+  deDE, enUS und frFR ergaenzt.
+- Klarstellung: Seelendieb verwendet den internen Schluessel DRAIN_SOUL.
 
 ## [0.1.5] - 2026-10-13
 

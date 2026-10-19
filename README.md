@@ -10,6 +10,12 @@ der Ambient-Timer sendet keine Chatnachrichten selbststaendig.
 Nur Hexenmeister koennen RP-Texte senden. Andere Klassen koennen Einstellungen
 einsehen und aendern. Das Addon benoetigt kein anderes Addon.
 
+## Dokumentation
+
+[Sammlungsuebersicht](../README.md) · [Changelog](CHANGELOG.md) ·
+[Texteditor und Handbuch](../RPTextStudio/HANDBUCH.md) ·
+[Verpackung und gemeinsame Tests](../VERPACKUNG.md)
+
 ## Installation
 
 Den Ordner `HexerRP` in das `Interface\AddOns`-Verzeichnis des WoW-Clients
@@ -71,7 +77,7 @@ Prioritaet: persoenliche Texte -> Rassentexte in der Ausgabesprache ->
 allgemeine Texte in der Ausgabesprache -> deutsche Rassentexte ->
 deutsche allgemeine Texte. Wenn ein Pool aktuell nicht nutzbar ist,
 wird die naechste Stufe versucht. Rassenspezifisch gestaltete Texte
-stehen fuer die oben angegebenen Zauber bereit; fuer den Rest greift
+stehen nur fuer die jeweils definierten Schluessel bereit; fuer den Rest greift
 der bisherige allgemeine Vorrat. `/wrp language` wechselt auch die
 Sprache der Rassentexte, nicht die im Spiel gesprochene Volkssprache.
 
@@ -89,7 +95,15 @@ Texte in `*Sternchen*` werden ohne die Markierung als `/me`-Emote ausgegeben.
 Eigene Textpools koennen pro Charakter unter
 `HexerRP_CharacterDB.personalTexts["SCHLUESSEL"]` abgelegt werden. Ein eigener
 Pool wird verwendet, wenn er einen nutzbaren Text enthaelt; andernfalls folgt
-die Auswahl dem Sprachpool und dem deutschen Fallback.
+die Auswahl den oben beschriebenen Rassen-/Sprachpools und dem deutschen
+Fallback. Anders als bei den anderen Klassen-AddOns wird auch ein vorhandener,
+aber unbrauchbarer Rassen-/Locale-Pool uebersprungen.
+
+Mit aufgeloestem Zielnamen wird in strukturierten Pools zuerst `ziel`, dann
+`gruppe` versucht; anschliessend sind auch zielunabhaengige Texte aus `ziel`
+moeglich. Eintraege mit `%s` oder `%p` werden nur ausgewaehlt, wenn der
+jeweilige Name verfuegbar ist. `LIFE_FUNNEL` verwendet ausschliesslich den
+Daemonen und liefert ohne aktiven Begleiter keinen Text.
 
 Gesendete Texte muessen maximal 255 Bytes lang sein und duerfen keine
 Zeilenumbrueche oder `|`-Chatmarkierungen enthalten.
@@ -145,6 +159,27 @@ serverseitige Zustellung kann das Addon nicht bestaetigen.
 - `core/Cooldown.lua`: Cooldown-Verwaltung.
 - `core/Ambient.lua`: Timer, Vormerkung und spielerausgeloeste Ambient-Ausgabe.
 - `core/Commands.lua`: `/wrp`-Befehle.
+- `locales/<locale>/Expansion.lua`: zusaetzliche geladene Textbestaende;
+  RP Text Studio bearbeitet diese Dateien nicht.
+
+Die internen Kernfunktionen heissen `BuildText`, `SendText`,
+`CooldownReady` und `StartCooldown`. Nach dem Login ist
+`HexerRP.TryText("SHADOW_BOLT")` die oeffentliche manuelle Schnittstelle.
+`TryText(key)` erwartet einen nicht leeren String, normalisiert ihn auf
+Grossbuchstaben und liefert `true` nach einem erfolgreichen Chat-API-Aufruf,
+sonst `false`. Ein vorgemerkter Ambient-Text kann dabei anstelle des
+angeforderten Zaubertexts gesendet werden. Vor `PLAYER_LOGIN` wird der Aufruf
+mit einer Meldung abgelehnt.
+Ein Makro kann Zauber und RP-Aufruf verbinden:
+
+```text
+#showtooltip Schattenblitz
+/cast Schattenblitz
+/wrp shadow_bolt
+```
+
+Zaubernamen an die Sprache des Clients anpassen. Ein RP-Text belegt weder
+einen erfolgreichen Zauber noch einen Treffer.
 
 ## Kompatibilitaet
 
