@@ -1,121 +1,121 @@
 # Changelog
 
-Aenderungen an HexerRP. Fuer undatierte Eintraege wird kein Datum ergaenzt;
-eine unklare Versionszuordnung bleibt ausdruecklich offen.
+Änderungen an HexerRP. Für undatierte Einträge wird kein Datum ergänzt;
+eine unklare Versionszuordnung bleibt ausdrücklich offen.
 
 ## [Unreleased]
 
 ### Dokumentation
 
-- Rassen-/Sprach-Fallback, Daemonenanforderung fuer LIFE_FUNNEL, Makros,
-  Moduluebersicht und gemeinsame Anleitungen praezisiert.
+- Rassen-/Sprach-Fallback, Dämonenanforderung für LIFE_FUNNEL, Makros,
+  Modulübersicht und gemeinsame Anleitungen präzisiert.
 - Historie sprachlich und strukturell vereinheitlicht, ohne Releases zu erfinden.
 
 ## [0.3.0] - 2026-10-19
 
-### Hinzugefuegt
+### Hinzugefügt
 
-- Neue rassenspezifische Zaubertextpools fuer Gnom, Mensch, Ork, Untote,
+- Neue rassenspezifische Zaubertextpools für Gnom, Mensch, Ork, Untote,
   Blutelfen und Trolle in DE, EN und FR.
 - Fallback auf allgemeine Hexertexte, falls ein Rassenpool fehlt oder unbrauchbar ist.
-- Bestehende Makros, persoenliche Texte und Ambient-Ausgaben unveraendert.
+- Bestehende Makros, persönliche Texte und Ambient-Ausgaben unverändert.
 
 ## [0.2.3] - 2026-10-17
 
-### Hinzugefuegt
+### Hinzugefügt
 
-- `CURSE_RECKLESSNESS` fuer Fluch der Tollkuehnheit in deDE, enUS und frFR.
-- Zielbezogene Dialoge, `/me`-Handlungen und zielunabhaengige Ausweichtexte.
+- `CURSE_RECKLESSNESS` für Fluch der Tollkühnheit in deDE, enUS und frFR.
+- Zielbezogene Dialoge, `/me`-Handlungen und zielunabhängige Ausweichtexte.
 
 ## [0.2.2]
 
 ### Behoben
 
-- `DRAIN_LIFE` hat zielunabhaengige Ausweichtexte in deDE, enUS und frFR.
-- Verhindert fehlende nutzbare Texte, wenn kein Zielname aufgeloest werden kann.
+- `DRAIN_LIFE` hat zielunabhängige Ausweichtexte in deDE, enUS und frFR.
+- Verhindert fehlende nutzbare Texte, wenn kein Zielname aufgelöst werden kann.
 
 ## [0.2.1] - 2026-10-16
 
-### Hinzugefuegt
+### Hinzugefügt
 
-- `LIFE_FUNNEL` fuer Lebenslinie in deDE, enUS und frFR.
-- Lebenslinie verwendet ausschliesslich den aktiven Daemonen ueber `%p`;
-  feindliche Ziele werden ignoriert. Ohne Daemon wird kein RP-Text erzeugt.
+- `LIFE_FUNNEL` für Lebenslinie in deDE, enUS und frFR.
+- Lebenslinie verwendet ausschließlich den aktiven Dämonen über `%p`;
+  feindliche Ziele werden ignoriert. Ohne Dämon wird kein RP-Text erzeugt.
 
 ## [0.2.0] - 2026-10-14
 
-### Geaendert
+### Geändert
 
-- Einheitliche Textauswahl und Fallback-Logik fuer Ziel, Gruppe und Daemon.
+- Einheitliche Textauswahl und Fallback-Logik für Ziel, Gruppe und Dämon.
 - Erweiterter DE/EN/FR-Zauber- und Ambient-Textvorrat.
 
-## Nicht eindeutig zugeordnete Bestandseintraege
+## Nicht eindeutig zugeordnete Bestandseinträge
 
-Der bisherige Abschnitt enthielt eine zusaetzliche leere Ueberschrift
+Der bisherige Abschnitt enthielt eine zusätzliche leere Überschrift
 `0.1.5` vor `0.2.0`. Die folgenden Punkte werden ohne gesicherte
 Release-Zuordnung erhalten:
 
 - SHADOW_BOLT- und FEAR-Pools erweitert, besonders auf Englisch.
-- Zielunabhaengige Ausweichtexte fuer SHADOW_BOLT, FEAR und DRAIN_SOUL in
-  deDE, enUS und frFR ergaenzt.
-- Klarstellung: Seelendieb verwendet den internen Schluessel DRAIN_SOUL.
+- Zielunabhängige Ausweichtexte für SHADOW_BOLT, FEAR und DRAIN_SOUL in
+  deDE, enUS und frFR ergänzt.
+- Klarstellung: Seelendieb verwendet den internen Schlüssel DRAIN_SOUL.
 
 ## [0.1.5] - 2026-10-13
 
-### Hinzugefuegt
+### Hinzugefügt
 
-- Daemonische Ambient-Sprachfragmente in drei Lautstaerken:
+- Dämonische Ambient-Sprachfragmente in drei Lautstärken:
   `DEMONIC_WHISPER`, `DEMONIC_SAY` und `DEMONIC_YELL`.
-- Gefluesterte Fragmente werden als `/me`-Aktion ausgegeben und benoetigen
+- Geflüsterte Fragmente werden als `/me`-Aktion ausgegeben und benötigen
   deshalb kein Whisper-Ziel.
-- `/say`- und `/yell`-Fragmente erzwingen fuer diese Ambient-Kategorie den
-  passenden Kanal unabhaengig vom normalen HexerRP-Kanal.
-- `/wrp ambient test demonic` waehlt zufaellig eine daemonische Variante;
-  die drei Unterkategorien koennen ebenfalls direkt getestet werden.
+- `/say`- und `/yell`-Fragmente erzwingen für diese Ambient-Kategorie den
+  passenden Kanal unabhängig vom normalen HexerRP-Kanal.
+- `/wrp ambient test demonic` wählt zufällig eine dämonische Variante;
+  die drei Unterkategorien können ebenfalls direkt getestet werden.
 
-### Geaendert
+### Geändert
 
-- Die Ambient-Gewichtung enthaelt nun seltene daemonische Sprache; laute
-  Ausbrueche per `/yell` bleiben absichtlich sehr selten.
-- `SendText` kann optional einen Kanal fuer besondere RP-Ausgaben erzwingen,
-  ohne bestehende Zaubertexte zu veraendern.
+- Die Ambient-Gewichtung enthält nun seltene dämonische Sprache; laute
+  Ausbrüche per `/yell` bleiben absichtlich sehr selten.
+- `SendText` kann optional einen Kanal für besondere RP-Ausgaben erzwingen,
+  ohne bestehende Zaubertexte zu verändern.
 
 ## [0.1.4] - 2026-10-12
 
-### Geaendert
+### Geändert
 
-- Omen der Pein und Fluch der Pein sind getrennte Textschluessel.
-- `OMEN_AGONY` beschreibt den Einzelziel-Schaden-ueber-Zeit-Effekt.
-- `CURSE_AGONY` ist als zielunabhaengiger Flaechenfluch ausgelegt.
-- Deutsche, englische und franzoesische Texte ergaenzt.
+- Omen der Pein und Fluch der Pein sind getrennte Textschlüssel.
+- `OMEN_AGONY` beschreibt den Einzelziel-Schaden-über-Zeit-Effekt.
+- `CURSE_AGONY` ist als zielunabhängiger Flächenfluch ausgelegt.
+- Deutsche, englische und französische Texte ergänzt.
 
 ## [0.1.3]
 
-### Hinzugefuegt
+### Hinzugefügt
 
-- Fluch der Schwaeche (`CURSE_WEAKNESS`) mit deutschen, englischen und
-  franzoesischen Texten, sowohl zielbezogen als auch zielunabhaengig.
-- Zusaetzliche zielunabhaengige Texte fuer `IMMOLATE` und `CORRUPTION` in
+- Fluch der Schwäche (`CURSE_WEAKNESS`) mit deutschen, englischen und
+  französischen Texten, sowohl zielbezogen als auch zielunabhängig.
+- Zusätzliche zielunabhängige Texte für `IMMOLATE` und `CORRUPTION` in
   allen drei Sprachen.
 
-### Geaendert
+### Geändert
 
-- Unbrauchbare persoenliche Textpools fallen auf die normalen Locale-Texte
-  zurueck.
+- Unbrauchbare persönliche Textpools fallen auf die normalen Locale-Texte
+  zurück.
 
 ## [0.1.2]
 
-### Geaendert
+### Geändert
 
-- Der Ambient-Timer sendet keine geschuetzten Chatnachrichten selbststaendig.
-- Faellige Ambient-Texte werden vorgemerkt und bei einem
-  spielerausgeloesten `/wrp`-Textaufruf ausgegeben.
+- Der Ambient-Timer sendet keine geschützten Chatnachrichten selbstständig.
+- Fällige Ambient-Texte werden vorgemerkt und bei einem
+  spielerausgelösten `/wrp`-Textaufruf ausgegeben.
 - Verhindert den Clientfehler durch automatisches `SendChatMessage` aus
-  einem Addon-Timer.
+  einem Add-on-Timer.
 
 ## [0.1.0]
 
-### Hinzugefuegt
+### Hinzugefügt
 
-- Erste Fassung mit deutschen, englischen und franzoesischen Texten,
-  Zauber-RP, Daemonenplatzhaltern und Ambient-System.
+- Erste Fassung mit deutschen, englischen und französischen Texten,
+  Zauber-RP, Dämonenplatzhaltern und Ambient-System.
