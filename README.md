@@ -42,7 +42,9 @@ möglich.
 | Befehl | Funktion |
 | --- | --- |
 | `/wrp` oder `/wrp help` | Hilfe anzeigen |
-| `/wrp list` | Verfügbare Textschlüssel auflisten |
+| `/wrp list` | Für den Charakter verwendbare Textschlüssel auflisten |
+| `/wrp list racial` | Schlüssel des aktuellen Volks auflisten |
+| `/wrp list all` | Rassen- und klassenspezifische Schlüssel mit Herkunft auflisten |
 | `/wrp <schluessel>` | RP-Text versuchen |
 | `/wrp status` | Einstellungen und Ambient-Status anzeigen |
 | `/wrp chance <0-100>` | Textchance als ganze Zahl setzen |
@@ -54,6 +56,9 @@ möglich.
 | `/wrp ambient chance <0-100>` | Ambient-Auslösewahrscheinlichkeit setzen |
 | `/wrp ambient interval <MIN> <MAX>` | Intervall in Sekunden setzen |
 | `/wrp ambient combat on\|off` | Ambient-Ausgabe im Kampf erlauben oder sperren |
+
+Die Herkunfts- und Fallback-Regeln der drei Listenvarianten stehen im
+[Listen-Handbuch](../../docs/LISTEN-HANDBUCH.md).
 
 Sprachkanäle sind `AUTO`, `SAY`, `YELL`, `EMOTE`, `PARTY`, `RAID` und
 `INSTANCE_CHAT`. `AUTO` wählt Instanzgruppe, Schlachtzug, Gruppe oder SAY
@@ -196,8 +201,8 @@ Die Kompatibilität mit anderen Clientversionen ist nicht festgelegt.
 
 Die AddOn-Regressionstests liegen im Quellprojekt unter
 `tests/test_addon.lua`. Zusammen mit den
-Integrationstests können sie aus dem AddOns-Verzeichnis mit
-`.\Test-AddOns.ps1` und einem lokalen Lua-Interpreter ausgeführt werden.
+Integrationstests können sie aus dem Sammlungsstamm mit
+`.\tools\Test-AddOns.ps1` und einem lokalen Lua-Interpreter ausgeführt werden.
 Ein Ingame-Test im WoW-Client bleibt erforderlich.
 
 ## Lizenz

@@ -3,13 +3,18 @@
 Änderungen an HexerRP. Für undatierte Einträge wird kein Datum ergänzt;
 eine unklare Versionszuordnung bleibt ausdrücklich offen.
 
-## [Unreleased]
+## [0.4.0] - 2026-10-26
 
 ### Dokumentation
 
 - Rassen-/Sprach-Fallback, Dämonenanforderung für LIFE_FUNNEL, Makros,
   Modulübersicht und gemeinsame Anleitungen präzisiert.
 - Historie sprachlich und strukturell vereinheitlicht, ohne Releases zu erfinden.
+
+### Hinzugefügt
+
+- Dynamische Schluessellisten mit `/wrp list`, `/wrp list racial` und
+  `/wrp list all` ergaenzt.
 
 ## [0.3.0] - 2026-10-19
 
