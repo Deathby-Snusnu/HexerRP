@@ -12,9 +12,9 @@ einsehen und ändern. Das Add-on benötigt kein anderes Add-on.
 
 ## Dokumentation
 
-[Sammlungsübersicht](../../README.md) · [Changelog](CHANGELOG.md) ·
-[Texteditor und Handbuch](../../docs/RPTextStudio/HANDBUCH.md) ·
-[Verpackung und gemeinsame Tests](../../docs/VERPACKUNG.md)
+[Sammlungsübersicht](https://github.com/Deathby-Snusnu/RPAddOns/blob/main/README.md) · [Changelog](CHANGELOG.md) ·
+[Texteditor und Handbuch](https://github.com/Deathby-Snusnu/RPAddOns/blob/main/docs/RPTextStudio/HANDBUCH.md) ·
+[Verpackung und gemeinsame Tests](https://github.com/Deathby-Snusnu/RPAddOns/blob/main/docs/VERPACKUNG.md)
 
 Die gemeinsamen relativen Links setzen den vollständigen Sammlungs-Checkout
 voraus. Im einzelnen AddOn-Repository sind die Anleitungen über das
