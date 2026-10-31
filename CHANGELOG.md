@@ -3,6 +3,11 @@
 Änderungen an HexerRP. Für undatierte Einträge wird kein Datum ergänzt;
 eine unklare Versionszuordnung bleibt ausdrücklich offen.
 
+## Aktueller Quellstand: 0.4.1 (unveröffentlicht)
+
+- Versionsangabe aktualisiert und gemeinsame Dokumentationslinks für
+  einzelne AddOn-Checkouts erläutert.
+
 ## [0.4.0] - 2026-10-26
 
 ### Dokumentation

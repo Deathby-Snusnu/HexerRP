@@ -16,6 +16,10 @@ einsehen und ändern. Das Add-on benötigt kein anderes Add-on.
 [Texteditor und Handbuch](../../docs/RPTextStudio/HANDBUCH.md) ·
 [Verpackung und gemeinsame Tests](../../docs/VERPACKUNG.md)
 
+Die gemeinsamen relativen Links setzen den vollständigen Sammlungs-Checkout
+voraus. Im einzelnen AddOn-Repository sind die Anleitungen über das
+[Sammlungsrepository](https://github.com/Deathby-Snusnu/RPAddOns) erreichbar.
+
 ## Installation
 
 Den Ordner `HexerRP` in das `Interface\AddOns`-Verzeichnis des WoW-Clients
@@ -190,7 +194,7 @@ einen erfolgreichen Zauber noch einen Treffer.
 
 ## Kompatibilität
 
-Die TOC deklariert Interface `16001` und Version `0.3.0`; dies ist keine
+Die TOC deklariert Interface `16001` und Version `0.4.1`; dies ist keine
 Zusicherung für andere WoW-Clientversionen. Für Chat-Ausgaben wird
 `C_ChatInfo.SendChatMessage` vorausgesetzt. Ein Client ohne diese API wird
 mit einer Meldung abgewiesen.
