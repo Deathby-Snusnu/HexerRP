@@ -47,7 +47,7 @@ function addon.SendText(text, forcedChannel)
         return false
     end
     local languageID
-    if channel == "SAY" or channel == "YELL" then
+    if not forcedChannel and (channel == "SAY" or channel == "YELL") then
         local rpChat = _G.RPChatMod
         if type(rpChat) == "table" and type(rpChat.GetChatLanguageID) == "function" then
             languageID = rpChat.GetChatLanguageID(channel)

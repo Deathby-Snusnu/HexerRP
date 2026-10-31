@@ -9,6 +9,7 @@ class LanguagePolicyContract(unittest.TestCase):
         chat = (ROOT / "core" / "Chat.lua").read_text(encoding="utf-8")
         self.assertIn("rpChat.GetChatLanguageID(channel)", chat)
         self.assertIn('channel == "SAY" or channel == "YELL"', chat)
+        self.assertIn('if not forcedChannel and (channel == "SAY" or channel == "YELL") then', chat)
         self.assertIn('type(rpChat.GetChatLanguageID) == "function"', chat)
 
     def test_optional_dependency(self):
