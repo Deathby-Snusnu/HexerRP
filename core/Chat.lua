@@ -46,6 +46,13 @@ function addon.SendText(text, forcedChannel)
         addon.Notify("Dieser Client stellt keine unterstuetzte Chat-API bereit.")
         return false
     end
-    C_ChatInfo.SendChatMessage(message, channel)
+    local languageID
+    if not forcedChannel and (channel == "SAY" or channel == "YELL") then
+        local rpChat = _G.RPChatMod
+        if type(rpChat) == "table" and type(rpChat.GetChatLanguageID) == "function" then
+            languageID = rpChat.GetChatLanguageID(channel)
+        end
+    end
+    C_ChatInfo.SendChatMessage(message, channel, languageID)
     return true
 end

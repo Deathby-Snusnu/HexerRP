@@ -28,6 +28,7 @@ local function newClient(options)
         SlashCmdList = {},
         LE_PARTY_CATEGORY_INSTANCE = 2,
         HexerRP_CharacterDB = options.db,
+        RPChatMod = options.rpChatMod,
         math = setmetatable({
             random = function(minimum, maximum)
                 return maximum and minimum or 1
@@ -110,6 +111,27 @@ check(addon.db.textChance == 35 and addon.db.cooldown == 18, "default text setti
 check(addon.db.ambientEnabled and addon.db.ambientChance == 70, "default ambient settings")
 check(addon.TryText("SHADOW_BOLT"), "warlock text sends")
 check(client.messages[#client.messages].channel == "SAY", "normal text uses configured channel")
+
+local languageClient = newClient({
+    rpChatMod = {
+        GetChatLanguageID = function(channel)
+            return channel == "SAY" and 17 or 23
+        end,
+    },
+})
+languageClient.addon.SendText("normal speech")
+check(languageClient.messages[#languageClient.messages].language == 17,
+    "normal SAY uses the RPChatMod language")
+languageClient.addon.SendText("forced speech", "SAY")
+check(languageClient.messages[#languageClient.messages].language == nil,
+    "forced SAY keeps the client-default language")
+languageClient.addon.db.chatChannel = "YELL"
+languageClient.addon.SendText("normal yell")
+check(languageClient.messages[#languageClient.messages].language == 23,
+    "normal YELL uses the RPChatMod language")
+languageClient.addon.SendText("forced yell", "YELL")
+check(languageClient.messages[#languageClient.messages].language == nil,
+    "forced YELL keeps the client-default language")
 
 client.now = 180
 client.update(nil, 1)
