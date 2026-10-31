@@ -4,6 +4,7 @@
 ## Author: Hannes; HexerRP adaptation
 ## Version: 0.4.1
 ## SavedVariablesPerCharacter: HexerRP_CharacterDB
+## OptionalDeps: RPChatMod
 
 config\Settings.lua
 locales\Init.lua
