@@ -3,7 +3,15 @@
 Änderungen an HexerRP. Für undatierte Einträge wird kein Datum ergänzt;
 eine unklare Versionszuordnung bleibt ausdrücklich offen.
 
-## Aktueller Quellstand: 0.4.1 (unveröffentlicht)
+## Aktueller Quellstand: 0.5.0 (unveröffentlicht)
+
+- 29 zusätzliche, eigenständige Hexer-Aktionsschlüssel in deDE/enUS/frFR, insgesamt 56 allgemeine RP-Schlüssel.
+- Dämonen- und Feuerzauber, weitere Flüche, Bannrituale und Forever-Zauber mit individuellen /say- und /me-Texten ergänzt.
+- Feindgerichtete Zauber verwenden nur angreifbare Zielnamen, Selbst-/Flächenrituale keinen willkürlichen Namen.
+- Vorhandene persönliche Texte, Dämonenplatzhalter, Ambient-Vormerkung und bestehende Schlüssel bleiben erhalten.
+- Regressionstests für die neuen Sprachpools, Zielnamen und persönlichen Texte.
+
+## Historischer Quellstand: 0.4.1 (unveröffentlicht)
 
 - Versionsangabe aktualisiert und gemeinsame Dokumentationslinks für
   einzelne AddOn-Checkouts erläutert.

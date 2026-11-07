@@ -1,5 +1,27 @@
 # Hexer RP
 
+## HexerRP 0.5.0: erweiterte Flüche und Dämonenrituale
+
+29 neue eigene Aktionsschlüssel in deDE, enUS und frFR ergänzen
+den bisherigen Wortschatz auf **56 allgemeine RP-Schlüssel**.
+Jeder zusätzliche Pool enthält individuelle Ansagen und `/me`-Emotes
+für den jeweiligen Zauber, etwa `CURSE_DOOM`, `DEATH_COIL`,
+`BANISH`, `DRAIN_MANA`, `HOWL_OF_TERROR`, `INCINERATE`,
+`BANE_OF_HAVOC`, `WRACK` und `PORTAL_SUMMONING`.
+
+Mit `/wrp list` erhältst du die verfügbaren RP-Schlüssel. Die Liste
+kann auch ergänzende bzw. talentabhängige Rollenspielaktionen enthalten;
+sie behauptet keine Fähigkeit auf einer bestimmten Charakterstufe.
+Freundliche Ziele werden für die neuen Gegnerflüche nicht beim Namen
+angesprochen, Selbst-/Flächenrituale nennen kein willkürliches Ziel.
+Bestehende Dämonenplatzhalter `%p`, persönliche Texte, Chatkanäle
+und Ambient-Regeln bleiben erhalten.
+
+Beispiel: `/wrp INCINERATE`, `/wrp WRACK`,
+`/wrp CURSE_TONGUES`. Ein Makro kann wie zuvor einen `/cast`-
+Befehl mit dem separaten RP-Befehl kombinieren, erkennt dabei aber
+keinen erfolgreichen Cast.
+
 ## Beschreibung
 
 Eigenständiges Rollenspiel-Addon für Hexenmeister. Es stellt zufällige
@@ -194,7 +216,7 @@ einen erfolgreichen Zauber noch einen Treffer.
 
 ## Kompatibilität
 
-Die TOC deklariert Interface `16001` und Version `0.4.1`; dies ist keine
+Die TOC deklariert Interface `16001` und Version `0.5.0`; dies ist keine
 Zusicherung für andere WoW-Clientversionen. Für Chat-Ausgaben wird
 `C_ChatInfo.SendChatMessage` vorausgesetzt. Ein Client ohne diese API wird
 mit einer Meldung abgewiesen.
