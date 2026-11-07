@@ -20,7 +20,8 @@ local function newClient(options)
     local state = {
         now = 0,
         class = options.class or "WARLOCK",
-        inCombat = false,
+        inCombat = false, target = options.target,
+        hostile = options.hostile == true,
         messages = {},
         notices = {},
     }
@@ -45,11 +46,21 @@ local function newClient(options)
     environment.UnitClass = function()
         return "class", state.class
     end
-    environment.UnitExists = function()
-        return false
+    environment.UnitRace = function()
+        return "Draenei", options.race or "Draenei"
+    end
+    environment.UnitExists = function(unit)
+        return unit == "target" and state.target ~= nil
     end
     environment.UnitName = function(unit)
-        return unit == "player" and "Testcharakter" or nil
+        if unit == "player" then return "Testcharakter" end
+        if unit == "target" then return state.target end
+    end
+    environment.UnitCanAttack = function()
+        return state.target ~= nil and state.hostile
+    end
+    environment.UnitCanAssist = function()
+        return state.target ~= nil and not state.hostile
     end
     environment.UnitAffectingCombat = function()
         return state.inCombat
@@ -201,5 +212,31 @@ check(repaired.addon.db.ambientChance == 70 and repaired.addon.db.ambientMinInte
     and repaired.addon.db.ambientMaxInterval == 420, "invalid ambient limits are restored")
 check(repaired.addon.db.ambientEnabled and not repaired.addon.db.ambientInCombat,
     "invalid ambient switches use defaults")
+
+local added = {"SEARING_PAIN","RAIN_OF_FIRE","HELLFIRE","CONFLAGRATE","SHADOWBURN","DEATH_COIL","HOWL_OF_TERROR","BANISH","ENSLAVE_DEMON","EYE_OF_KILROGG","SENSE_DEMONS","DRAIN_MANA","SIPHON_LIFE","CURSE_TONGUES","CURSE_ELEMENTS","CURSE_SHADOW","CURSE_DOOM","CURSE_EXHAUSTION","RITUAL_DOOM","DEMONIC_SACRIFICE","SHADOW_WARD","CREATE_FIRESTONE","CREATE_SPELLSTONE","BANE_OF_HAVOC","INCINERATE","WRACK","PORTAL_SUMMONING","SPELL_LOCK","FEL_DOMINATION"}
+check(#added == 29, "29 warlock expansions")
+for _, lang in ipairs({"deDE", "enUS", "frFR"}) do
+    local one = newClient()
+    one.command("language " .. lang)
+    for _, key in ipairs(added) do
+        local pool = one.addon.localeData[lang].texts[key]
+        check(type(pool) == "table" and type(pool.gruppe) == "table"
+            and #pool.gruppe >= 4, lang .. " distinct text lines for " .. key)
+        local line = one.addon.BuildText(key)
+        check(type(line) == "string" and #line > 3 and #line <= 255,
+            lang .. " safe targetless text " .. key)
+    end
+end
+local friendly = newClient({target="FRIENDLY_SENTINEL_204", hostile=false})
+check(not friendly.addon.BuildText("INCINERATE"):find("FRIENDLY_SENTINEL_204",1,true),
+    "incinerate does not name a friendly target")
+local hostile = newClient({target="HOSTILE_SENTINEL_580", hostile=true})
+check(hostile.addon.BuildText("INCINERATE"):find("HOSTILE_SENTINEL_580",1,true),
+    "incinerate can address hostile target")
+check(not hostile.addon.BuildText("RAIN_OF_FIRE"):find("HOSTILE_SENTINEL_580",1,true),
+    "area spell never names arbitrary target")
+local preserved = newClient({db={personalTexts={WRACK={"Mein eigener Hexerfluch."}}}})
+check(preserved.addon.BuildText("WRACK") == "Mein eigener Hexerfluch.",
+    "warlock personal texts take priority")
 
 print("PASS: " .. checks .. " checks")

@@ -16,7 +16,49 @@ local SELF_ONLY = {
 local FRIENDLY_OR_SELF = { HEALTHSTONE=true, SOULSTONE=true }
 local DEMON_ONLY = { LIFE_FUNNEL=true }
 
+-- Target categories only for the new action keys; old keys are unchanged.
+local EXTRA_TARGET_MODES = {
+    SEARING_PAIN = "E",
+    CONFLAGRATE = "E",
+    SHADOWBURN = "E",
+    DEATH_COIL = "E",
+    BANISH = "E",
+    ENSLAVE_DEMON = "E",
+    DRAIN_MANA = "E",
+    SIPHON_LIFE = "E",
+    CURSE_TONGUES = "E",
+    CURSE_ELEMENTS = "E",
+    CURSE_SHADOW = "E",
+    CURSE_DOOM = "E",
+    CURSE_EXHAUSTION = "E",
+    BANE_OF_HAVOC = "E",
+    INCINERATE = "E",
+    WRACK = "E",
+    SPELL_LOCK = "E",
+    RAIN_OF_FIRE = "S",
+    HELLFIRE = "S",
+    HOWL_OF_TERROR = "S",
+    EYE_OF_KILROGG = "S",
+    SENSE_DEMONS = "S",
+    RITUAL_DOOM = "S",
+    DEMONIC_SACRIFICE = "S",
+    SHADOW_WARD = "S",
+    CREATE_FIRESTONE = "S",
+    CREATE_SPELLSTONE = "S",
+    PORTAL_SUMMONING = "S",
+    FEL_DOMINATION = "S",
+}
+
 local function ResolveTargetName(key)
+    local mode = EXTRA_TARGET_MODES[key]
+    if mode == "S" then return nil end
+    if mode == "E" then
+        if UnitExists("target") and type(UnitCanAttack) == "function"
+            and UnitCanAttack("player", "target") then
+            return UnitName("target")
+        end
+        return nil
+    end
     if SELF_ONLY[key] or DEMON_ONLY[key] then return nil end
     if FRIENDLY_OR_SELF[key] then
         if UnitExists("target") and UnitCanAssist("player", "target") then return UnitName("target") end
