@@ -46,6 +46,9 @@ local function newClient(options)
     environment.UnitClass = function()
         return "class", state.class
     end
+    environment.UnitRace = function()
+        return "Gnom", options.race or "Gnome"
+    end
     environment.UnitExists = function(unit)
         return unit == "target" and state.target ~= nil
     end
