@@ -254,11 +254,12 @@ for lang, names in pairs(placeholders) do
     })
     secret.command("language " .. lang)
     secret.player = "PLAYER_SECRET"
+    secret.addon.localeData[lang].ambient.MURMUR = {"pet=%p"}
     check(secret.addon.BuildText("SHADOW_BOLT") == "target=" .. names.target,
         lang .. " secret target uses a localized placeholder")
     check(secret.addon.BuildText("HEALTHSTONE") == "player=" .. names.player,
         lang .. " secret player uses a localized placeholder")
-    check(secret.addon.BuildAmbient("MURMUR"):find(names.pet, 1, true) ~= nil,
+    check(secret.addon.BuildAmbient("MURMUR") == "pet=" .. names.pet,
         lang .. " secret pet uses a localized placeholder in ambient text")
 end
 local ordinaryNames = newClient({
@@ -270,11 +271,12 @@ local ordinaryNames = newClient({
         HEALTHSTONE={"player=%s"},
     }},
 })
+ordinaryNames.addon.localeData.deDE.ambient.MURMUR = {"pet=%p"}
 check(ordinaryNames.addon.BuildText("SHADOW_BOLT") == "target=ORDINARY_TARGET",
     "ordinary target names are preserved")
 check(ordinaryNames.addon.BuildText("HEALTHSTONE") == "player=ORDINARY_PLAYER",
     "ordinary player names are preserved")
-check(ordinaryNames.addon.BuildAmbient("MURMUR"):find("ORDINARY_PET", 1, true) ~= nil,
+check(ordinaryNames.addon.BuildAmbient("MURMUR") == "pet=ORDINARY_PET",
     "ordinary pet names are preserved in ambient text")
 local legacyNames = newClient({
     target="LEGACY_TARGET", pet="LEGACY_PET", player="LEGACY_PLAYER",
@@ -285,11 +287,12 @@ local legacyNames = newClient({
         HEALTHSTONE={"player=%s"},
     }},
 })
+legacyNames.addon.localeData.deDE.ambient.MURMUR = {"pet=%p"}
 check(legacyNames.addon.BuildText("SHADOW_BOLT") == "target=LEGACY_TARGET",
     "target names are preserved without issecretvalue")
 check(legacyNames.addon.BuildText("HEALTHSTONE") == "player=LEGACY_PLAYER",
     "player names are preserved without issecretvalue")
-check(legacyNames.addon.BuildAmbient("MURMUR"):find("LEGACY_PET", 1, true) ~= nil,
+check(legacyNames.addon.BuildAmbient("MURMUR") == "pet=LEGACY_PET",
     "pet names are preserved in ambient text without issecretvalue")
 local friendly = newClient({target="FRIENDLY_SENTINEL_204", hostile=false})
 check(not friendly.addon.BuildText("INCINERATE"):find("FRIENDLY_SENTINEL_204",1,true),
