@@ -7,6 +7,23 @@
 
 local _, addon = ...
 
+-- Protected WoW clients may return secret strings for unit names.
+-- Use a safe placeholder before comparison or text interpolation.
+local function SafeUnitName(unit)
+    local name = UnitName(unit)
+    if type(issecretvalue) == "function" and issecretvalue(name) then
+        local placeholders = {
+            deDE = { pet = "Euer Begleiter", player = "Ihr", target = "das Ziel" },
+            enUS = { pet = "your companion", player = "you", target = "the target" },
+            frFR = { pet = "votre compagnon", player = "vous", target = "la cible" },
+        }
+        local names = placeholders[addon.GetOutputLanguage()] or placeholders.deDE
+        return names[unit] or names.target
+    end
+    return name
+end
+
+
 local SELF_ONLY = {
     LIFE_TAP=true, DARK_PACT=true, DEMON_ARMOR=true, FEL_ARMOR=true,
     SOUL_LINK=true, UNENDING_BREATH=true, DETECT_INVISIBILITY=true,
@@ -55,20 +72,20 @@ local function ResolveTargetName(key)
     if mode == "E" then
         if UnitExists("target") and type(UnitCanAttack) == "function"
             and UnitCanAttack("player", "target") then
-            return UnitName("target")
+            return SafeUnitName("target")
         end
         return nil
     end
     if SELF_ONLY[key] or DEMON_ONLY[key] then return nil end
     if FRIENDLY_OR_SELF[key] then
-        if UnitExists("target") and UnitCanAssist("player", "target") then return UnitName("target") end
-        return UnitName("player")
+        if UnitExists("target") and UnitCanAssist("player", "target") then return SafeUnitName("target") end
+        return SafeUnitName("player")
     end
-    if UnitExists("target") then return UnitName("target") end
+    if UnitExists("target") then return SafeUnitName("target") end
 end
 
 function addon.GetDemonName()
-    return UnitExists("pet") and UnitName("pet") or nil
+    return UnitExists("pet") and SafeUnitName("pet") or nil
 end
 
 local function ChooseArray(pool, targetName, demonName)

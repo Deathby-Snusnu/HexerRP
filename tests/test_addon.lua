@@ -20,7 +20,9 @@ local function newClient(options)
     local state = {
         now = 0,
         class = options.class or "WARLOCK",
-        inCombat = false, target = options.target,
+        inCombat = false, target = options.target, pet = options.pet,
+        player = options.player or "Testcharakter",
+        secretNames = options.secretNames or {},
         hostile = options.hostile == true,
         messages = {},
         notices = {},
@@ -31,7 +33,7 @@ local function newClient(options)
         HexerRP_CharacterDB = options.db,
         RPChatMod = options.rpChatMod,
         math = setmetatable({
-            random = function(minimum, maximum)
+            random = options.random or function(minimum, maximum)
                 return maximum and minimum or 1
             end,
         }, { __index = math }),
@@ -50,11 +52,18 @@ local function newClient(options)
         return "Draenei", options.race or "Draenei"
     end
     environment.UnitExists = function(unit)
-        return unit == "target" and state.target ~= nil
+        if unit == "target" then return state.target ~= nil end
+        if unit == "pet" then return state.pet ~= nil end
     end
     environment.UnitName = function(unit)
-        if unit == "player" then return "Testcharakter" end
+        if unit == "player" then return state.player end
         if unit == "target" then return state.target end
+        if unit == "pet" then return state.pet end
+    end
+    if options.hasSecretValue then
+        environment.issecretvalue = function(value)
+            return state.secretNames[value] == true
+        end
     end
     environment.UnitCanAttack = function()
         return state.target ~= nil and state.hostile
@@ -227,6 +236,64 @@ for _, lang in ipairs({"deDE", "enUS", "frFR"}) do
             lang .. " safe targetless text " .. key)
     end
 end
+local placeholders = {
+    deDE = {target="das Ziel", player="Ihr", pet="Euer Begleiter"},
+    enUS = {target="the target", player="you", pet="your companion"},
+    frFR = {target="la cible", player="vous", pet="votre compagnon"},
+}
+for lang, names in pairs(placeholders) do
+    local secret = newClient({
+        target="TARGET_SECRET", pet="PET_SECRET", hostile=true,
+        secretNames={TARGET_SECRET=true, PLAYER_SECRET=true, PET_SECRET=true},
+        hasSecretValue=true,
+        random=function(minimum, maximum) return maximum or minimum end,
+        db={personalTexts={
+            SHADOW_BOLT={"target=%s"},
+            HEALTHSTONE={"player=%s"},
+        }},
+    })
+    secret.command("language " .. lang)
+    secret.player = "PLAYER_SECRET"
+    secret.addon.localeData[lang].ambient.MURMUR = {"pet=%p"}
+    check(secret.addon.BuildText("SHADOW_BOLT") == "target=" .. names.target,
+        lang .. " secret target uses a localized placeholder")
+    check(secret.addon.BuildText("HEALTHSTONE") == "player=" .. names.player,
+        lang .. " secret player uses a localized placeholder")
+    check(secret.addon.BuildAmbient("MURMUR") == "pet=" .. names.pet,
+        lang .. " secret pet uses a localized placeholder in ambient text")
+end
+local ordinaryNames = newClient({
+    target="ORDINARY_TARGET", pet="ORDINARY_PET", player="ORDINARY_PLAYER",
+    hostile=true, hasSecretValue=true,
+    random=function(minimum, maximum) return maximum or minimum end,
+    db={personalTexts={
+        SHADOW_BOLT={"target=%s"},
+        HEALTHSTONE={"player=%s"},
+    }},
+})
+ordinaryNames.addon.localeData.deDE.ambient.MURMUR = {"pet=%p"}
+check(ordinaryNames.addon.BuildText("SHADOW_BOLT") == "target=ORDINARY_TARGET",
+    "ordinary target names are preserved")
+check(ordinaryNames.addon.BuildText("HEALTHSTONE") == "player=ORDINARY_PLAYER",
+    "ordinary player names are preserved")
+check(ordinaryNames.addon.BuildAmbient("MURMUR") == "pet=ORDINARY_PET",
+    "ordinary pet names are preserved in ambient text")
+local legacyNames = newClient({
+    target="LEGACY_TARGET", pet="LEGACY_PET", player="LEGACY_PLAYER",
+    hostile=true,
+    random=function(minimum, maximum) return maximum or minimum end,
+    db={personalTexts={
+        SHADOW_BOLT={"target=%s"},
+        HEALTHSTONE={"player=%s"},
+    }},
+})
+legacyNames.addon.localeData.deDE.ambient.MURMUR = {"pet=%p"}
+check(legacyNames.addon.BuildText("SHADOW_BOLT") == "target=LEGACY_TARGET",
+    "target names are preserved without issecretvalue")
+check(legacyNames.addon.BuildText("HEALTHSTONE") == "player=LEGACY_PLAYER",
+    "player names are preserved without issecretvalue")
+check(legacyNames.addon.BuildAmbient("MURMUR") == "pet=LEGACY_PET",
+    "pet names are preserved in ambient text without issecretvalue")
 local friendly = newClient({target="FRIENDLY_SENTINEL_204", hostile=false})
 check(not friendly.addon.BuildText("INCINERATE"):find("FRIENDLY_SENTINEL_204",1,true),
     "incinerate does not name a friendly target")
