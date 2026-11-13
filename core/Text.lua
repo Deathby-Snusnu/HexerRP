@@ -140,7 +140,9 @@ function addon.BuildText(key)
         {"deDE", "texts", nil},
     }) do
         local pool
-        if selection[2] == "racial" then
+        if selection[2] == "racial" and math.random(100) > (addon.db and addon.db.racialTextChance or 40) then
+            pool = nil
+        elseif selection[2] == "racial" then
             pool = addon.GetLocalePoolExact(selection[1], selection[2], selection[3], key)
         else
             pool = addon.GetLocalePoolExact(selection[1], selection[2], key)
