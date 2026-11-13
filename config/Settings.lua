@@ -10,6 +10,7 @@ local _, addon = ...
 addon.defaults = {
     outputLanguage = "deDE",
     textChance = 35,
+    racialTextChance = 40,
     cooldown = 18,
     chatChannel = "SAY",
     ambientEnabled = true,
