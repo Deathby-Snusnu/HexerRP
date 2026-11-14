@@ -82,3 +82,16 @@ addon.localeData.deDE.racial = {
         },
     },
 }
+
+-- Editorial expansion: gnomish forbidden research without repeated filler.
+local gnome = addon.localeData.deDE.racial.Gnome
+for _, line in ipairs({
+    "Ich habe die Schattenenergie isoliert. Das Geräusch beim Entladen ist noch ungeklärt.",
+    "*wischt Ruß von einer Messlinse und kontrolliert den feinen Riss im Glas.*",
+    "Das Versuchsergebnis ist eindeutig. Die Sicherheitsvorschriften waren zu optimistisch.",
+}) do table.insert(gnome.SHADOW_BOLT.gruppe, line) end
+for _, line in ipairs({
+    "Verfall ist eine Form von Veränderung. Nur selten eine angenehme.",
+    "*schließt ein kleines schwarzes Notizbuch, ohne die letzte Zahl einzutragen.*",
+    "Die Wirkung hält an. Ich werde das Wort 'Nebenwirkung' wohl überarbeiten müssen.",
+}) do table.insert(gnome.CORRUPTION.gruppe, line) end
