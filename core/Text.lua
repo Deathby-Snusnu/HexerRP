@@ -133,6 +133,7 @@ function addon.BuildText(key)
     -- Racial texts override only their defined spells; every missing or
     -- currently unusable pool falls back to the general warlock texts.
     local lang = addon.GetOutputLanguage()
+    local useRacialText = math.random(100) <= (addon.db and addon.db.racialTextChance or 40)
     for _, selection in ipairs({
         {lang, "racial", race},
         {lang, "texts", nil},
@@ -140,7 +141,7 @@ function addon.BuildText(key)
         {"deDE", "texts", nil},
     }) do
         local pool
-        if selection[2] == "racial" and math.random(100) > (addon.db and addon.db.racialTextChance or 40) then
+        if selection[2] == "racial" and not useRacialText then
             pool = nil
         elseif selection[2] == "racial" then
             pool = addon.GetLocalePoolExact(selection[1], selection[2], selection[3], key)
