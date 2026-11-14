@@ -305,5 +305,21 @@ check(not hostile.addon.BuildText("RAIN_OF_FIRE"):find("HOSTILE_SENTINEL_580",1,
 local preserved = newClient({db={personalTexts={WRACK={"Mein eigener Hexerfluch."}}}})
 check(preserved.addon.BuildText("WRACK") == "Mein eigener Hexerfluch.",
     "warlock personal texts take priority")
+local racialRolls = 0
+local racialOnly = newClient({
+    race="Human",
+    db={racialTextChance=40},
+    random=function(minimum, maximum)
+        if minimum == 100 and maximum == nil then
+            racialRolls = racialRolls + 1
+            return racialRolls == 1 and 100 or 1
+        end
+        return minimum
+    end,
+})
+racialOnly.addon.localeData.deDE.texts.SHADOW_BOLT = nil
+racialOnly.addon.localeData.deDE.racial.Human.SHADOW_BOLT = {"Rassentext."}
+check(racialOnly.addon.BuildText("SHADOW_BOLT") == nil and racialRolls == 1,
+    "racial text chance is rolled once across repeated fallback stages")
 
 print("PASS: " .. checks .. " checks")

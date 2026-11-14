@@ -24,7 +24,7 @@ function addon.InitializeDatabase()
     HexerRP_CharacterDB = HexerRP_CharacterDB or {}
     local db = HexerRP_CharacterDB
     local numeric = {
-        textChance = {0,100}, cooldown = {0,3600}, ambientChance = {0,100},
+        textChance = {0,100}, racialTextChance = {0,100}, cooldown = {0,3600}, ambientChance = {0,100},
         ambientMinInterval = {30,3600}, ambientMaxInterval = {30,7200},
     }
     for key, limits in pairs(numeric) do
