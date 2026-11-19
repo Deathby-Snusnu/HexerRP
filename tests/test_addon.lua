@@ -322,4 +322,38 @@ racialOnly.addon.localeData.deDE.racial.Human.SHADOW_BOLT = {"Rassentext."}
 check(racialOnly.addon.BuildText("SHADOW_BOLT") == nil and racialRolls == 1,
     "racial text chance is rolled once across repeated fallback stages")
 
+
+-- Core expansions must not inject shared Nether boilerplate.
+local coreExpansionKeys = {
+    "SHADOW_BOLT", "IMMOLATE", "CORRUPTION", "CURSE_WEAKNESS",
+    "FEAR", "LIFE_TAP", "DRAIN_LIFE", "SUMMON_IMP",
+}
+local obsoleteExpansion = {
+    deDE = { "Der Nether hoert zu. Das genuegt mir.", "Der Nether hat Euch bemerkt, %s." },
+    enUS = { "The Nether is listening. That is enough for me.", "The Nether has noticed you, %s." },
+    frFR = { "Le Neant distordu ecoute. Cela me suffit.", "Le Neant distordu vous a remarque, %s." },
+}
+for lang, legacy in pairs(obsoleteExpansion) do
+    local texts = addon.localeData[lang].texts
+    for _, key in ipairs(coreExpansionKeys) do
+        local pool = texts[key]
+        check(type(pool) == "table" and type(pool.gruppe) == "table" and #pool.gruppe >= 4,
+            lang .. " core expansion has its group text for " .. key)
+        for _, line in ipairs(pool.gruppe) do
+            check(line ~= legacy[1], lang .. " no generic group expansion for " .. key)
+        end
+        if type(pool.ziel) == "table" then
+            local named = 0
+            for _, line in ipairs(pool.ziel) do
+                check(line ~= legacy[2], lang .. " no generic target expansion for " .. key)
+                if line:find("%s", 1, true) then named = named + 1 end
+            end
+            check(named >= 1, lang .. " target templates exist for " .. key)
+        end
+    end
+    local old = texts.CURSE_RECKLESSNESS
+    check(type(old.gruppe) == "table" and #old.gruppe >= 4,
+        lang .. " non-rewritten abilities retain their original expansion")
+end
+
 print("PASS: " .. checks .. " checks")
