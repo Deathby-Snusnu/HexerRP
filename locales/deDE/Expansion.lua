@@ -17,6 +17,14 @@ local specific = {
     LIFE_TAP = { gruppe = { "Eine kleine Schuld an mein eigenes Blut. Zinsen zahle ich später.", "*drückt zwei Finger an den Puls und sammelt einen dunklen Funken.*" } },
     DRAIN_LIFE = { gruppe = { "Lebenskraft fließt immer irgendwohin. Heute zu mir.", "*zieht einen dünnen roten Faden durch die offene Hand.*" }, ziel = { "%s, Euer Herzschlag arbeitet gerade für mich.", "*zieht einen roten Energiestrom von %s zur eigenen Hand.*" } },
     SUMMON_IMP = { gruppe = { "Ein kleiner Dämon. Ein erstaunlich großes Mundwerk.", "*ritzt einen winzigen Kreis in den Boden, aus dem Rauch aufsteigt.*" } },
+    CURSE_RECKLESSNESS = { gruppe = { "Wagemut ist billig. Die Folgen sind es selten.", "*lässt eine schwarze Rune wie eine zerbrochene Waage taumeln.*" }, ziel = { "%s, Vernunft steht Euch heute offenbar nicht mehr zur Verfügung.", "*verdreht ein Fluchzeichen, bis es sich um %s schließt.*" } },
+    OMEN_AGONY = { gruppe = { "Ich verspreche keine schnelle Pein. Geduld ist meine Spezialität.", "*zeichnet mit dem Nagel eine Spirale, die langsam dunkler wird.*" }, ziel = { "%s, das Schlimmste liegt noch vor Euch. Wie bedauerlich.", "*lässt eine schmale Spirale aus Schatten auf %s zuschleichen.*" } },
+    CURSE_AGONY = { gruppe = { "Schmerz kann ein Chor sein. Ich übernehme die Leitung.", "*schlägt mit zwei Fingern einen Takt, den niemand hören möchte.*" } },
+    DRAIN_SOUL = { gruppe = { "Eine Seele ist kein Kleingeld. Ich sammle trotzdem.", "*hält einen leeren Splitter ins matte Schattenlicht.*" }, ziel = { "%s, ein winziger Teil von Euch wird mir in Erinnerung bleiben.", "*zieht einen dünnen Seelenfaden aus %s in einen Splitter.*" } },
+    LIFE_FUNNEL = { gruppe = { "Mein Dämon trägt die Wunden. Ich zahle die Rechnung.", "*presst die Hand an die Brust und führt einen roten Lichtstrom nach außen.*" } },
+    DEMON_ARMOR = { gruppe = { "Man sagt, ich hätte eine harte Schale. Nun ist sie verzaubert.", "*legt schuppige Schatten wie eine zweite Haut über die Schultern.*" } },
+    FEL_ARMOR = { gruppe = { "Diese Rüstung glänzt nicht. Sie grinst zurück.", "*zieht grün glühende Zeichen über die eigene Robe.*" } },
+    SOUL_LINK = { gruppe = { "Was meinen Dämon trifft, bleibt nicht länger nur seine Sorge.", "*zieht einen dunklen Faden zwischen Herz und Begleiter straff.*" } },
 }
 
 local groupSpeech = "Der Nether hoert zu. Das genuegt mir."
