@@ -6,43 +6,53 @@
 
 local _, addon = ...
 
-local groupSpeech = 'The Nether is listening. That is enough for me.'
-local groupEmote = '*lets dark energy coil between two fingers for a moment.*'
-local targetSpeech = 'The Nether has noticed you, %s.'
-local targetEmote = '*traces a dark sign toward %s with two fingers.*'
+-- Individually authored additions for the core warlock actions. Other actions
+-- retain the legacy expansion until they receive their own editorial pass.
+local specific = {
+    SHADOW_BOLT = { gruppe = { "Shadows need no straight paths. My bolt does.", "*compresses black smoke into a twitching sphere.*" }, ziel = { "%s, I saved a small piece of night just for you.", "*releases a dark bolt that races toward %s.*" } },
+    IMMOLATE = { gruppe = { "One spark will do. The burning handles the rest.", "*rubs thumb and forefinger until green embers appear.*" }, ziel = { "%s, I hope you enjoy the heat.", "*flicks a green ember toward %s.*" } },
+    CORRUPTION = { gruppe = { "Corruption does not knock. It simply moves in.", "*lets a dark rune sink slowly into the palm.*" }, ziel = { "%s, this curse has remarkable staying power.", "*draws a creeping rune in the air before %s.*" } },
+    CURSE_WEAKNESS = { gruppe = { "A little less strength makes even heroes modest.", "*twists a fist as if wringing power from an unseen rope.*" }, ziel = { "%s, you may miss those muscles in a moment.", "*draws a dull rune like a noose around %s.*" } },
+    FEAR = { gruppe = { "The worst horrors are already hiding in the mind.", "*opens one hand as though releasing an unseen nightmare.*" }, ziel = { "%s, your mind knows the exit. Run!", "*raises a chill shadow before %s.*" } },
+    LIFE_TAP = { gruppe = { "A small debt against my own blood. Interest can wait.", "*presses two fingers to the pulse and gathers a dark spark.*" } },
+    DRAIN_LIFE = { gruppe = { "Life always flows somewhere. Today it flows to me.", "*draws a thin red thread through the open hand.*" }, ziel = { "%s, your heartbeat is working for me now.", "*draws a red stream of energy from %s into one hand.*" } },
+    SUMMON_IMP = { gruppe = { "A small demon. An astonishingly large mouth.", "*scratches a tiny circle on the ground as smoke rises from it.*" } },
+}
 
-local function appendUnique(list, text)
+local groupSpeech = "The Nether is listening. That is enough for me."
+local groupEmote = "*lets dark energy coil between two fingers for a moment.*"
+local targetSpeech = "The Nether has noticed you, %s."
+local targetEmote = "*traces a dark sign toward %s with two fingers.*"
+
+local function appendUnique(list, value)
     if type(list) ~= "table" then return end
-    for _, value in ipairs(list) do
-        if value == text then return end
+    for _, old in ipairs(list) do
+        if old == value then return end
     end
-    list[#list + 1] = text
+    list[#list + 1] = value
 end
 
-local function expand(node, seen)
-    if type(node) ~= "table" or seen[node] then return end
-    seen[node] = true
-    if type(node.ziel) == "table" then
-        appendUnique(node.ziel, targetSpeech)
-        appendUnique(node.ziel, targetEmote)
-    end
-    if type(node.gruppe) == "table" then
-        appendUnique(node.gruppe, groupSpeech)
-        appendUnique(node.gruppe, groupEmote)
-    end
-    if type(node.name) == "string" and node.name ~= "" then
-        if type(node.gruppe) == "table" then appendUnique(node.gruppe, "*shapes " .. node.name .. " with focused dark energy.*") end
-        if type(node.ziel) == "table" then appendUnique(node.ziel, "*directs " .. node.name .. " at %s with a curt gesture.*") end
-    end
-    for key, value in pairs(node) do
-        if key ~= "ziel" and key ~= "gruppe" and type(value) == "table" then
-            expand(value, seen)
+for key, node in pairs(addon.localeData.enUS.texts) do
+    local authored = specific[key]
+    if authored then
+        for _, kind in ipairs({"gruppe", "ziel"}) do
+            if type(node[kind]) == "table" and type(authored[kind]) == "table" then
+                for _, value in ipairs(authored[kind]) do appendUnique(node[kind], value) end
+            end
+        end
+    else
+        -- Legacy, still deduplicated additions for actions not yet rewritten.
+        if type(node.gruppe) == "table" then
+            appendUnique(node.gruppe, groupSpeech)
+            appendUnique(node.gruppe, groupEmote)
+            appendUnique(node.gruppe, "*shapes " .. node.name .. " with focused dark energy.*")
+        end
+        if type(node.ziel) == "table" then
+            appendUnique(node.ziel, targetSpeech)
+            appendUnique(node.ziel, targetEmote)
+            appendUnique(node.ziel, "*directs " .. node.name .. " at %s with a curt gesture.*")
         end
     end
-end
-
-for _, container in ipairs({addon.localeData.enUS.texts}) do
-    expand(container, {})
 end
 
 -- Additional ambient reserve.
