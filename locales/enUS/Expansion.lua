@@ -17,6 +17,14 @@ local specific = {
     LIFE_TAP = { gruppe = { "A small debt against my own blood. Interest can wait.", "*presses two fingers to the pulse and gathers a dark spark.*" } },
     DRAIN_LIFE = { gruppe = { "Life always flows somewhere. Today it flows to me.", "*draws a thin red thread through the open hand.*" }, ziel = { "%s, your heartbeat is working for me now.", "*draws a red stream of energy from %s into one hand.*" } },
     SUMMON_IMP = { gruppe = { "A small demon. An astonishingly large mouth.", "*scratches a tiny circle on the ground as smoke rises from it.*" } },
+    CURSE_RECKLESSNESS = { gruppe = { "Bravery comes cheap. Consequences seldom do.", "*lets a black rune wobble like a broken scale.*" }, ziel = { "%s, good judgment appears to be unavailable today.", "*twists a curse sigil until it coils around %s.*" } },
+    OMEN_AGONY = { gruppe = { "I promise no swift torment. Patience is my specialty.", "*draws a spiral with one nail, watching it slowly darken.*" }, ziel = { "%s, the worst is yet to come. How unfortunate.", "*sends a thin spiral of shadow creeping toward %s.*" } },
+    CURSE_AGONY = { gruppe = { "Pain can be a choir. I shall conduct it.", "*beats time with two fingers to a rhythm no one wishes to hear.*" } },
+    DRAIN_SOUL = { gruppe = { "A soul is hardly loose change. I collect anyway.", "*holds an empty shard into the dim shadowlight.*" }, ziel = { "%s, a little piece of you shall remain with me.", "*draws a thin soul-thread from %s into a shard.*" } },
+    LIFE_FUNNEL = { gruppe = { "My demon bears the wounds. I pay the bill.", "*presses a hand to the chest and guides a red current outward.*" } },
+    DEMON_ARMOR = { gruppe = { "They say I have a thick skin. Now it is enchanted.", "*wraps scaled shadows over the shoulders like a second skin.*" } },
+    FEL_ARMOR = { gruppe = { "This armour does not shine. It grins back.", "*draws green-burning sigils across the robe.*" } },
+    SOUL_LINK = { gruppe = { "What strikes my demon is no longer its burden alone.", "*pulls a dark thread taut between heart and companion.*" } },
 }
 
 local groupSpeech = "The Nether is listening. That is enough for me."
