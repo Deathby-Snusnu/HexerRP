@@ -17,6 +17,14 @@ local specific = {
     LIFE_TAP = { gruppe = { "Une petite dette envers mon propre sang. Les intérêts attendront.", "*pose deux doigts sur son pouls et recueille une étincelle sombre.*" } },
     DRAIN_LIFE = { gruppe = { "La vie coule toujours quelque part. Aujourd'hui, vers moi.", "*tire un mince fil rouge à travers sa paume ouverte.*" }, ziel = { "%s, votre cœur travaille désormais pour moi.", "*attire un flux rouge de %s dans sa main.*" } },
     SUMMON_IMP = { gruppe = { "Un petit démon. Une bouche étonnamment grande.", "*grave un minuscule cercle au sol, d'où monte une fumée sombre.*" } },
+    CURSE_RECKLESSNESS = { gruppe = { "L'audace coûte peu. Ses conséquences sont rarement gratuites.", "*fait vaciller une rune noire comme une balance brisée.*" }, ziel = { "%s, la prudence ne semble plus être à votre portée.", "*tord un sceau maudit jusqu'à ce qu'il entoure %s.*" } },
+    OMEN_AGONY = { gruppe = { "Je ne promets aucune souffrance rapide. La patience est mon art.", "*dessine de l'ongle une spirale qui s'assombrit lentement.*" }, ziel = { "%s, le pire est encore à venir. Quel dommage.", "*envoie une fine spirale d'ombre ramper vers %s.*" } },
+    CURSE_AGONY = { gruppe = { "La douleur peut former un chœur. J'en serai le chef.", "*bat la mesure de deux doigts sur un rythme que nul ne souhaite entendre.*" } },
+    DRAIN_SOUL = { gruppe = { "Une âme n'est pas de la petite monnaie. Je collectionne pourtant.", "*tend un éclat vide vers la pâle lueur des ombres.*" }, ziel = { "%s, je garderai un petit souvenir de vous.", "*attire un fil d'âme de %s jusque dans un éclat.*" } },
+    LIFE_FUNNEL = { gruppe = { "Mon démon porte les blessures. J'en paie le prix.", "*presse une main contre sa poitrine et en fait jaillir un flux rouge.*" } },
+    DEMON_ARMOR = { gruppe = { "On dit que j'ai la peau dure. Désormais, elle est enchantée.", "*pose des ombres écailleuses sur ses épaules telle une seconde peau.*" } },
+    FEL_ARMOR = { gruppe = { "Cette armure ne brille pas. Elle vous sourit de travers.", "*trace des sceaux verts et brûlants sur sa robe.*" } },
+    SOUL_LINK = { gruppe = { "Ce qui frappe mon démon n'est plus son seul fardeau.", "*tend un fil obscur entre son cœur et son compagnon.*" } },
 }
 
 local groupSpeech = "Le Neant distordu ecoute. Cela me suffit."

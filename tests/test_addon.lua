@@ -327,6 +327,8 @@ check(racialOnly.addon.BuildText("SHADOW_BOLT") == nil and racialRolls == 1,
 local coreExpansionKeys = {
     "SHADOW_BOLT", "IMMOLATE", "CORRUPTION", "CURSE_WEAKNESS",
     "FEAR", "LIFE_TAP", "DRAIN_LIFE", "SUMMON_IMP",
+    "CURSE_RECKLESSNESS", "OMEN_AGONY", "CURSE_AGONY", "DRAIN_SOUL",
+    "LIFE_FUNNEL", "DEMON_ARMOR", "FEL_ARMOR", "SOUL_LINK",
 }
 local obsoleteExpansion = {
     deDE = { "Der Nether hoert zu. Das genuegt mir.", "Der Nether hat Euch bemerkt, %s." },
@@ -351,7 +353,7 @@ for lang, legacy in pairs(obsoleteExpansion) do
             check(named >= 1, lang .. " target templates exist for " .. key)
         end
     end
-    local old = texts.CURSE_RECKLESSNESS
+    local old = texts.DARK_PACT
     check(type(old.gruppe) == "table" and #old.gruppe >= 4,
         lang .. " non-rewritten abilities retain their original expansion")
 end
