@@ -45,12 +45,12 @@ for key, node in pairs(addon.localeData.frFR.texts) do
         if type(node.gruppe) == "table" then
             appendUnique(node.gruppe, groupSpeech)
             appendUnique(node.gruppe, groupEmote)
-            appendUnique(node.gruppe, "*shapes " .. node.name .. " avec une energie sombre et concentree.*")
+            appendUnique(node.gruppe, "*faconne " .. node.name .. " avec une energie sombre et concentree.*")
         end
         if type(node.ziel) == "table" then
             appendUnique(node.ziel, targetSpeech)
             appendUnique(node.ziel, targetEmote)
-            appendUnique(node.ziel, "*directs " .. node.name .. " vers %s d un geste bref.*")
+            appendUnique(node.ziel, "*dirige " .. node.name .. " vers %s d un geste bref.*")
         end
     end
 end
