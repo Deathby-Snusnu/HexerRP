@@ -6,8 +6,7 @@
 
 local _, addon = ...
 
--- Individually authored additions for the core warlock actions. Other actions
--- retain the legacy expansion until they receive their own editorial pass.
+-- Individually authored additions for all 27 core warlock abilities.
 local specific = {
     SHADOW_BOLT = { gruppe = { "Shadows need no straight paths. My bolt does.", "*compresses black smoke into a twitching sphere.*" }, ziel = { "%s, I saved a small piece of night just for you.", "*releases a dark bolt that races toward %s.*" } },
     IMMOLATE = { gruppe = { "One spark will do. The burning handles the rest.", "*rubs thumb and forefinger until green embers appear.*" }, ziel = { "%s, I hope you enjoy the heat.", "*flicks a green ember toward %s.*" } },
@@ -38,11 +37,6 @@ local specific = {
     DETECT_INVISIBILITY = { gruppe = { "Invisible does not mean unobserved.", "*brushes two fingers before violet-glowing eyes.*" } },
 }
 
-local groupSpeech = "The Nether is listening. That is enough for me."
-local groupEmote = "*lets dark energy coil between two fingers for a moment.*"
-local targetSpeech = "The Nether has noticed you, %s."
-local targetEmote = "*traces a dark sign toward %s with two fingers.*"
-
 local function appendUnique(list, value)
     if type(list) ~= "table" then return end
     for _, old in ipairs(list) do
@@ -51,25 +45,17 @@ local function appendUnique(list, value)
     list[#list + 1] = value
 end
 
+-- Preserve the existing target/group pool shapes. Some spells are targeted
+-- only, and other spells do not have a target pool at all.
 for key, node in pairs(addon.localeData.enUS.texts) do
     local authored = specific[key]
     if authored then
         for _, kind in ipairs({"gruppe", "ziel"}) do
             if type(node[kind]) == "table" and type(authored[kind]) == "table" then
-                for _, value in ipairs(authored[kind]) do appendUnique(node[kind], value) end
+                for _, value in ipairs(authored[kind]) do
+                    appendUnique(node[kind], value)
+                end
             end
-        end
-    else
-        -- Legacy, still deduplicated additions for actions not yet rewritten.
-        if type(node.gruppe) == "table" then
-            appendUnique(node.gruppe, groupSpeech)
-            appendUnique(node.gruppe, groupEmote)
-            appendUnique(node.gruppe, "*shapes " .. node.name .. " with focused dark energy.*")
-        end
-        if type(node.ziel) == "table" then
-            appendUnique(node.ziel, targetSpeech)
-            appendUnique(node.ziel, targetEmote)
-            appendUnique(node.ziel, "*directs " .. node.name .. " at %s with a curt gesture.*")
         end
     end
 end
