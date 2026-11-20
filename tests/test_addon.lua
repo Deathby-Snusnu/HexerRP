@@ -502,6 +502,15 @@ end
 check(bonusCount == 20, "twenty additional music motifs")
 for _, lang in ipairs({"deDE","enUS","frFR"}) do
     bonus.SetOutputLanguage(lang)
+    local expectedCounts = {}
+    for _, reference in pairs(bonus.musicRPBonusReferences) do
+        expectedCounts[reference.key] = (expectedCounts[reference.key] or 0) + 1
+    end
+    for key, expectedCount in pairs(expectedCounts) do
+        local choices = bonus.musicRPBonus[lang][key]
+        check(type(choices)=="table" and #choices==expectedCount,
+            lang.." has all bonus motifs for "..key)
+    end
     for key, choices in pairs(bonus.musicRPBonus[lang]) do
         check(type(choices)=="table" and #choices>=1, lang.." has bonus choices "..key)
         for _, lines in ipairs(choices) do
