@@ -6,8 +6,7 @@
 
 local _, addon = ...
 
--- Individually authored additions for the core warlock actions. Other actions
--- retain the legacy expansion until they receive their own editorial pass.
+-- Individually authored additions for all 27 core warlock abilities.
 local specific = {
     SHADOW_BOLT = { gruppe = { "Les ombres ignorent les chemins droits. Pas mon trait.", "*comprime une fumée noire en une sphère frémissante.*" }, ziel = { "%s, j'ai gardé un morceau de nuit pour vous.", "*libère un trait obscur qui file vers %s.*" } },
     IMMOLATE = { gruppe = { "Une étincelle suffit. Les flammes feront le reste.", "*frotte le pouce et l'index jusqu'à faire naître une braise verte.*" }, ziel = { "%s, j'espère que vous aimez la chaleur.", "*projette une braise verte vers %s.*" } },
@@ -38,11 +37,6 @@ local specific = {
     DETECT_INVISIBILITY = { gruppe = { "Invisible ne veut pas dire inaperçu.", "*passe deux doigts devant ses yeux illuminés de violet.*" } },
 }
 
-local groupSpeech = "Le Neant distordu ecoute. Cela me suffit."
-local groupEmote = "*laisse une energie sombre s enrouler un instant entre deux doigts.*"
-local targetSpeech = "Le Neant distordu vous a remarque, %s."
-local targetEmote = "*trace de deux doigts un signe sombre en direction de %s.*"
-
 local function appendUnique(list, value)
     if type(list) ~= "table" then return end
     for _, old in ipairs(list) do
@@ -51,25 +45,17 @@ local function appendUnique(list, value)
     list[#list + 1] = value
 end
 
+-- Preserve the existing target/group pool shapes. Some spells are targeted
+-- only, and other spells do not have a target pool at all.
 for key, node in pairs(addon.localeData.frFR.texts) do
     local authored = specific[key]
     if authored then
         for _, kind in ipairs({"gruppe", "ziel"}) do
             if type(node[kind]) == "table" and type(authored[kind]) == "table" then
-                for _, value in ipairs(authored[kind]) do appendUnique(node[kind], value) end
+                for _, value in ipairs(authored[kind]) do
+                    appendUnique(node[kind], value)
+                end
             end
-        end
-    else
-        -- Legacy, still deduplicated additions for actions not yet rewritten.
-        if type(node.gruppe) == "table" then
-            appendUnique(node.gruppe, groupSpeech)
-            appendUnique(node.gruppe, groupEmote)
-            appendUnique(node.gruppe, "*faconne " .. node.name .. " avec une energie sombre et concentree.*")
-        end
-        if type(node.ziel) == "table" then
-            appendUnique(node.ziel, targetSpeech)
-            appendUnique(node.ziel, targetEmote)
-            appendUnique(node.ziel, "*dirige " .. node.name .. " vers %s d un geste bref.*")
         end
     end
 end
