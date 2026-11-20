@@ -519,7 +519,7 @@ for _, lang in ipairs({"deDE","enUS","frFR"}) do
                 lang.." bonus speech and emote for "..key)
             for _, line in ipairs(lines) do
                 check(#line<=255 and not line:find("|",1,true) and
-                    not line:find("%%s",1,true),lang.." safe non-target bonus for "..key)
+                    not line:find("%s",1,true),lang.." safe non-target bonus for "..key)
             end
         end
     end
