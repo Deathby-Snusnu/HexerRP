@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- 20 weitere eigenständige MusicRP-Songmotive mit /say und /me in deDE/enUS/frFR, rotierende Varianten je Fähigkeit und Regressionstests.
+
+
 - Optionales MusicRP mit 12 eigenständigen Songmotiv-Pools (deDE/enUS/frFR), standardmäßig deaktiviert.
 - `/wrp music on|off|status|chance 0-100` und Regressionstests für Sprache, Rasse, Ziel und Chatkanal.
 - Keine fremden Songtextzeilen; Musiktitel dienen nur als Inspirations-Metadaten.
