@@ -25,6 +25,17 @@ local specific = {
     DEMON_ARMOR = { gruppe = { "They say I have a thick skin. Now it is enchanted.", "*wraps scaled shadows over the shoulders like a second skin.*" } },
     FEL_ARMOR = { gruppe = { "This armour does not shine. It grins back.", "*draws green-burning sigils across the robe.*" } },
     SOUL_LINK = { gruppe = { "What strikes my demon is no longer its burden alone.", "*pulls a dark thread taut between heart and companion.*" } },
+    SOUL_FIRE = { gruppe = { "A soul is hard to ignite. I am patient.", "*presses a pulsing flame between both hands.*" }, ziel = { "%s, this flame comes from the deepest shadows.", "*hurls a brilliant soulflame at %s.*" } },
+    HEALTHSTONE = { gruppe = { "A little life, carefully packed into a stone.", "*warms a green-glowing stone between both hands.*" }, ziel = { "%s, take this stone. The bill comes later.", "*offers %s a softly glowing healthstone.*" } },
+    SOULSTONE = { gruppe = { "In case death refuses to negotiate.", "*seals a faint soul-light inside a crystal.*" }, ziel = { "%s, keep it close. It knows the way back.", "*places a pulsing soulstone into the hand of %s.*" } },
+    DARK_PACT = { gruppe = { "My demon is generous. I have decided so.", "*draws in a thin stream of demonic power.*" } },
+    SUMMON_VOIDWALKER = { gruppe = { "A shadow that can intimidate a doorway.", "*draws a heavy circle spilling cold smoke.*" } },
+    SUMMON_SUCCUBUS = { gruppe = { "Charm, claws and terrible advice. Wonderful.", "*traces an elegant sigil of violet fire.*" } },
+    SUMMON_FELHUNTER = { gruppe = { "At last, one who treats magic even more rudely.", "*lures a sniffing shape with a whistling rune.*" } },
+    SUMMON_INFERNAL = { gruppe = { "If the sky falls, I summoned it myself.", "*throws both arms up as burning runes rise.*" } },
+    RITUAL_SUMMONING = { gruppe = { "Three hands, one circle. Hopefully all limbs arrive.", "*checks every line of the summoning circle twice.*" } },
+    UNENDING_BREATH = { gruppe = { "Breathing is a habit. I have better spells.", "*breathes a bubble into a pale shimmering sigil.*" } },
+    DETECT_INVISIBILITY = { gruppe = { "Invisible does not mean unobserved.", "*brushes two fingers before violet-glowing eyes.*" } },
 }
 
 local groupSpeech = "The Nether is listening. That is enough for me."
