@@ -357,9 +357,9 @@ for lang, legacy in pairs(obsoleteExpansion) do
         present = present + 1
         local hasGroup = type(pool.gruppe) == "table"
         local hasTarget = type(pool.ziel) == "table"
-        if key ~= "HEALTHSTONE" then
-            check(hasGroup == not targetOnly[key], lang .. " group shape for " .. key)
-        end
+        local expectedGroup = not targetOnly[key]
+        if key == "HEALTHSTONE" then expectedGroup = lang == "deDE" end
+        check(hasGroup == expectedGroup, lang .. " group shape for " .. key)
         check(hasTarget == not groupOnly[key], lang .. " target shape for " .. key)
         if hasGroup then
             check(#pool.gruppe >= 2, lang .. " group variants for " .. key)
