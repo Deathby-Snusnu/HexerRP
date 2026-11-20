@@ -138,11 +138,11 @@ addon.musicRPBonus.frFR.SUMMON_IMP = addon.musicRPBonus.frFR.SUMMON_IMP or {}
 addon.musicRPBonus.frFR.SUMMON_IMP[#addon.musicRPBonus.frFR.SUMMON_IMP+1] = { "Que vas-tu devenir ? ai-je demandé au diablotin. Il a ri.", "*tire un fil d'ombre du sol.*" }
 addon.musicRPBonusReferences.M12 = { key = "SUMMON_SUCCUBUS", artist = "Knorkator", song = "Wir werden alle sterben" }
 addon.musicRPBonus.deDE.SUMMON_SUCCUBUS = addon.musicRPBonus.deDE.SUMMON_SUCCUBUS or {}
-addon.musicRPBonus.deDE.SUMMON_SUCCUBUS[#addon.musicRPBonus.deDE.SUMMON_SUCCUBUS+1] = { "Irgendwann endet alles. Diese Besprechung hoffentlich zuerst.", "*steht fest neben dem Leerwandler.*" }
+addon.musicRPBonus.deDE.SUMMON_SUCCUBUS[#addon.musicRPBonus.deDE.SUMMON_SUCCUBUS+1] = { "Irgendwann endet alles. Diese Besprechung hoffentlich zuerst.", "*steht fest neben der Sukkubus.*" }
 addon.musicRPBonus.enUS.SUMMON_SUCCUBUS = addon.musicRPBonus.enUS.SUMMON_SUCCUBUS or {}
-addon.musicRPBonus.enUS.SUMMON_SUCCUBUS[#addon.musicRPBonus.enUS.SUMMON_SUCCUBUS+1] = { "Everything ends. Hopefully this meeting goes first.", "*stands firm beside the voidwalker.*" }
+addon.musicRPBonus.enUS.SUMMON_SUCCUBUS[#addon.musicRPBonus.enUS.SUMMON_SUCCUBUS+1] = { "Everything ends. Hopefully this meeting goes first.", "*stands firm beside the succubus.*" }
 addon.musicRPBonus.frFR.SUMMON_SUCCUBUS = addon.musicRPBonus.frFR.SUMMON_SUCCUBUS or {}
-addon.musicRPBonus.frFR.SUMMON_SUCCUBUS[#addon.musicRPBonus.frFR.SUMMON_SUCCUBUS+1] = { "Tout finit un jour. Espérons que cette réunion finisse d'abord.", "*se tient près du marcheur du Vide.*" }
+addon.musicRPBonus.frFR.SUMMON_SUCCUBUS[#addon.musicRPBonus.frFR.SUMMON_SUCCUBUS+1] = { "Tout finit un jour. Espérons que cette réunion finisse d'abord.", "*se tient près de la succube.*" }
 addon.musicRPBonusReferences.M13 = { key = "CORRUPTION", artist = "Metallica", song = "Until It Sleeps" }
 addon.musicRPBonus.deDE.CORRUPTION = addon.musicRPBonus.deDE.CORRUPTION or {}
 addon.musicRPBonus.deDE.CORRUPTION[#addon.musicRPBonus.deDE.CORRUPTION+1] = { "Manche Schatten schlafen nur, bis jemand sie weckt.", "*untersucht die Fährte seines Dämonen.*" }
