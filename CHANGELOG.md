@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Optionales MusicRP mit 12 eigenständigen Songmotiv-Pools (deDE/enUS/frFR), standardmäßig deaktiviert.
+- `/wrp music on|off|status|chance 0-100` und Regressionstests für Sprache, Rasse, Ziel und Chatkanal.
+- Keine fremden Songtextzeilen; Musiktitel dienen nur als Inspirations-Metadaten.
+
+
 Änderungen an HexerRP. Für undatierte Einträge wird kein Datum ergänzt;
 eine unklare Versionszuordnung bleibt ausdrücklich offen.
 
