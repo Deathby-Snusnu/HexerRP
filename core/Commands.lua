@@ -108,6 +108,7 @@ local function ShowHelp()
     addon.Notify("/wrp language deDE|enUS|frFR")
     addon.Notify("/wrp channel AUTO|SAY|YELL|EMOTE|PARTY|RAID|INSTANCE_CHAT")
     addon.Notify("/wrp chance 0-100 | /wrp cooldown 0-3600")
+    addon.Notify("/wrp music on|off|status|chance 0-100")
     addon.Notify("/wrp ambient on|off")
     addon.Notify("/wrp ambient test murmur|disturbed|outburst|demonic")
     addon.Notify("/wrp ambient chance 0-100")
@@ -253,6 +254,25 @@ local function SetChannel(argument)
     end
 end
 
+local function MusicCommand(argument)
+    local operation, value = (argument or ""):match("^%s*(%S*)%s*(.-)%s*$")
+    operation = (operation or ""):lower()
+    if operation == "on" or operation == "off" then
+        addon.db.musicEnabled = operation == "on"
+    elseif operation == "chance" then
+        local n = tonumber(value)
+        if not addon.ValidNumber(n, 100, 0) then
+            addon.Notify("Benutzung: /wrp music chance 0-100")
+            return
+        end
+        addon.db.musicChance = n
+    elseif operation ~= "" and operation ~= "status" then
+        addon.Notify("Benutzung: /wrp music on|off|status|chance 0-100")
+        return
+    end
+    addon.Notify(string.format("MusicRP: %s | Chance %d%%", addon.db.musicEnabled and "an" or "aus", addon.db.musicChance))
+end
+
 local function HandleCommand(message)
     if not addon.ready then
         addon.Notify("Noch nicht geladen.")
@@ -280,6 +300,8 @@ local function HandleCommand(message)
         SetLanguage(argument)
     elseif command == "ambient" then
         AmbientCommand(argument)
+    elseif command == "music" then
+        MusicCommand(argument)
     elseif command == "chance" or command == "cooldown" then
         SetNumber(command, argument)
     elseif command == "channel" then
