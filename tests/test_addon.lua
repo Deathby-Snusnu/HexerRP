@@ -106,14 +106,16 @@ local function newClient(options)
 
     local addon = {}
     for _, file in ipairs(files) do
-        local chunk
-        if setfenv then
-            chunk = assert(loadfile(file))
-            setfenv(chunk, environment)
-        else
-            chunk = assert(loadfile(file, "t", environment))
+        if not (options.textsOnly and file:match("Expansion%.lua$")) then
+            local chunk
+            if setfenv then
+                chunk = assert(loadfile(file))
+                setfenv(chunk, environment)
+            else
+                chunk = assert(loadfile(file, "t", environment))
+            end
+            chunk("HexerRP", addon)
         end
-        chunk("HexerRP", addon)
     end
 
     state.addon = addon
@@ -348,12 +350,30 @@ local obsoleteExpansion = {
     enUS = { "The Nether is listening. That is enough for me.", "The Nether has noticed you, %s." },
     frFR = { "Le Neant distordu ecoute. Cela me suffit.", "Le Neant distordu vous a remarque, %s." },
 }
+local textBaseline = newClient({textsOnly = true}).addon.localeData
+local function addedVariants(pool, baseline)
+    local baselineCounts = {}
+    for _, line in ipairs(baseline) do
+        baselineCounts[line] = (baselineCounts[line] or 0) + 1
+    end
+    local added = {}
+    for _, line in ipairs(pool) do
+        if baselineCounts[line] and baselineCounts[line] > 0 then
+            baselineCounts[line] = baselineCounts[line] - 1
+        else
+            added[#added + 1] = line
+        end
+    end
+    return added
+end
 for lang, legacy in pairs(obsoleteExpansion) do
     local texts = addon.localeData[lang].texts
     local present = 0
     for _, key in ipairs(coreExpansionKeys) do
         local pool = texts[key]
+        local baselinePool = textBaseline[lang].texts[key]
         check(type(pool) == "table", lang .. " has spell " .. key)
+        check(type(baselinePool) == "table", lang .. " baseline has spell " .. key)
         present = present + 1
         local hasGroup = type(pool.gruppe) == "table"
         local hasTarget = type(pool.ziel) == "table"
@@ -370,6 +390,14 @@ for lang, legacy in pairs(obsoleteExpansion) do
                 if line:sub(1, 1) == "*" then sawEmote = true else sawSpeech = true end
             end
             check(sawSpeech and sawEmote, lang .. " group includes speech and emote " .. key)
+            local added = addedVariants(pool.gruppe, baselinePool.gruppe)
+            check(#added == 2, lang .. " adds two group variants for " .. key)
+            local addedSpeech, addedEmote = false, false
+            for _, line in ipairs(added) do
+                check(not line:find("%s", 1, true), lang .. " added group variant has no target token for " .. key)
+                if line:sub(1, 1) == "*" then addedEmote = true else addedSpeech = true end
+            end
+            check(addedSpeech and addedEmote, lang .. " added group speech and emote for " .. key)
         end
         if hasTarget then
             check(#pool.ziel >= 2, lang .. " targeted variants for " .. key)
@@ -380,6 +408,14 @@ for lang, legacy in pairs(obsoleteExpansion) do
                 if line:sub(1, 1) == "*" then emote = true end
             end
             check(named >= 1 and emote, lang .. " named target speech/emote for " .. key)
+            local added = addedVariants(pool.ziel, baselinePool.ziel)
+            check(#added == 2, lang .. " adds two target variants for " .. key)
+            local addedSpeech, addedEmote = false, false
+            for _, line in ipairs(added) do
+                check(line:find("%s", 1, true), lang .. " added target variant names its target for " .. key)
+                if line:sub(1, 1) == "*" then addedEmote = true else addedSpeech = true end
+            end
+            check(addedSpeech and addedEmote, lang .. " added target speech and emote for " .. key)
         end
     end
     check(present == 27, lang .. " all core spells inspected")
