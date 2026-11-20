@@ -22,6 +22,42 @@ Beispiel: `/wrp INCINERATE`, `/wrp WRACK`,
 Befehl mit dem separaten RP-Befehl kombinieren, erkennt dabei aber
 keinen erfolgreichen Cast.
 
+## MusicRP: optionale musikalische Inspiration (erster Prototyp)
+
+MusicRP ergänzt HexerRP um **12 eigens geschriebene Songmotiv-Pools** in
+Deutsch, Englisch und Französisch. Die Quellen dienen ausschließlich als
+Ideen- und Themenreferenzen; **keine Liedtexte werden übernommen oder im
+öffentlichen Chat als Zitate ausgegeben**. Beispiele sind *Coma* und
+*November Rain* (Guns N' Roses), *Time* (Pink Floyd), *Forever Young*
+(Alphaville), *Sweet Dreams* (Eurythmics), *Fuel* (Metallica), *Paranoid*
+(Black Sabbath) sowie Rammstein, Pantera und Knorkator.
+
+MusicRP ist **standardmäßig aus** und wird pro Charakter gesteuert:
+
+```text
+/wrp music status
+/wrp music on
+/wrp music chance 15
+/wrp music off
+```
+
+Die Wahrscheinlichkeit wird pro spielerausgelöstem Textversuch geprüft,
+**nach** gültigen persönlichen Texten und **vor** den normalen
+Rassen-/Allgemein-Pools. Bei nicht ausgewählten oder nicht passenden
+MusicRP-Texten gilt unverändert der bisherige Text-Fallback. Zum Beispiel
+ist die humorvolle Wichtel-Variante zunächst nur für Gnome hinterlegt.
+Das normale `/wrp chance`, der Cooldown und die Chat-Sicherheitsprüfung
+bleiben wirksam. Die tatsächliche MusicRP-Ausgaberate ist daher nicht
+identisch mit `music chance`. Emote-Einträge mit Sternchen werden durch
+den vorhandenen Chat-Handler als `/me` ausgegeben. Zielnamen werden nur
+bei passenden Fähigkeiten verwendet.
+
+Metadaten zu Band, Song und Motiv stehen in `music/MusicRP.lua` und sind
+**nur Referenzen**, keine Werbung oder automatischen Chat-Anhängsel.
+Der Prototyp betrifft ausschließlich **HexerRP**. Eine spätere Einbindung
+in RPTextStudio, RPControlCenter und weitere Klassen-AddOns ist noch nicht
+umgesetzt.
+
 ## Beschreibung
 
 Eigenständiges Rollenspiel-Addon für Hexenmeister. Es stellt zufällige
@@ -77,6 +113,7 @@ möglich.
 | `/wrp cooldown <0-3600>` | Cooldown in Sekunden als ganze Zahl setzen |
 | `/wrp channel <kanal>` | Sprachkanal setzen |
 | `/wrp language <deDE\|enUS\|frFR>` | RP-Ausgabesprache setzen |
+| `/wrp music on\|off\|status\|chance 0-100` | Optionale MusicRP-Texte konfigurieren |
 | `/wrp ambient on\|off` | Ambient-RP ein- oder ausschalten |
 | `/wrp ambient test [murmur\|disturbed\|outburst\|demonic]` | Ambient-Text sofort testen |
 | `/wrp ambient chance <0-100>` | Ambient-Auslösewahrscheinlichkeit setzen |
