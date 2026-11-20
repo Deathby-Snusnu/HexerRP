@@ -6,8 +6,7 @@
 
 local _, addon = ...
 
--- Individually authored additions for the core warlock actions. Other actions
--- retain the legacy expansion until they receive their own editorial pass.
+-- Individually authored additions for all 27 core warlock abilities.
 local specific = {
     SHADOW_BOLT = { gruppe = { "Les ombres ignorent les chemins droits. Pas mon trait.", "*comprime une fumée noire en une sphère frémissante.*" }, ziel = { "%s, j'ai gardé un morceau de nuit pour vous.", "*libère un trait obscur qui file vers %s.*" } },
     IMMOLATE = { gruppe = { "Une étincelle suffit. Les flammes feront le reste.", "*frotte le pouce et l'index jusqu'à faire naître une braise verte.*" }, ziel = { "%s, j'espère que vous aimez la chaleur.", "*projette une braise verte vers %s.*" } },
@@ -25,12 +24,18 @@ local specific = {
     DEMON_ARMOR = { gruppe = { "On dit que j'ai la peau dure. Désormais, elle est enchantée.", "*pose des ombres écailleuses sur ses épaules telle une seconde peau.*" } },
     FEL_ARMOR = { gruppe = { "Cette armure ne brille pas. Elle vous sourit de travers.", "*trace des sceaux verts et brûlants sur sa robe.*" } },
     SOUL_LINK = { gruppe = { "Ce qui frappe mon démon n'est plus son seul fardeau.", "*tend un fil obscur entre son cœur et son compagnon.*" } },
+    SOUL_FIRE = { gruppe = { "Une âme brûle difficilement. Je suis patient.", "*serre une flamme palpitante entre ses mains.*" }, ziel = { "%s, cette flamme vient des ombres profondes.", "*projette une flamme d'âme éclatante sur %s.*" } },
+    HEALTHSTONE = { gruppe = { "Un peu de vie, enfermée dans une pierre.", "*réchauffe une pierre verdoyante entre ses paumes.*" }, ziel = { "%s, prenez cette pierre. La facture suivra.", "*tend à %s une pierre de soins lumineuse.*" } },
+    SOULSTONE = { gruppe = { "Au cas où la mort refuserait de négocier.", "*enferme une faible lueur d'âme dans un cristal.*" }, ziel = { "%s, gardez-la. Elle connaît le chemin du retour.", "*dépose une pierre d'âme palpitante dans la main de %s.*" } },
+    DARK_PACT = { gruppe = { "Mon démon est généreux. J'en ai décidé ainsi.", "*attire un mince flot de puissance démoniaque.*" } },
+    SUMMON_VOIDWALKER = { gruppe = { "Une ombre capable d'intimider une porte.", "*trace un vaste cercle d'où monte une fumée glacée.*" } },
+    SUMMON_SUCCUBUS = { gruppe = { "Charme, griffes et mauvais conseils. Merveilleux.", "*trace un élégant sceau de feu violet.*" } },
+    SUMMON_FELHUNTER = { gruppe = { "Enfin quelqu'un qui maltraite encore plus la magie.", "*attire une silhouette reniflante avec une rune sifflante.*" } },
+    SUMMON_INFERNAL = { gruppe = { "Si le ciel tombe, c'est moi qui l'ai invoqué.", "*lève les bras tandis que des runes brûlantes s'élèvent.*" } },
+    RITUAL_SUMMONING = { gruppe = { "Trois mains, un cercle. Espérons que tout arrive entier.", "*vérifie deux fois chaque trait du cercle d'invocation.*" } },
+    UNENDING_BREATH = { gruppe = { "Respirer est une habitude. J'ai mieux en magie.", "*souffle une bulle dans un sceau pâle et lumineux.*" } },
+    DETECT_INVISIBILITY = { gruppe = { "Invisible ne veut pas dire inaperçu.", "*passe deux doigts devant ses yeux illuminés de violet.*" } },
 }
-
-local groupSpeech = "Le Neant distordu ecoute. Cela me suffit."
-local groupEmote = "*laisse une energie sombre s enrouler un instant entre deux doigts.*"
-local targetSpeech = "Le Neant distordu vous a remarque, %s."
-local targetEmote = "*trace de deux doigts un signe sombre en direction de %s.*"
 
 local function appendUnique(list, value)
     if type(list) ~= "table" then return end
@@ -40,25 +45,17 @@ local function appendUnique(list, value)
     list[#list + 1] = value
 end
 
+-- Preserve the existing target/group pool shapes. Some spells are targeted
+-- only, and other spells do not have a target pool at all.
 for key, node in pairs(addon.localeData.frFR.texts) do
     local authored = specific[key]
     if authored then
         for _, kind in ipairs({"gruppe", "ziel"}) do
             if type(node[kind]) == "table" and type(authored[kind]) == "table" then
-                for _, value in ipairs(authored[kind]) do appendUnique(node[kind], value) end
+                for _, value in ipairs(authored[kind]) do
+                    appendUnique(node[kind], value)
+                end
             end
-        end
-    else
-        -- Legacy, still deduplicated additions for actions not yet rewritten.
-        if type(node.gruppe) == "table" then
-            appendUnique(node.gruppe, groupSpeech)
-            appendUnique(node.gruppe, groupEmote)
-            appendUnique(node.gruppe, "*faconne " .. node.name .. " avec une energie sombre et concentree.*")
-        end
-        if type(node.ziel) == "table" then
-            appendUnique(node.ziel, targetSpeech)
-            appendUnique(node.ziel, targetEmote)
-            appendUnique(node.ziel, "*dirige " .. node.name .. " vers %s d un geste bref.*")
         end
     end
 end

@@ -106,14 +106,16 @@ local function newClient(options)
 
     local addon = {}
     for _, file in ipairs(files) do
-        local chunk
-        if setfenv then
-            chunk = assert(loadfile(file))
-            setfenv(chunk, environment)
-        else
-            chunk = assert(loadfile(file, "t", environment))
+        if not (options.textsOnly and file:match("Expansion%.lua$")) then
+            local chunk
+            if setfenv then
+                chunk = assert(loadfile(file))
+                setfenv(chunk, environment)
+            else
+                chunk = assert(loadfile(file, "t", environment))
+            end
+            chunk("HexerRP", addon)
         end
-        chunk("HexerRP", addon)
     end
 
     state.addon = addon
@@ -323,39 +325,100 @@ check(racialOnly.addon.BuildText("SHADOW_BOLT") == nil and racialRolls == 1,
     "racial text chance is rolled once across repeated fallback stages")
 
 
--- Core expansions must not inject shared Nether boilerplate.
+-- All 27 core ability expansions are now authored rather than templated.
+-- Test both targeted-only and group-only spells without changing their shapes.
 local coreExpansionKeys = {
     "SHADOW_BOLT", "IMMOLATE", "CORRUPTION", "CURSE_WEAKNESS",
     "FEAR", "LIFE_TAP", "DRAIN_LIFE", "SUMMON_IMP",
     "CURSE_RECKLESSNESS", "OMEN_AGONY", "CURSE_AGONY", "DRAIN_SOUL",
     "LIFE_FUNNEL", "DEMON_ARMOR", "FEL_ARMOR", "SOUL_LINK",
+    "SOUL_FIRE", "HEALTHSTONE", "SOULSTONE", "DARK_PACT",
+    "SUMMON_VOIDWALKER", "SUMMON_SUCCUBUS", "SUMMON_FELHUNTER",
+    "SUMMON_INFERNAL", "RITUAL_SUMMONING", "UNENDING_BREATH",
+    "DETECT_INVISIBILITY",
+}
+local targetOnly = { SOUL_FIRE=true, SOULSTONE=true }
+local groupOnly = {
+    LIFE_TAP=true, SUMMON_IMP=true, CURSE_AGONY=true, LIFE_FUNNEL=true,
+    DEMON_ARMOR=true, FEL_ARMOR=true, SOUL_LINK=true, DARK_PACT=true,
+    SUMMON_VOIDWALKER=true, SUMMON_SUCCUBUS=true, SUMMON_FELHUNTER=true,
+    SUMMON_INFERNAL=true, RITUAL_SUMMONING=true, UNENDING_BREATH=true,
+    DETECT_INVISIBILITY=true,
 }
 local obsoleteExpansion = {
     deDE = { "Der Nether hoert zu. Das genuegt mir.", "Der Nether hat Euch bemerkt, %s." },
     enUS = { "The Nether is listening. That is enough for me.", "The Nether has noticed you, %s." },
     frFR = { "Le Neant distordu ecoute. Cela me suffit.", "Le Neant distordu vous a remarque, %s." },
 }
-for lang, legacy in pairs(obsoleteExpansion) do
-    local texts = addon.localeData[lang].texts
-    for _, key in ipairs(coreExpansionKeys) do
-        local pool = texts[key]
-        check(type(pool) == "table" and type(pool.gruppe) == "table" and #pool.gruppe >= 4,
-            lang .. " core expansion has its group text for " .. key)
-        for _, line in ipairs(pool.gruppe) do
-            check(line ~= legacy[1], lang .. " no generic group expansion for " .. key)
-        end
-        if type(pool.ziel) == "table" then
-            local named = 0
-            for _, line in ipairs(pool.ziel) do
-                check(line ~= legacy[2], lang .. " no generic target expansion for " .. key)
-                if line:find("%s", 1, true) then named = named + 1 end
-            end
-            check(named >= 1, lang .. " target templates exist for " .. key)
+local textBaseline = newClient({textsOnly = true}).addon.localeData
+local function addedVariants(pool, baseline)
+    local baselineCounts = {}
+    for _, line in ipairs(baseline) do
+        baselineCounts[line] = (baselineCounts[line] or 0) + 1
+    end
+    local added = {}
+    for _, line in ipairs(pool) do
+        if baselineCounts[line] and baselineCounts[line] > 0 then
+            baselineCounts[line] = baselineCounts[line] - 1
+        else
+            added[#added + 1] = line
         end
     end
-    local old = texts.DARK_PACT
-    check(type(old.gruppe) == "table" and #old.gruppe >= 4,
-        lang .. " non-rewritten abilities retain their original expansion")
+    return added
+end
+for lang, legacy in pairs(obsoleteExpansion) do
+    local texts = addon.localeData[lang].texts
+    local present = 0
+    for _, key in ipairs(coreExpansionKeys) do
+        local pool = texts[key]
+        local baselinePool = textBaseline[lang].texts[key]
+        check(type(pool) == "table", lang .. " has spell " .. key)
+        check(type(baselinePool) == "table", lang .. " baseline has spell " .. key)
+        present = present + 1
+        local hasGroup = type(pool.gruppe) == "table"
+        local hasTarget = type(pool.ziel) == "table"
+        local expectedGroup = not targetOnly[key]
+        if key == "HEALTHSTONE" then expectedGroup = lang == "deDE" end
+        check(hasGroup == expectedGroup, lang .. " group shape for " .. key)
+        check(hasTarget == not groupOnly[key], lang .. " target shape for " .. key)
+        if hasGroup then
+            check(#pool.gruppe >= 2, lang .. " group variants for " .. key)
+            local sawSpeech, sawEmote = false, false
+            for _, line in ipairs(pool.gruppe) do
+                check(line ~= legacy[1], lang .. " no shared group speech for " .. key)
+                check(not line:find("%s", 1, true), lang .. " group has no target token for " .. key)
+                if line:sub(1, 1) == "*" then sawEmote = true else sawSpeech = true end
+            end
+            check(sawSpeech and sawEmote, lang .. " group includes speech and emote " .. key)
+            local added = addedVariants(pool.gruppe, baselinePool.gruppe)
+            check(#added == 2, lang .. " adds two group variants for " .. key)
+            local addedSpeech, addedEmote = false, false
+            for _, line in ipairs(added) do
+                check(not line:find("%s", 1, true), lang .. " added group variant has no target token for " .. key)
+                if line:sub(1, 1) == "*" then addedEmote = true else addedSpeech = true end
+            end
+            check(addedSpeech and addedEmote, lang .. " added group speech and emote for " .. key)
+        end
+        if hasTarget then
+            check(#pool.ziel >= 2, lang .. " targeted variants for " .. key)
+            local named, emote = 0, false
+            for _, line in ipairs(pool.ziel) do
+                check(line ~= legacy[2], lang .. " no shared target speech for " .. key)
+                if line:find("%s", 1, true) then named = named + 1 end
+                if line:sub(1, 1) == "*" then emote = true end
+            end
+            check(named >= 1 and emote, lang .. " named target speech/emote for " .. key)
+            local added = addedVariants(pool.ziel, baselinePool.ziel)
+            check(#added == 2, lang .. " adds two target variants for " .. key)
+            local addedSpeech, addedEmote = false, false
+            for _, line in ipairs(added) do
+                check(line:find("%s", 1, true), lang .. " added target variant names its target for " .. key)
+                if line:sub(1, 1) == "*" then addedEmote = true else addedSpeech = true end
+            end
+            check(addedSpeech and addedEmote, lang .. " added target speech and emote for " .. key)
+        end
+    end
+    check(present == 27, lang .. " all core spells inspected")
 end
 
 print("PASS: " .. checks .. " checks")
