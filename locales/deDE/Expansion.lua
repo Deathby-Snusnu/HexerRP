@@ -25,6 +25,17 @@ local specific = {
     DEMON_ARMOR = { gruppe = { "Man sagt, ich hätte eine harte Schale. Nun ist sie verzaubert.", "*legt schuppige Schatten wie eine zweite Haut über die Schultern.*" } },
     FEL_ARMOR = { gruppe = { "Diese Rüstung glänzt nicht. Sie grinst zurück.", "*zieht grün glühende Zeichen über die eigene Robe.*" } },
     SOUL_LINK = { gruppe = { "Was meinen Dämon trifft, bleibt nicht länger nur seine Sorge.", "*zieht einen dunklen Faden zwischen Herz und Begleiter straff.*" } },
+    SOUL_FIRE = { gruppe = { "Eine Seele brennt nicht leicht. Ich bin geduldig.", "*presst eine pulsierende Flamme zwischen beide Hände.*" }, ziel = { "%s, diese Flamme stammt aus den tiefsten Schatten.", "*schleudert eine grelle Seelenflamme auf %s.*" } },
+    HEALTHSTONE = { gruppe = { "Ein bisschen Leben, sorgsam in Stein verpackt.", "*wärmt einen grün schimmernden Stein in den Händen.*" }, ziel = { "%s, nehmt diesen Stein. Die Rechnung folgt.", "*reicht %s einen warm glimmenden Gesundheitsstein.*" } },
+    SOULSTONE = { gruppe = { "Für den Fall, dass der Tod nicht verhandeln will.", "*schließt ein schwaches Seelenlicht in einen Kristall.*" }, ziel = { "%s, bewahrt ihn gut auf. Er kennt den Rückweg.", "*legt %s einen pulsierenden Seelenstein in die Hand.*" } },
+    DARK_PACT = { gruppe = { "Mein Dämon ist großzügig. Ich habe es beschlossen.", "*zieht einen schmalen Strom dämonischer Macht heran.*" } },
+    SUMMON_VOIDWALKER = { gruppe = { "Ein Schatten, der sogar Türen einschüchtert.", "*zeichnet einen schweren Kreis, aus dem kalter Rauch quillt.*" } },
+    SUMMON_SUCCUBUS = { gruppe = { "Charme, Klauen und schlechte Ratschläge. Wunderbar.", "*zeichnet ein elegantes Siegel aus violettem Feuer.*" } },
+    SUMMON_FELHUNTER = { gruppe = { "Endlich einer, der Magie noch unhöflicher behandelt.", "*lockt mit einer pfeifenden Rune eine schnüffelnde Gestalt hervor.*" } },
+    SUMMON_INFERNAL = { gruppe = { "Wenn der Himmel fällt, habe ich ihn selbst gerufen.", "*reißt die Arme hoch, während glühende Runen aufsteigen.*" } },
+    RITUAL_SUMMONING = { gruppe = { "Drei Hände, ein Kreis. Hoffentlich alle Gliedmaßen am Ziel.", "*prüft jeden Strich des Beschwörungskreises zweimal.*" } },
+    UNENDING_BREATH = { gruppe = { "Atmen ist Gewohnheit. Ich habe bessere Zauber.", "*haucht eine Blase in ein blass schimmerndes Siegel.*" } },
+    DETECT_INVISIBILITY = { gruppe = { "Unsichtbar heißt nicht unbeobachtet.", "*streicht zwei Finger vor die violett leuchtenden Augen.*" } },
 }
 
 local groupSpeech = "Der Nether hoert zu. Das genuegt mir."
