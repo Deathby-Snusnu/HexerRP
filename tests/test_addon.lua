@@ -421,4 +421,72 @@ for lang, legacy in pairs(obsoleteExpansion) do
     check(present == 27, lang .. " all core spells inspected")
 end
 
+-- MusicRP is opt-in and must preserve the ordinary spell and chat pipeline.
+local musicClient = newClient({target="Training Dummy", hostile=true})
+local music = musicClient.addon
+check(not music.db.musicEnabled and music.db.musicChance == 15, "MusicRP disabled by default")
+check(type(music.musicRPReferences) == "table", "music references are loaded")
+local musicCount = 0
+for key in pairs(music.musicRPReferences) do musicCount = musicCount + 1 end
+check(musicCount == 12, "12 original music-inspired references")
+for _, lang in ipairs({"deDE","enUS","frFR"}) do
+    check(music.SetOutputLanguage(lang), "music language " .. lang .. " available")
+    for key, ref in pairs(music.musicRPReferences) do
+        local node = music.musicRP[lang][key]
+        check(type(ref.song) == "string" and type(ref.artist) == "string", "reference metadata " .. key)
+        check(type(node) == "table" and type(node.gruppe) == "table", lang .. " music pool " .. key)
+        for _, kind in ipairs({"gruppe", "ziel"}) do
+            if type(node[kind]) == "table" then
+                check(#node[kind] == 2, lang .. " speech and emote " .. key .. kind)
+                check(node[kind][1]:sub(1,1) ~= "*", lang .. " music speech " .. key)
+                check(node[kind][2]:sub(1,1) == "*" and node[kind][2]:sub(-1) == "*",
+                    lang .. " music emote " .. key)
+                for _, line in ipairs(node[kind]) do
+                    check(#line <= 255 and not line:find("|", 1, true), lang .. " chat-safe music line " .. key)
+                    if kind == "gruppe" then
+                        check(not line:find("%s", 1, true), lang .. " group line has no target token " .. key)
+                    else
+                        check(line:find("%s", 1, true), lang .. " targeted line includes name " .. key)
+                    end
+                end
+            end
+        end
+    end
+end
+music.SetOutputLanguage("deDE")
+check(music.ChooseMusicText("LIFE_TAP", nil, nil, "Human") == nil,
+    "music output unavailable while switched off")
+musicClient.command("music on")
+check(music.db.musicEnabled, "music enabled via slash command")
+musicClient.command("music chance 100")
+check(music.db.musicChance == 100, "music chance command applies")
+check(music.ChooseMusicText("LIFE_TAP", nil, nil, "Human") ==
+    music.musicRP.deDE.LIFE_TAP.gruppe[1], "enabled music selects original theme")
+check(music.ChooseMusicText("SUMMON_IMP", nil, nil, "Human") == nil,
+    "gnome-only humorous music text is race guarded")
+check(music.ChooseMusicText("SUMMON_IMP", nil, nil, "Gnome") ~= nil,
+    "gnome music text is available to gnomes")
+local targetMusic = music.ChooseMusicText("IMMOLATE", "Training Dummy", nil, "Human")
+check(targetMusic:find("Training Dummy", 1, true), "music target interpolated safely")
+musicClient.command("music chance 0")
+check(music.ChooseMusicText("LIFE_TAP", nil, nil, "Human") == nil,
+    "zero chance prevents music output")
+musicClient.command("music chance 101")
+check(music.db.musicChance == 0, "out of range music chance rejected")
+musicClient.command("music off")
+check(not music.db.musicEnabled, "music switch disables output")
+local musicPersonal = newClient({db = {musicEnabled=true, musicChance=100,
+    personalTexts={LIFE_TAP={"A personal blood pact."}}}})
+check(musicPersonal.addon.BuildText("LIFE_TAP") == "A personal blood pact.",
+    "personal texts outrank MusicRP")
+local musicRepair = newClient({db={musicEnabled="yes",musicChance=999}})
+check(not musicRepair.addon.db.musicEnabled and musicRepair.addon.db.musicChance == 15,
+    "invalid persisted music settings restored")
+local musicSend = newClient({db={musicEnabled=true,musicChance=100,textChance=100,cooldown=0}})
+check(musicSend.addon.TryText("LIFE_TAP"), "music uses normal TryText dispatch")
+check(musicSend.messages[#musicSend.messages].channel == "SAY", "music speech uses SAY channel")
+check(musicSend.addon.SendText(musicSend.addon.musicRP.deDE.LIFE_TAP.gruppe[2]),
+    "music emote can be sent")
+check(musicSend.messages[#musicSend.messages].channel == "EMOTE", "music emote uses EMOTE channel")
+
 print("PASS: " .. checks .. " checks")

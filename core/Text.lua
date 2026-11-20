@@ -129,6 +129,11 @@ function addon.BuildText(key)
         if text then return text end
     end
     local race = addon.GetPlayerRaceToken and addon.GetPlayerRaceToken() or select(2, UnitRace("player"))
+    -- MusicRP is optional and never supersedes valid personal text pools.
+    if addon.ChooseMusicText then
+        local musicText = addon.ChooseMusicText(key, targetName, demonName, race)
+        if musicText then return musicText end
+    end
     -- UnitRace returns Scourge for Forsaken/Undead on classic clients.
     -- Racial texts override only their defined spells; every missing or
     -- currently unusable pool falls back to the general warlock texts.
