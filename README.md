@@ -24,7 +24,7 @@ keinen erfolgreichen Cast.
 
 ## MusicRP: optionale musikalische Inspiration (erster Prototyp)
 
-MusicRP ergänzt HexerRP um **12 eigens geschriebene Songmotiv-Pools** in
+MusicRP ergänzt HexerRP um **12 Basispools und 20 weitere eigens geschriebene Songmotiv-Varianten** in
 Deutsch, Englisch und Französisch. Die Quellen dienen ausschließlich als
 Ideen- und Themenreferenzen; **keine Liedtexte werden übernommen oder im
 öffentlichen Chat als Zitate ausgegeben**. Beispiele sind *Coma* und
@@ -41,7 +41,7 @@ MusicRP ist **standardmäßig aus** und wird pro Charakter gesteuert:
 /wrp music off
 ```
 
-Die Wahrscheinlichkeit wird pro spielerausgelöstem Textversuch geprüft,
+Mehrere Songmotive einer Fähigkeit werden zufällig durchlaufen; falls ein Pool für den aktuellen Zielkontext unbrauchbar ist, wird die nächste Variante geprüft. Jede Variante hat ein eigenständiges /say- und /me-Paar in drei Sprachen.\n\nDie Wahrscheinlichkeit wird pro spielerausgelöstem Textversuch geprüft,
 **nach** gültigen persönlichen Texten und **vor** den normalen
 Rassen-/Allgemein-Pools. Bei nicht ausgewählten oder nicht passenden
 MusicRP-Texten gilt unverändert der bisherige Text-Fallback. Zum Beispiel

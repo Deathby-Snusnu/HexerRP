@@ -489,4 +489,74 @@ check(musicSend.addon.SendText(musicSend.addon.musicRP.deDE.LIFE_TAP.gruppe[2]),
     "music emote can be sent")
 check(musicSend.messages[#musicSend.messages].channel == "EMOTE", "music emote uses EMOTE channel")
 
+-- Second-wave song motifs extend the opt-in catalogue without copying lyrics.
+local bonusClient = newClient({db={musicEnabled=true,musicChance=100,textChance=100,cooldown=0}})
+local bonus = bonusClient.addon
+local bonusCount = 0
+for id, reference in pairs(bonus.musicRPBonusReferences) do
+    bonusCount = bonusCount + 1
+    check(type(id)=="string" and type(reference.key)=="string" and
+        type(reference.artist)=="string" and type(reference.song)=="string",
+        "valid internal second-wave music reference")
+end
+check(bonusCount == 20, "twenty additional music motifs")
+for _, lang in ipairs({"deDE","enUS","frFR"}) do
+    bonus.SetOutputLanguage(lang)
+    local expectedCounts = {}
+    for _, reference in pairs(bonus.musicRPBonusReferences) do
+        expectedCounts[reference.key] = (expectedCounts[reference.key] or 0) + 1
+    end
+    for key, expectedCount in pairs(expectedCounts) do
+        local choices = bonus.musicRPBonus[lang][key]
+        check(type(choices)=="table" and #choices==expectedCount,
+            lang.." has all bonus motifs for "..key)
+    end
+    for key, choices in pairs(bonus.musicRPBonus[lang]) do
+        check(type(choices)=="table" and #choices>=1, lang.." has bonus choices "..key)
+        for _, lines in ipairs(choices) do
+            check(#lines == 2 and lines[1]:sub(1,1)~="*" and
+                lines[2]:sub(1,1)=="*" and lines[2]:sub(-1)=="*",
+                lang.." bonus speech and emote for "..key)
+            for _, line in ipairs(lines) do
+                check(#line<=255 and not line:find("|",1,true) and
+                    not line:find("%s",1,true),lang.." safe non-target bonus for "..key)
+            end
+        end
+    end
+    local newOnly = bonus.ChooseMusicText("CORRUPTION",nil,nil,"Human")
+    check(type(newOnly)=="string",lang.." new bonus-only spell is selectable")
+end
+local laterBonus = newClient({
+    db={musicEnabled=true,musicChance=100,textChance=100,cooldown=0},
+    random=function(minimum, maximum)
+        if maximum then return maximum end
+        return minimum
+    end,
+})
+laterBonus.addon.SetOutputLanguage("deDE")
+local laterSoulstone = laterBonus.addon.ChooseMusicText("SOULSTONE",nil,nil,"Human")
+check(laterSoulstone == laterBonus.addon.musicRPBonus.deDE.SOULSTONE[2][2],
+    "deterministic RNG selects a later bonus on a shared action key")
+
+local fallbackBonus = newClient({
+    db={musicEnabled=true,musicChance=100,textChance=100,cooldown=0},
+    random=function(minimum, maximum)
+        if maximum==100 then return 100 end
+        if maximum==3 then return 2 end
+        if maximum==2 then return 2 end
+        return minimum
+    end,
+})
+fallbackBonus.addon.SetOutputLanguage("enUS")
+fallbackBonus.addon.musicRPBonus.enUS.IMMOLATE[1] = {
+    "This pool needs %s.",
+    "*This emote needs %p.*",
+}
+local fallbackText = fallbackBonus.addon.ChooseMusicText("IMMOLATE",nil,nil,"Human")
+check(fallbackText == fallbackBonus.addon.musicRPBonus.enUS.IMMOLATE[2][2],
+    "deterministic RNG falls back from an unusable pool")
+bonusClient.command("music off")
+check(bonus.ChooseMusicText("CORRUPTION",nil,nil,"Human")==nil,
+    "bonus motifs respect music off")
+
 print("PASS: " .. checks .. " checks")

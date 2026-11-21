@@ -55,19 +55,177 @@ addon.musicRP.deDE.SUMMON_VOIDWALKER = { gruppe = { "Selbst Schatten suchen manc
 addon.musicRP.enUS.SUMMON_VOIDWALKER = { gruppe = { "Even shadows sometimes seek shelter from the rain.", "*opens a circle that releases a quiet, cold mist.*" } }
 addon.musicRP.frFR.SUMMON_VOIDWALKER = { gruppe = { "Même les ombres cherchent parfois un abri contre la pluie.", "*ouvre un cercle d'où monte une brume froide et silencieuse.*" } }
 
+
+-- Independent second-wave music motifs: metadata remains internal.
+addon.musicRPBonus = { deDE = {}, enUS = {}, frFR = {} }
+addon.musicRPBonusReferences = {}
+addon.musicRPBonusReferences.M01 = { key = "DRAIN_SOUL", artist = "Guns N' Roses", song = "Coma" }
+addon.musicRPBonus.deDE.DRAIN_SOUL = addon.musicRPBonus.deDE.DRAIN_SOUL or {}
+addon.musicRPBonus.deDE.DRAIN_SOUL[#addon.musicRPBonus.deDE.DRAIN_SOUL+1] = { "Zwischen Atemzug und Stille verbergen sich ganze Leben.", "*horcht dem Seelenfaden im Regen nach.*" }
+addon.musicRPBonus.enUS.DRAIN_SOUL = addon.musicRPBonus.enUS.DRAIN_SOUL or {}
+addon.musicRPBonus.enUS.DRAIN_SOUL[#addon.musicRPBonus.enUS.DRAIN_SOUL+1] = { "Between breath and silence, whole lives lie hidden.", "*listens to a soul-thread in the rain.*" }
+addon.musicRPBonus.frFR.DRAIN_SOUL = addon.musicRPBonus.frFR.DRAIN_SOUL or {}
+addon.musicRPBonus.frFR.DRAIN_SOUL[#addon.musicRPBonus.frFR.DRAIN_SOUL+1] = { "Entre souffle et silence, des vies entières se cachent.", "*écoute un fil d'âme sous la pluie.*" }
+addon.musicRPBonusReferences.M02 = { key = "SUMMON_VOIDWALKER", artist = "Guns N' Roses", song = "November Rain" }
+addon.musicRPBonus.deDE.SUMMON_VOIDWALKER = addon.musicRPBonus.deDE.SUMMON_VOIDWALKER or {}
+addon.musicRPBonus.deDE.SUMMON_VOIDWALKER[#addon.musicRPBonus.deDE.SUMMON_VOIDWALKER+1] = { "Auch Schatten brauchen manchmal Schutz vor dem Regen.", "*lauscht auf den Puls im Kristall.*" }
+addon.musicRPBonus.enUS.SUMMON_VOIDWALKER = addon.musicRPBonus.enUS.SUMMON_VOIDWALKER or {}
+addon.musicRPBonus.enUS.SUMMON_VOIDWALKER[#addon.musicRPBonus.enUS.SUMMON_VOIDWALKER+1] = { "Even shadows sometimes need shelter from the rain.", "*hears a pulse inside the crystal.*" }
+addon.musicRPBonus.frFR.SUMMON_VOIDWALKER = addon.musicRPBonus.frFR.SUMMON_VOIDWALKER or {}
+addon.musicRPBonus.frFR.SUMMON_VOIDWALKER[#addon.musicRPBonus.frFR.SUMMON_VOIDWALKER+1] = { "Même les ombres ont parfois besoin d'un abri contre la pluie.", "*entend le pouls d'un cristal.*" }
+addon.musicRPBonusReferences.M03 = { key = "LIFE_TAP", artist = "Pink Floyd", song = "Time" }
+addon.musicRPBonus.deDE.LIFE_TAP = addon.musicRPBonus.deDE.LIFE_TAP or {}
+addon.musicRPBonus.deDE.LIFE_TAP[#addon.musicRPBonus.deDE.LIFE_TAP+1] = { "Die Zeit fordert einen Preis. Heute zahle ich in Blut.", "*zählt die Schläge des eigenen Herzens.*" }
+addon.musicRPBonus.enUS.LIFE_TAP = addon.musicRPBonus.enUS.LIFE_TAP or {}
+addon.musicRPBonus.enUS.LIFE_TAP[#addon.musicRPBonus.enUS.LIFE_TAP+1] = { "Time demands a price. Today I pay in blood.", "*counts the beats of a heart.*" }
+addon.musicRPBonus.frFR.LIFE_TAP = addon.musicRPBonus.frFR.LIFE_TAP or {}
+addon.musicRPBonus.frFR.LIFE_TAP[#addon.musicRPBonus.frFR.LIFE_TAP+1] = { "Le temps a un prix. Aujourd'hui je paie en sang.", "*compte les battements du cœur.*" }
+addon.musicRPBonusReferences.M04 = { key = "SOULSTONE", artist = "Alphaville", song = "Forever Young" }
+addon.musicRPBonus.deDE.SOULSTONE = addon.musicRPBonus.deDE.SOULSTONE or {}
+addon.musicRPBonus.deDE.SOULSTONE[#addon.musicRPBonus.deDE.SOULSTONE+1] = { "Für immer jung? Ich wäre mit einem weiteren Morgen zufrieden.", "*dreht einen eisernen Lebensfunken.*" }
+addon.musicRPBonus.enUS.SOULSTONE = addon.musicRPBonus.enUS.SOULSTONE or {}
+addon.musicRPBonus.enUS.SOULSTONE[#addon.musicRPBonus.enUS.SOULSTONE+1] = { "Forever young? One more morning would be enough.", "*turns a spark of iron-like life.*" }
+addon.musicRPBonus.frFR.SOULSTONE = addon.musicRPBonus.frFR.SOULSTONE or {}
+addon.musicRPBonus.frFR.SOULSTONE[#addon.musicRPBonus.frFR.SOULSTONE+1] = { "Jeune à jamais ? Un matin de plus me suffirait.", "*tourne une étincelle de vie ferrée.*" }
+addon.musicRPBonusReferences.M05 = { key = "SOUL_LINK", artist = "Eurythmics", song = "Sweet Dreams (Are Made of This)" }
+addon.musicRPBonus.deDE.SOUL_LINK = addon.musicRPBonus.deDE.SOUL_LINK or {}
+addon.musicRPBonus.deDE.SOUL_LINK[#addon.musicRPBonus.deDE.SOUL_LINK+1] = { "Jeder sucht nach etwas. Mein Dämon nach dem Ausgang.", "*lauscht dem eigenen Schatten.*" }
+addon.musicRPBonus.enUS.SOUL_LINK = addon.musicRPBonus.enUS.SOUL_LINK or {}
+addon.musicRPBonus.enUS.SOUL_LINK[#addon.musicRPBonus.enUS.SOUL_LINK+1] = { "Everyone seeks something. My demon seeks the exit.", "*listens to a private shadow.*" }
+addon.musicRPBonus.frFR.SOUL_LINK = addon.musicRPBonus.frFR.SOUL_LINK or {}
+addon.musicRPBonus.frFR.SOUL_LINK[#addon.musicRPBonus.frFR.SOUL_LINK+1] = { "Chacun cherche quelque chose. Mon démon cherche la sortie.", "*écoute sa propre ombre.*" }
+addon.musicRPBonusReferences.M06 = { key = "IMMOLATE", artist = "Metallica", song = "Fuel" }
+addon.musicRPBonus.deDE.IMMOLATE = addon.musicRPBonus.deDE.IMMOLATE or {}
+addon.musicRPBonus.deDE.IMMOLATE[#addon.musicRPBonus.deDE.IMMOLATE+1] = { "Mehr Feuer! Mehr Macht! Und deutlich mehr Sicherheitsabstand!", "*weckt eine schlafende dunkle Rune.*" }
+addon.musicRPBonus.enUS.IMMOLATE = addon.musicRPBonus.enUS.IMMOLATE or {}
+addon.musicRPBonus.enUS.IMMOLATE[#addon.musicRPBonus.enUS.IMMOLATE+1] = { "More fire! More power! And considerably more distance!", "*wakes a dormant dark rune.*" }
+addon.musicRPBonus.frFR.IMMOLATE = addon.musicRPBonus.frFR.IMMOLATE or {}
+addon.musicRPBonus.frFR.IMMOLATE[#addon.musicRPBonus.frFR.IMMOLATE+1] = { "Plus de feu ! Plus de puissance ! Et surtout plus de recul !", "*réveille une rune sombre endormie.*" }
+addon.musicRPBonusReferences.M07 = { key = "FEAR", artist = "Black Sabbath", song = "Paranoid" }
+addon.musicRPBonus.deDE.FEAR = addon.musicRPBonus.deDE.FEAR or {}
+addon.musicRPBonus.deDE.FEAR[#addon.musicRPBonus.deDE.FEAR+1] = { "Der schlimmste Schrecken entsteht manchmal im eigenen Kopf.", "*entlässt einen schwarzen Funken.*" }
+addon.musicRPBonus.enUS.FEAR = addon.musicRPBonus.enUS.FEAR or {}
+addon.musicRPBonus.enUS.FEAR[#addon.musicRPBonus.enUS.FEAR+1] = { "Sometimes the worst terror begins inside your own head.", "*releases a black spark.*" }
+addon.musicRPBonus.frFR.FEAR = addon.musicRPBonus.frFR.FEAR or {}
+addon.musicRPBonus.frFR.FEAR[#addon.musicRPBonus.frFR.FEAR+1] = { "Parfois, la pire terreur naît dans notre propre tête.", "*libère une étincelle noire.*" }
+addon.musicRPBonusReferences.M08 = { key = "SUMMON_INFERNAL", artist = "Black Sabbath", song = "Iron Man" }
+addon.musicRPBonus.deDE.SUMMON_INFERNAL = addon.musicRPBonus.deDE.SUMMON_INFERNAL or {}
+addon.musicRPBonus.deDE.SUMMON_INFERNAL[#addon.musicRPBonus.deDE.SUMMON_INFERNAL+1] = { "Der Himmel fällt nicht von allein. Ich helfe nur etwas nach.", "*hebt eine blutrote Flamme.*" }
+addon.musicRPBonus.enUS.SUMMON_INFERNAL = addon.musicRPBonus.enUS.SUMMON_INFERNAL or {}
+addon.musicRPBonus.enUS.SUMMON_INFERNAL[#addon.musicRPBonus.enUS.SUMMON_INFERNAL+1] = { "The sky will not fall by itself. I give it a little help.", "*raises a blood-red flame.*" }
+addon.musicRPBonus.frFR.SUMMON_INFERNAL = addon.musicRPBonus.frFR.SUMMON_INFERNAL or {}
+addon.musicRPBonus.frFR.SUMMON_INFERNAL[#addon.musicRPBonus.frFR.SUMMON_INFERNAL+1] = { "Le ciel ne tombe pas tout seul. Je lui donne un coup de main.", "*soulève une flamme rouge sang.*" }
+addon.musicRPBonusReferences.M09 = { key = "SOUL_FIRE", artist = "Slayer", song = "Raining Blood" }
+addon.musicRPBonus.deDE.SOUL_FIRE = addon.musicRPBonus.deDE.SOUL_FIRE or {}
+addon.musicRPBonus.deDE.SOUL_FIRE[#addon.musicRPBonus.deDE.SOUL_FIRE+1] = { "Der Himmel färbt sich rot. Das ist selten eine gute Nachricht.", "*zeigt auf eine glühende Rune am Himmel.*" }
+addon.musicRPBonus.enUS.SOUL_FIRE = addon.musicRPBonus.enUS.SOUL_FIRE or {}
+addon.musicRPBonus.enUS.SOUL_FIRE[#addon.musicRPBonus.enUS.SOUL_FIRE+1] = { "The sky turns red. That is seldom good news.", "*points at a burning rune above.*" }
+addon.musicRPBonus.frFR.SOUL_FIRE = addon.musicRPBonus.frFR.SOUL_FIRE or {}
+addon.musicRPBonus.frFR.SOUL_FIRE[#addon.musicRPBonus.frFR.SOUL_FIRE+1] = { "Le ciel devient rouge. C'est rarement bon signe.", "*montre une rune brûlante dans le ciel.*" }
+addon.musicRPBonusReferences.M10 = { key = "DARK_PACT", artist = "Pantera", song = "Domination" }
+addon.musicRPBonus.deDE.DARK_PACT = addon.musicRPBonus.deDE.DARK_PACT or {}
+addon.musicRPBonus.deDE.DARK_PACT[#addon.musicRPBonus.deDE.DARK_PACT+1] = { "Mein Dämon nennt es Unterdrückung. Ich nenne es Arbeitsteilung.", "*zieht die Dämonenfessel straff.*" }
+addon.musicRPBonus.enUS.DARK_PACT = addon.musicRPBonus.enUS.DARK_PACT or {}
+addon.musicRPBonus.enUS.DARK_PACT[#addon.musicRPBonus.enUS.DARK_PACT+1] = { "My demon calls it oppression. I call it division of labor.", "*tightens the demon's tether.*" }
+addon.musicRPBonus.frFR.DARK_PACT = addon.musicRPBonus.frFR.DARK_PACT or {}
+addon.musicRPBonus.frFR.DARK_PACT[#addon.musicRPBonus.frFR.DARK_PACT+1] = { "Mon démon parle d'oppression. Moi, de partage des tâches.", "*resserre le lien du démon.*" }
+addon.musicRPBonusReferences.M11 = { key = "SUMMON_IMP", artist = "Die Ärzte", song = "Junge" }
+addon.musicRPBonus.deDE.SUMMON_IMP = addon.musicRPBonus.deDE.SUMMON_IMP or {}
+addon.musicRPBonus.deDE.SUMMON_IMP[#addon.musicRPBonus.deDE.SUMMON_IMP+1] = { "Was soll aus dir werden? fragte ich den Wichtel. Er lachte.", "*zieht einen Schattenfaden aus dem Boden.*" }
+addon.musicRPBonus.enUS.SUMMON_IMP = addon.musicRPBonus.enUS.SUMMON_IMP or {}
+addon.musicRPBonus.enUS.SUMMON_IMP[#addon.musicRPBonus.enUS.SUMMON_IMP+1] = { "What will become of you? I asked the imp. It laughed.", "*draws a shadow-thread from the earth.*" }
+addon.musicRPBonus.frFR.SUMMON_IMP = addon.musicRPBonus.frFR.SUMMON_IMP or {}
+addon.musicRPBonus.frFR.SUMMON_IMP[#addon.musicRPBonus.frFR.SUMMON_IMP+1] = { "Que vas-tu devenir ? ai-je demandé au diablotin. Il a ri.", "*tire un fil d'ombre du sol.*" }
+addon.musicRPBonusReferences.M12 = { key = "SUMMON_SUCCUBUS", artist = "Knorkator", song = "Wir werden alle sterben" }
+addon.musicRPBonus.deDE.SUMMON_SUCCUBUS = addon.musicRPBonus.deDE.SUMMON_SUCCUBUS or {}
+addon.musicRPBonus.deDE.SUMMON_SUCCUBUS[#addon.musicRPBonus.deDE.SUMMON_SUCCUBUS+1] = { "Irgendwann endet alles. Diese Besprechung hoffentlich zuerst.", "*steht fest neben der Sukkubus.*" }
+addon.musicRPBonus.enUS.SUMMON_SUCCUBUS = addon.musicRPBonus.enUS.SUMMON_SUCCUBUS or {}
+addon.musicRPBonus.enUS.SUMMON_SUCCUBUS[#addon.musicRPBonus.enUS.SUMMON_SUCCUBUS+1] = { "Everything ends. Hopefully this meeting goes first.", "*stands firm beside the succubus.*" }
+addon.musicRPBonus.frFR.SUMMON_SUCCUBUS = addon.musicRPBonus.frFR.SUMMON_SUCCUBUS or {}
+addon.musicRPBonus.frFR.SUMMON_SUCCUBUS[#addon.musicRPBonus.frFR.SUMMON_SUCCUBUS+1] = { "Tout finit un jour. Espérons que cette réunion finisse d'abord.", "*se tient près de la succube.*" }
+addon.musicRPBonusReferences.M13 = { key = "CORRUPTION", artist = "Metallica", song = "Until It Sleeps" }
+addon.musicRPBonus.deDE.CORRUPTION = addon.musicRPBonus.deDE.CORRUPTION or {}
+addon.musicRPBonus.deDE.CORRUPTION[#addon.musicRPBonus.deDE.CORRUPTION+1] = { "Manche Schatten schlafen nur, bis jemand sie weckt.", "*untersucht die Fährte seines Dämonen.*" }
+addon.musicRPBonus.enUS.CORRUPTION = addon.musicRPBonus.enUS.CORRUPTION or {}
+addon.musicRPBonus.enUS.CORRUPTION[#addon.musicRPBonus.enUS.CORRUPTION+1] = { "Some shadows sleep only until someone wakes them.", "*studies a demon's trail.*" }
+addon.musicRPBonus.frFR.CORRUPTION = addon.musicRPBonus.frFR.CORRUPTION or {}
+addon.musicRPBonus.frFR.CORRUPTION[#addon.musicRPBonus.frFR.CORRUPTION+1] = { "Certaines ombres dorment jusqu'à ce qu'on les réveille.", "*examine la trace d'un démon.*" }
+addon.musicRPBonusReferences.M14 = { key = "DRAIN_LIFE", artist = "Pink Floyd", song = "Comfortably Numb" }
+addon.musicRPBonus.deDE.DRAIN_LIFE = addon.musicRPBonus.deDE.DRAIN_LIFE or {}
+addon.musicRPBonus.deDE.DRAIN_LIFE[#addon.musicRPBonus.deDE.DRAIN_LIFE+1] = { "Der Schmerz verstummt. Das macht den Verlust nicht kleiner.", "*prüft seine Schutzrunen.*" }
+addon.musicRPBonus.enUS.DRAIN_LIFE = addon.musicRPBonus.enUS.DRAIN_LIFE or {}
+addon.musicRPBonus.enUS.DRAIN_LIFE[#addon.musicRPBonus.enUS.DRAIN_LIFE+1] = { "The pain grows quiet. It does not make the loss smaller.", "*checks protective runes.*" }
+addon.musicRPBonus.frFR.DRAIN_LIFE = addon.musicRPBonus.frFR.DRAIN_LIFE or {}
+addon.musicRPBonus.frFR.DRAIN_LIFE[#addon.musicRPBonus.frFR.DRAIN_LIFE+1] = { "La douleur se tait. Cela ne réduit pas la perte.", "*vérifie ses runes de protection.*" }
+addon.musicRPBonusReferences.M15 = { key = "HEALTHSTONE", artist = "Erasure", song = "A Little Respect" }
+addon.musicRPBonus.deDE.HEALTHSTONE = addon.musicRPBonus.deDE.HEALTHSTONE or {}
+addon.musicRPBonus.deDE.HEALTHSTONE[#addon.musicRPBonus.deDE.HEALTHSTONE+1] = { "Ein wenig Rücksicht heilt manchmal mehr als große Worte.", "*poliert einen warmen Heilstein.*" }
+addon.musicRPBonus.enUS.HEALTHSTONE = addon.musicRPBonus.enUS.HEALTHSTONE or {}
+addon.musicRPBonus.enUS.HEALTHSTONE[#addon.musicRPBonus.enUS.HEALTHSTONE+1] = { "A little kindness heals more than grand speeches.", "*polishes a warm healing stone.*" }
+addon.musicRPBonus.frFR.HEALTHSTONE = addon.musicRPBonus.frFR.HEALTHSTONE or {}
+addon.musicRPBonus.frFR.HEALTHSTONE[#addon.musicRPBonus.frFR.HEALTHSTONE+1] = { "Un peu d'égards soigne mieux que de grands discours.", "*polit une pierre de soins tiède.*" }
+addon.musicRPBonusReferences.M16 = { key = "UNENDING_BREATH", artist = "U2", song = "One" }
+addon.musicRPBonus.deDE.UNENDING_BREATH = addon.musicRPBonus.deDE.UNENDING_BREATH or {}
+addon.musicRPBonus.deDE.UNENDING_BREATH[#addon.musicRPBonus.deDE.UNENDING_BREATH+1] = { "Ein Atemzug für alle. Auch für die, die ihn nicht schätzen.", "*lauscht seinem protestierenden Dämon.*" }
+addon.musicRPBonus.enUS.UNENDING_BREATH = addon.musicRPBonus.enUS.UNENDING_BREATH or {}
+addon.musicRPBonus.enUS.UNENDING_BREATH[#addon.musicRPBonus.enUS.UNENDING_BREATH+1] = { "One breath for all. Even those who fail to value it.", "*listens to the demon's complaints.*" }
+addon.musicRPBonus.frFR.UNENDING_BREATH = addon.musicRPBonus.frFR.UNENDING_BREATH or {}
+addon.musicRPBonus.frFR.UNENDING_BREATH[#addon.musicRPBonus.frFR.UNENDING_BREATH+1] = { "Un souffle pour tous, même ceux qui ne l'apprécient pas.", "*écoute les plaintes de son démon.*" }
+addon.musicRPBonusReferences.M17 = { key = "SOULSTONE", artist = "Annie Lennox", song = "Why" }
+addon.musicRPBonus.deDE.SOULSTONE = addon.musicRPBonus.deDE.SOULSTONE or {}
+addon.musicRPBonus.deDE.SOULSTONE[#addon.musicRPBonus.deDE.SOULSTONE+1] = { "Manche Fragen bleiben auch nach dem Tod offen.", "*hält eine Luftblase in der Hand.*" }
+addon.musicRPBonus.enUS.SOULSTONE = addon.musicRPBonus.enUS.SOULSTONE or {}
+addon.musicRPBonus.enUS.SOULSTONE[#addon.musicRPBonus.enUS.SOULSTONE+1] = { "Some questions remain unanswered even after death.", "*holds a bubble of air.*" }
+addon.musicRPBonus.frFR.SOULSTONE = addon.musicRPBonus.frFR.SOULSTONE or {}
+addon.musicRPBonus.frFR.SOULSTONE[#addon.musicRPBonus.frFR.SOULSTONE+1] = { "Certaines questions restent ouvertes après la mort.", "*retient une bulle d'air.*" }
+addon.musicRPBonusReferences.M18 = { key = "SUMMON_FELHUNTER", artist = "Amon Amarth", song = "The Pursuit of Vikings" }
+addon.musicRPBonus.deDE.SUMMON_FELHUNTER = addon.musicRPBonus.deDE.SUMMON_FELHUNTER or {}
+addon.musicRPBonus.deDE.SUMMON_FELHUNTER[#addon.musicRPBonus.deDE.SUMMON_FELHUNTER+1] = { "Die Jagd endet nicht, nur weil die Spur ungewöhnlich riecht.", "*dreht einen trüben Kristall im Licht.*" }
+addon.musicRPBonus.enUS.SUMMON_FELHUNTER = addon.musicRPBonus.enUS.SUMMON_FELHUNTER or {}
+addon.musicRPBonus.enUS.SUMMON_FELHUNTER[#addon.musicRPBonus.enUS.SUMMON_FELHUNTER+1] = { "The hunt does not end because the trail smells strange.", "*turns a clouded crystal in the light.*" }
+addon.musicRPBonus.frFR.SUMMON_FELHUNTER = addon.musicRPBonus.frFR.SUMMON_FELHUNTER or {}
+addon.musicRPBonus.frFR.SUMMON_FELHUNTER[#addon.musicRPBonus.frFR.SUMMON_FELHUNTER+1] = { "La chasse ne cesse pas parce que la piste sent bizarre.", "*tourne un cristal trouble dans la lumière.*" }
+addon.musicRPBonusReferences.M19 = { key = "FEL_ARMOR", artist = "Sepultura", song = "Refuse/Resist" }
+addon.musicRPBonus.deDE.FEL_ARMOR = addon.musicRPBonus.deDE.FEL_ARMOR or {}
+addon.musicRPBonus.deDE.FEL_ARMOR[#addon.musicRPBonus.deDE.FEL_ARMOR+1] = { "Meine Rüstung ist kein Schmuck. Sie ist ein Widerspruch.", "*zeichnet einen Hausarrestkreis.*" }
+addon.musicRPBonus.enUS.FEL_ARMOR = addon.musicRPBonus.enUS.FEL_ARMOR or {}
+addon.musicRPBonus.enUS.FEL_ARMOR[#addon.musicRPBonus.enUS.FEL_ARMOR+1] = { "My armor is no ornament. It is an act of defiance.", "*draws a tiny punishment circle.*" }
+addon.musicRPBonus.frFR.FEL_ARMOR = addon.musicRPBonus.frFR.FEL_ARMOR or {}
+addon.musicRPBonus.frFR.FEL_ARMOR[#addon.musicRPBonus.frFR.FEL_ARMOR+1] = { "Mon armure n'est pas un bijou. C'est un acte de défi.", "*trace un petit cercle de punition.*" }
+addon.musicRPBonusReferences.M20 = { key = "IMMOLATE", artist = "Rammstein", song = "Feuer frei!" }
+addon.musicRPBonus.deDE.IMMOLATE = addon.musicRPBonus.deDE.IMMOLATE or {}
+addon.musicRPBonus.deDE.IMMOLATE[#addon.musicRPBonus.deDE.IMMOLATE+1] = { "Ein kleiner Funke. Ein zunehmend großes Problem.", "*notiert einen schlechten Witz.*" }
+addon.musicRPBonus.enUS.IMMOLATE = addon.musicRPBonus.enUS.IMMOLATE or {}
+addon.musicRPBonus.enUS.IMMOLATE[#addon.musicRPBonus.enUS.IMMOLATE+1] = { "A small spark. An increasingly large problem.", "*writes down a terrible joke.*" }
+addon.musicRPBonus.frFR.IMMOLATE = addon.musicRPBonus.frFR.IMMOLATE or {}
+addon.musicRPBonus.frFR.IMMOLATE[#addon.musicRPBonus.frFR.IMMOLATE+1] = { "Une petite étincelle. Un problème de plus en plus grand.", "*note une mauvaise blague.*" }
+
 -- Called only after personal texts. Does not bypass normal chance, cooldown or chat checks.
 function addon.ChooseMusicText(key, targetName, demonName, race)
     if not addon.db or not addon.db.musicEnabled then return nil end
     local chance = addon.db.musicChance or 0
     if chance <= 0 or math.random(100) > chance then return nil end
     local ref = addon.musicRPReferences[key]
-    if not ref or (ref.race and ref.race ~= race) then return nil end
+    if not ref and not addon.musicRPBonus.deDE[key] then return nil end
+    if ref and ref.race and ref.race ~= race then return nil end
     local lang = addon.GetOutputLanguage()
-    local localPool = addon.musicRP[lang] and addon.musicRP[lang][key]
-    local text = addon.ChooseText(localPool, targetName, demonName)
-    if text then return text end
-    if lang ~= "deDE" then
-        return addon.ChooseText(addon.musicRP.deDE[key], targetName, demonName)
+    local pools = {}
+    local function addPools(language)
+        local base = addon.musicRP[language] and addon.musicRP[language][key]
+        if base then pools[#pools+1] = base end
+        local extras = addon.musicRPBonus[language] and addon.musicRPBonus[language][key]
+        if extras then
+            for _, lines in ipairs(extras) do pools[#pools+1] = { gruppe = lines } end
+        end
+    end
+    addPools(lang)
+    if #pools == 0 and lang ~= "deDE" then addPools("deDE") end
+    if #pools == 0 then return nil end
+    local start = math.random(#pools)
+    for offset = 0, #pools-1 do
+        local pool = pools[((start+offset-1)%#pools)+1]
+        local text = addon.ChooseText(pool, targetName, demonName)
+        if text then return text end
     end
     return nil
 end
