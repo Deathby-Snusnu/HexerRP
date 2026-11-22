@@ -541,10 +541,9 @@ check(laterSoulstone == laterBonus.addon.musicRPBonus.deDE.SOULSTONE[2][2],
 local fallbackBonus = newClient({
     db={musicEnabled=true,musicChance=100,textChance=100,cooldown=0},
     random=function(minimum, maximum)
-        if maximum==100 then return 100 end
-        if maximum==3 then return 2 end
-        if maximum==2 then return 2 end
-        return minimum
+        if maximum then return minimum end
+        if minimum==100 then return 1 end
+        return 2
     end,
 })
 fallbackBonus.addon.SetOutputLanguage("enUS")
