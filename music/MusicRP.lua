@@ -200,6 +200,21 @@ addon.musicRPBonus.enUS.IMMOLATE[#addon.musicRPBonus.enUS.IMMOLATE+1] = { "A sma
 addon.musicRPBonus.frFR.IMMOLATE = addon.musicRPBonus.frFR.IMMOLATE or {}
 addon.musicRPBonus.frFR.IMMOLATE[#addon.musicRPBonus.frFR.IMMOLATE+1] = { "Une petite étincelle. Un problème de plus en plus grand.", "*note une mauvaise blague.*" }
 
+
+-- Additional original musical motifs: spoken line plus matching /me action.
+addon.musicRPBonus.deDE.DRAIN_SOUL = addon.musicRPBonus.deDE.DRAIN_SOUL or {}
+addon.musicRPBonus.deDE.DRAIN_SOUL[#addon.musicRPBonus.deDE.DRAIN_SOUL+1] = { "Ein letzter Gedanke wiegt schwerer als jedes Goldstück.", "*fängt einen flüchtigen Seelenschimmer zwischen zwei Fingern auf.*" }
+addon.musicRPBonus.enUS.DRAIN_SOUL = addon.musicRPBonus.enUS.DRAIN_SOUL or {}
+addon.musicRPBonus.enUS.DRAIN_SOUL[#addon.musicRPBonus.enUS.DRAIN_SOUL+1] = { "One final thought weighs more than any coin.", "*catches a fading glimmer of soul between two fingers.*" }
+addon.musicRPBonus.frFR.DRAIN_SOUL = addon.musicRPBonus.frFR.DRAIN_SOUL or {}
+addon.musicRPBonus.frFR.DRAIN_SOUL[#addon.musicRPBonus.frFR.DRAIN_SOUL+1] = { "Une dernière pensée pèse plus lourd que l'or.", "*retient un éclat d'âme entre deux doigts.*" }
+addon.musicRPBonus.deDE.IMMOLATE = addon.musicRPBonus.deDE.IMMOLATE or {}
+addon.musicRPBonus.deDE.IMMOLATE[#addon.musicRPBonus.deDE.IMMOLATE+1] = { "Ein winziger Funke. Und schon hat die Dunkelheit Gesprächsbedarf.", "*betrachtet das Feuer mit wissenschaftlich fragwürdigem Vergnügen.*" }
+addon.musicRPBonus.enUS.IMMOLATE = addon.musicRPBonus.enUS.IMMOLATE or {}
+addon.musicRPBonus.enUS.IMMOLATE[#addon.musicRPBonus.enUS.IMMOLATE+1] = { "One tiny spark. Now the darkness has questions.", "*regards the fire with scientifically dubious delight.*" }
+addon.musicRPBonus.frFR.IMMOLATE = addon.musicRPBonus.frFR.IMMOLATE or {}
+addon.musicRPBonus.frFR.IMMOLATE[#addon.musicRPBonus.frFR.IMMOLATE+1] = { "Une petite étincelle. Et les ténèbres se mettent à discuter.", "*observe le feu avec un plaisir scientifiquement douteux.*" }
+
 -- Called only after personal texts. Does not bypass normal chance, cooldown or chat checks.
 function addon.ChooseMusicText(key, targetName, demonName, race)
     if not addon.db or not addon.db.musicEnabled then return nil end
