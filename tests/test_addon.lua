@@ -540,20 +540,22 @@ check(laterSoulstone == laterBonus.addon.musicRPBonus.deDE.SOULSTONE[2][2],
 
 local fallbackBonus = newClient({
     db={musicEnabled=true,musicChance=100,textChance=100,cooldown=0},
-    random=function(minimum, maximum)
-        if maximum==100 then return 100 end
-        if maximum==3 then return 2 end
-        if maximum==2 then return 2 end
-        return minimum
-    end,
 })
 fallbackBonus.addon.SetOutputLanguage("enUS")
 fallbackBonus.addon.musicRPBonus.enUS.IMMOLATE[1] = {
     "This pool needs %s.",
     "*This emote needs %p.*",
 }
+local fallbackRolls = 0
+local fallbackBounds = {100, 1 + #fallbackBonus.addon.musicRPBonus.enUS.IMMOLATE, 2}
+fallbackBonus.environment.math.random = function(minimum, maximum)
+    fallbackRolls = fallbackRolls + 1
+    check(maximum == nil and minimum == fallbackBounds[fallbackRolls],
+        "fallback RNG uses expected bounds")
+    return fallbackRolls == 1 and 100 or 2
+end
 local fallbackText = fallbackBonus.addon.ChooseMusicText("IMMOLATE",nil,nil,"Human")
-check(fallbackText == fallbackBonus.addon.musicRPBonus.enUS.IMMOLATE[2][2],
+check(fallbackRolls == 3 and fallbackText == fallbackBonus.addon.musicRPBonus.enUS.IMMOLATE[2][2],
     "deterministic RNG falls back from an unusable pool")
 bonusClient.command("music off")
 check(bonus.ChooseMusicText("CORRUPTION",nil,nil,"Human")==nil,
