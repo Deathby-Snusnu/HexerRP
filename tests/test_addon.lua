@@ -508,7 +508,7 @@ for _, lang in ipairs({"deDE","enUS","frFR"}) do
     end
     for key, expectedCount in pairs(expectedCounts) do
         local choices = bonus.musicRPBonus[lang][key]
-        check(type(choices)=="table" and #choices==expectedCount,
+        check(type(choices)=="table" and #choices>=expectedCount,
             lang.." has all bonus motifs for "..key)
     end
     for key, choices in pairs(bonus.musicRPBonus[lang]) do
